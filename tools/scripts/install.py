@@ -101,7 +101,7 @@ def main():
         encrypted = baseroms[sha1]["encrypted"]
         game = baseroms[sha1]["game"]
         lang = baseroms[sha1]["lang"]
-        game_path = "test/"+game+"."+lang+"/"
+        game_path = game+"."+lang+"/"
         print("Installing "+args.rom.name+"...")
         
         #filesystem

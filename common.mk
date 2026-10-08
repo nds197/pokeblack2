@@ -33,7 +33,6 @@ SCRIPTS      := $(TOOLSREL)/scripts
 
 
 include $(WORK_DIR)/platform.mk
-include $(WORK_DIR)/binutils.mk
 
 # NitroSDK tools
 MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
