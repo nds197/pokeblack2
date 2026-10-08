@@ -23,9 +23,9 @@ The game is a DSi-enhanced title, and DSi titles use HMAC-based hashes calculate
 Therefore, in order to calculate these hashes correctly, we need to build the ROM with an encrypted Secure Area. To do this, we need either the NTR Blowfish key, which is included in both biosnds7 and biosdsi9, or a pre-built encrypted Secure Area extracted from an encrypted ROM.
 
 We have the following options:
-*Provide biosnds7.rom or biosdsi9.rom in the root of the project.
-*Use an encrypted ROM in Step 4, from which the encrypted Secure Area can be extracted.
-*Provide neither of the above. In this case, the build system will use pre-calculated values included in the repository to produce the matching ROM.
+* Provide biosnds7.rom or biosdsi9.rom in the root of the project.
+* Use an encrypted ROM in Step 4, from which the encrypted Secure Area can be extracted.
+* Provide neither of the above. In this case, the build system will use pre-calculated values included in the repository to produce the matching ROM.
 
 ### 4. Provide base ROMs
 This repository does not include the game's filesystem or some additional data required to build the project. Therefore, you must place the original game ROMs in the `baserom` directory so that all required data can be extracted during the build process. The ROMs can be named anything, the procces will automatically detect them bases on hashes.
