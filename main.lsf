@@ -1,0 +1,2023 @@
+
+Static main
+{
+	Address 0x02004000
+	StackSize 6144 2048
+	Object asm/main.o
+
+	Object asm/middleware.o
+}
+
+Autoload ITCM
+{
+	Address 0x01FF8000
+	Object asm/itcm.o (.itcm)
+}
+
+Autoload DTCM
+{
+	Address 0x02FE0000
+	Object asm/dtcm.o
+}
+
+Autoload MAINEX
+{
+	Address 0x02400000
+}
+
+Autoload VRAM
+{
+	Address 0x06898000
+}
+
+Overlay OVY_0
+{
+	After main
+	Object asm/overlay_0.o
+}
+
+Overlay OVY_1
+{
+	After main
+	Object asm/overlay_1.o
+}
+
+Overlay OVY_2
+{
+	After main
+	Object asm/overlay_2.o
+}
+
+Overlay OVY_3
+{
+	After main
+	Object asm/overlay_3.o
+}
+
+Overlay OVY_4
+{
+	After main
+	Object asm/overlay_4.o
+}
+
+Overlay OVY_5
+{
+	After main
+	Object asm/overlay_5.o
+}
+
+Overlay OVY_6
+{
+	After main
+}
+
+Overlay OVY_7
+{
+	After main
+}
+
+Overlay OVY_8
+{
+	After main
+	Object asm/overlay_8.o
+}
+
+Overlay OVY_9
+{
+	After main
+	Object asm/overlay_9.o
+}
+
+Overlay OVY_10
+{
+	After OVY_8
+	Object asm/overlay_10.o
+}
+
+Overlay OVY_11
+{
+	After OVY_10
+	Object asm/overlay_11.o
+}
+
+Overlay OVY_12
+{
+	After OVY_10
+	Object asm/overlay_12.o
+}
+
+Overlay OVY_13
+{
+	After OVY_12
+	Object asm/overlay_13.o
+}
+
+Overlay OVY_14
+{
+	After OVY_12
+	Object asm/overlay_14.o
+}
+
+Overlay OVY_15
+{
+	After OVY_12
+	Object asm/overlay_15.o
+}
+
+Overlay OVY_16
+{
+	After OVY_12
+	Object asm/overlay_16.o
+}
+
+Overlay OVY_17
+{
+	After OVY_12
+	Object asm/overlay_17.o
+}
+
+Overlay OVY_18
+{
+	After OVY_12
+	Object asm/overlay_18.o
+}
+
+Overlay OVY_19
+{
+	After OVY_12
+}
+
+Overlay OVY_20
+{
+	After OVY_12
+	Object asm/overlay_20.o
+}
+
+Overlay OVY_21
+{
+	After OVY_12
+	Object asm/overlay_21.o
+}
+
+Overlay OVY_22
+{
+	After OVY_12
+	Object asm/overlay_22.o
+}
+
+Overlay OVY_23
+{
+	After OVY_12
+	Object asm/overlay_23.o
+}
+
+Overlay OVY_24
+{
+	After OVY_23
+	Object asm/overlay_24.o
+}
+
+Overlay OVY_25
+{
+	After OVY_23
+	Object asm/overlay_25.o
+}
+
+Overlay OVY_26
+{
+	After OVY_23
+	Object asm/overlay_26.o
+}
+
+Overlay OVY_27
+{
+	After OVY_25
+	Object asm/overlay_27.o
+}
+
+Overlay OVY_28
+{
+	After OVY_25
+	Object asm/overlay_28.o
+}
+
+Overlay OVY_29
+{
+	After OVY_11
+	Object asm/overlay_29.o
+}
+
+Overlay OVY_30
+{
+	After OVY_28
+	Object asm/overlay_30.o
+}
+
+Overlay OVY_31
+{
+	After OVY_30
+	Object asm/overlay_31.o
+}
+
+Overlay OVY_32
+{
+	After OVY_29
+	Object asm/overlay_32.o
+}
+
+Overlay OVY_33
+{
+	After OVY_31
+	Object asm/overlay_33.o
+}
+
+Overlay OVY_34
+{
+	After OVY_31
+	Object asm/overlay_34.o
+}
+
+Overlay OVY_35
+{
+	After OVY_34
+	Object asm/overlay_35.o
+}
+
+Overlay OVY_36
+{
+	After OVY_35
+	Object asm/overlay_36.o
+}
+
+Overlay OVY_37
+{
+	After OVY_36
+}
+
+Overlay OVY_38
+{
+	After OVY_36
+}
+
+Overlay OVY_39
+{
+	After OVY_36
+}
+
+Overlay OVY_40
+{
+	After OVY_36
+}
+
+Overlay OVY_41
+{
+	After OVY_36
+}
+
+Overlay OVY_42
+{
+	After OVY_36
+}
+
+Overlay OVY_43
+{
+	After OVY_36
+}
+
+Overlay OVY_44
+{
+	After OVY_36
+}
+
+Overlay OVY_45
+{
+	After OVY_36
+}
+
+Overlay OVY_46
+{
+	After OVY_36
+}
+
+Overlay OVY_47
+{
+	After OVY_36
+}
+
+Overlay OVY_48
+{
+	After OVY_36
+}
+
+Overlay OVY_49
+{
+	After OVY_36
+}
+
+Overlay OVY_50
+{
+	After OVY_49
+	Object asm/overlay_50.o
+}
+
+Overlay OVY_51
+{
+	After OVY_49
+	Object asm/overlay_51.o
+}
+
+Overlay OVY_52
+{
+	After OVY_49
+	Object asm/overlay_52.o
+}
+
+Overlay OVY_53
+{
+	After OVY_49
+	Object asm/overlay_53.o
+}
+
+Overlay OVY_54
+{
+	After OVY_49
+	Object asm/overlay_54.o
+}
+
+Overlay OVY_55
+{
+	After OVY_49
+	Object asm/overlay_55.o
+}
+
+Overlay OVY_56
+{
+	After OVY_55
+	Object asm/overlay_56.o
+}
+
+Overlay OVY_57
+{
+	After OVY_55
+	Object asm/overlay_57.o
+}
+
+Overlay OVY_58
+{
+	After OVY_49
+	Object asm/overlay_58.o
+}
+
+Overlay OVY_59
+{
+	After OVY_58
+	Object asm/overlay_59.o
+}
+
+Overlay OVY_60
+{
+	After OVY_58
+	Object asm/overlay_60.o
+}
+
+Overlay OVY_61
+{
+	After OVY_49
+	Object asm/overlay_61.o
+}
+
+Overlay OVY_62
+{
+	After OVY_49
+	Object asm/overlay_62.o
+}
+
+Overlay OVY_63
+{
+	After OVY_49
+	Object asm/overlay_63.o
+}
+
+Overlay OVY_64
+{
+	After OVY_49
+	Object asm/overlay_64.o
+}
+
+Overlay OVY_65
+{
+	After OVY_49
+	Object asm/overlay_65.o
+}
+
+Overlay OVY_66
+{
+	After OVY_49
+	Object asm/overlay_66.o
+}
+
+Overlay OVY_67
+{
+	After OVY_49
+	Object asm/overlay_67.o
+}
+
+Overlay OVY_68
+{
+	After OVY_49
+	Object asm/overlay_68.o
+}
+
+Overlay OVY_69
+{
+	After OVY_34
+	Object asm/overlay_69.o
+}
+
+Overlay OVY_70
+{
+	After OVY_69
+	Object asm/overlay_70.o
+}
+
+Overlay OVY_71
+{
+	After OVY_60
+	Object asm/overlay_71.o
+}
+
+Overlay OVY_72
+{
+	After OVY_60
+	Object asm/overlay_72.o
+}
+
+Overlay OVY_73
+{
+	After OVY_60
+	Object asm/overlay_73.o
+}
+
+Overlay OVY_74
+{
+	After OVY_72
+	Object asm/overlay_74.o
+}
+
+Overlay OVY_75
+{
+	After OVY_72
+	Object asm/overlay_75.o
+}
+
+Overlay OVY_76
+{
+	After OVY_72
+	Object asm/overlay_76.o
+}
+
+Overlay OVY_77
+{
+	After OVY_72
+	Object asm/overlay_77.o
+}
+
+Overlay OVY_78
+{
+	After OVY_72
+	Object asm/overlay_78.o
+}
+
+Overlay OVY_79
+{
+	After OVY_76
+	Object asm/overlay_79.o
+}
+
+Overlay OVY_80
+{
+	After OVY_76
+	Object asm/overlay_80.o
+}
+
+Overlay OVY_81
+{
+	After OVY_76
+	Object asm/overlay_81.o
+}
+
+Overlay OVY_82
+{
+	After OVY_76
+	Object asm/overlay_82.o
+}
+
+Overlay OVY_83
+{
+	After OVY_76
+	Object asm/overlay_83.o
+}
+
+Overlay OVY_84
+{
+	After OVY_83
+	Object asm/overlay_84.o
+}
+
+Overlay OVY_85
+{
+	After OVY_83
+	Object asm/overlay_85.o
+}
+
+Overlay OVY_86
+{
+	After OVY_76
+	Object asm/overlay_86.o
+}
+
+Overlay OVY_87
+{
+	After OVY_76
+	Object asm/overlay_87.o
+}
+
+Overlay OVY_88
+{
+	After OVY_76
+	Object asm/overlay_88.o
+}
+
+Overlay OVY_89
+{
+	After OVY_84
+	Object asm/overlay_89.o
+}
+
+Overlay OVY_90
+{
+	After OVY_84
+	Object asm/overlay_90.o
+}
+
+Overlay OVY_91
+{
+	After OVY_84
+	Object asm/overlay_91.o
+}
+
+Overlay OVY_92
+{
+	After OVY_84
+	Object asm/overlay_92.o
+}
+
+Overlay OVY_93
+{
+	After OVY_84
+	Object asm/overlay_93.o
+}
+
+Overlay OVY_94
+{
+	After OVY_84
+	Object asm/overlay_94.o
+}
+
+Overlay OVY_95
+{
+	After OVY_84
+	Object asm/overlay_95.o
+}
+
+Overlay OVY_96
+{
+	After OVY_84
+	Object asm/overlay_96.o
+}
+
+Overlay OVY_97
+{
+	After OVY_84
+	Object asm/overlay_97.o
+}
+
+Overlay OVY_98
+{
+	After OVY_84
+	Object asm/overlay_98.o
+}
+
+Overlay OVY_99
+{
+	After OVY_84
+	Object asm/overlay_99.o
+}
+
+Overlay OVY_100
+{
+	After OVY_84
+	Object asm/overlay_100.o
+}
+
+Overlay OVY_101
+{
+	After OVY_84
+	Object asm/overlay_101.o
+}
+
+Overlay OVY_102
+{
+	After OVY_84
+	Object asm/overlay_102.o
+}
+
+Overlay OVY_103
+{
+	After OVY_84
+	Object asm/overlay_103.o
+}
+
+Overlay OVY_104
+{
+	After OVY_84
+	Object asm/overlay_104.o
+}
+
+Overlay OVY_105
+{
+	After OVY_84
+	Object asm/overlay_105.o
+}
+
+Overlay OVY_106
+{
+	After OVY_84
+	Object asm/overlay_106.o
+}
+
+Overlay OVY_107
+{
+	After OVY_84
+	Object asm/overlay_107.o
+}
+
+Overlay OVY_108
+{
+	After OVY_84
+	Object asm/overlay_108.o
+}
+
+Overlay OVY_109
+{
+	After OVY_84
+	Object asm/overlay_109.o
+}
+
+Overlay OVY_110
+{
+	After OVY_84
+	Object asm/overlay_110.o
+}
+
+Overlay OVY_111
+{
+	After OVY_84
+	Object asm/overlay_111.o
+}
+
+Overlay OVY_112
+{
+	After OVY_84
+	Object asm/overlay_112.o
+}
+
+Overlay OVY_113
+{
+	After OVY_84
+	Object asm/overlay_113.o
+}
+
+Overlay OVY_114
+{
+	After OVY_84
+	Object asm/overlay_114.o
+}
+
+Overlay OVY_115
+{
+	After OVY_84
+	Object asm/overlay_115.o
+}
+
+Overlay OVY_116
+{
+	After OVY_84
+	Object asm/overlay_116.o
+}
+
+Overlay OVY_117
+{
+	After OVY_84
+	Object asm/overlay_117.o
+}
+
+Overlay OVY_118
+{
+	After OVY_84
+	Object asm/overlay_118.o
+}
+
+Overlay OVY_119
+{
+	After OVY_84
+	Object asm/overlay_119.o
+}
+
+Overlay OVY_120
+{
+	After OVY_84
+	Object asm/overlay_120.o
+}
+
+Overlay OVY_121
+{
+	After OVY_110
+	Object asm/overlay_121.o
+}
+
+Overlay OVY_122
+{
+	After OVY_84
+	Object asm/overlay_122.o
+}
+
+Overlay OVY_123
+{
+	After OVY_84
+	Object asm/overlay_123.o
+}
+
+Overlay OVY_124
+{
+	After OVY_84
+	Object asm/overlay_124.o
+}
+
+Overlay OVY_125
+{
+	After OVY_84
+	Object asm/overlay_125.o
+}
+
+Overlay OVY_126
+{
+	After OVY_84
+	Object asm/overlay_126.o
+}
+
+Overlay OVY_127
+{
+	After OVY_84
+	Object asm/overlay_127.o
+}
+
+Overlay OVY_128
+{
+	After OVY_84
+	Object asm/overlay_128.o
+}
+
+Overlay OVY_129
+{
+	After OVY_84
+	Object asm/overlay_129.o
+}
+
+Overlay OVY_130
+{
+	After OVY_84
+	Object asm/overlay_130.o
+}
+
+Overlay OVY_131
+{
+	After OVY_84
+	Object asm/overlay_131.o
+}
+
+Overlay OVY_132
+{
+	After OVY_84
+	Object asm/overlay_132.o
+}
+
+Overlay OVY_133
+{
+	After OVY_84
+	Object asm/overlay_133.o
+}
+
+Overlay OVY_134
+{
+	After OVY_84
+	Object asm/overlay_134.o
+}
+
+Overlay OVY_135
+{
+	After OVY_84
+	Object asm/overlay_135.o
+}
+
+Overlay OVY_136
+{
+	After OVY_84
+	Object asm/overlay_136.o
+}
+
+Overlay OVY_137
+{
+	After OVY_84
+	Object asm/overlay_137.o
+}
+
+Overlay OVY_138
+{
+	After OVY_34
+}
+
+Overlay OVY_139
+{
+	After OVY_29
+	Object asm/overlay_139.o
+}
+
+Overlay OVY_140
+{
+	After OVY_139
+	Object asm/overlay_140.o
+}
+
+Overlay OVY_141
+{
+	After OVY_139
+	Object asm/overlay_141.o
+}
+
+Overlay OVY_142
+{
+	After OVY_29
+	Object asm/overlay_142.o
+}
+
+Overlay OVY_143
+{
+	After OVY_29
+	Object asm/overlay_143.o
+}
+
+Overlay OVY_144
+{
+	After OVY_139
+	Object asm/overlay_144.o
+}
+
+Overlay OVY_145
+{
+	After OVY_139
+	Object asm/overlay_145.o
+}
+
+Overlay OVY_146
+{
+	After OVY_137
+	Object asm/overlay_146.o
+}
+
+Overlay OVY_147
+{
+	After OVY_146
+	Object asm/overlay_147.o
+}
+
+Overlay OVY_148
+{
+	After OVY_137
+	Object asm/overlay_148.o
+}
+
+Overlay OVY_149
+{
+	After OVY_137
+	Object asm/overlay_149.o
+}
+
+Overlay OVY_150
+{
+	After OVY_148
+	Object asm/overlay_150.o
+}
+
+Overlay OVY_151
+{
+	After OVY_148
+	Object asm/overlay_151.o
+}
+
+Overlay OVY_152
+{
+	After OVY_150
+	Object asm/overlay_152.o
+}
+
+Overlay OVY_153
+{
+	After OVY_150
+	Object asm/overlay_153.o
+}
+
+Overlay OVY_154
+{
+	After OVY_150
+	Object asm/overlay_154.o
+}
+
+Overlay OVY_155
+{
+	After OVY_137
+	Object asm/overlay_155.o
+}
+
+Overlay OVY_156
+{
+	After OVY_137
+	Object asm/overlay_156.o
+}
+
+Overlay OVY_157
+{
+	After OVY_137
+	Object asm/overlay_157.o
+}
+
+Overlay OVY_158
+{
+	After OVY_157
+}
+
+Overlay OVY_159
+{
+	After OVY_34
+}
+
+Overlay OVY_160
+{
+	After OVY_34
+}
+
+Overlay OVY_161
+{
+	After OVY_34
+}
+
+Overlay OVY_162
+{
+	After OVY_139
+	Object asm/overlay_162.o
+}
+
+Overlay OVY_163
+{
+	After OVY_162
+}
+
+Overlay OVY_164
+{
+	After OVY_29
+	Object asm/overlay_164.o
+}
+
+Overlay OVY_165
+{
+	After OVY_164
+	Object asm/overlay_165.o
+	Library dsprot_instant/dsprot_instant.a
+}
+
+Overlay OVY_166
+{
+	After OVY_139
+	Object asm/overlay_166.o
+}
+
+Overlay OVY_167
+{
+	After OVY_29
+	Object asm/overlay_167.o
+}
+
+Overlay OVY_168
+{
+	After OVY_167
+	Object asm/overlay_168.o
+}
+
+Overlay OVY_169
+{
+	After VRAM
+	Object asm/overlay_169.o
+}
+
+Overlay OVY_170
+{
+	After OVY_35
+	Object asm/overlay_170.o
+}
+
+Overlay OVY_171
+{
+	After OVY_167
+	Object asm/overlay_171.o
+}
+
+Overlay OVY_172
+{
+	After OVY_29
+	Object asm/overlay_172.o
+}
+
+Overlay OVY_173
+{
+	After OVY_139
+	Object asm/overlay_173.o
+}
+
+Overlay OVY_174
+{
+	After OVY_139
+	Object asm/overlay_174.o
+}
+
+Overlay OVY_175
+{
+	After OVY_29
+	Object asm/overlay_175.o
+}
+
+Overlay OVY_176
+{
+	After OVY_175
+	Object asm/overlay_176.o
+}
+
+Overlay OVY_177
+{
+	After OVY_175
+	Object asm/overlay_177.o
+}
+
+Overlay OVY_178
+{
+	After OVY_175
+	Object asm/overlay_178.o
+}
+
+Overlay OVY_179
+{
+	After OVY_175
+	Object asm/overlay_179.o
+}
+
+Overlay OVY_180
+{
+	After OVY_175
+	Object asm/overlay_180.o
+}
+
+Overlay OVY_181
+{
+	After OVY_139
+	Object asm/overlay_181.o
+}
+
+Overlay OVY_182
+{
+	After OVY_181
+	Object asm/overlay_182.o
+}
+
+Overlay OVY_183
+{
+	After OVY_174
+}
+
+Overlay OVY_184
+{
+	After OVY_183
+	Object asm/overlay_184.o
+}
+
+Overlay OVY_185
+{
+	After OVY_139
+	Object asm/overlay_185.o
+}
+
+Overlay OVY_186
+{
+	After OVY_185
+	Object asm/overlay_186.o
+}
+
+Overlay OVY_187
+{
+	After OVY_60
+	Object asm/overlay_187.o
+}
+
+Overlay OVY_188
+{
+	After OVY_29
+}
+
+Overlay OVY_189
+{
+	After OVY_139
+	Object asm/overlay_189.o
+}
+
+Overlay OVY_190
+{
+	After OVY_189
+	Object asm/overlay_190.o
+}
+
+Overlay OVY_191
+{
+	After OVY_190
+	Object asm/overlay_191.o
+}
+
+Overlay OVY_192
+{
+	After OVY_189
+	Object asm/overlay_192.o
+}
+
+Overlay OVY_193
+{
+	After OVY_189
+	Object asm/overlay_193.o
+}
+
+Overlay OVY_194
+{
+	After OVY_193
+	Object asm/overlay_194.o
+}
+
+Overlay OVY_195
+{
+	After OVY_189
+	Object asm/overlay_195.o
+}
+
+Overlay OVY_196
+{
+	After OVY_190
+	Object asm/overlay_196.o
+}
+
+Overlay OVY_197
+{
+	After OVY_190
+	Object asm/overlay_197.o
+}
+
+Overlay OVY_198
+{
+	After OVY_189
+	Object asm/overlay_198.o
+}
+
+Overlay OVY_199
+{
+	After OVY_189
+	Object asm/overlay_199.o
+}
+
+Overlay OVY_200
+{
+	After OVY_189
+	Object asm/overlay_200.o
+}
+
+Overlay OVY_201
+{
+	After OVY_190
+	Object asm/overlay_201.o
+}
+
+Overlay OVY_202
+{
+	After OVY_74
+}
+
+Overlay OVY_203
+{
+	After OVY_173
+	Object asm/overlay_203.o
+}
+
+Overlay OVY_204
+{
+	After OVY_203
+	Object asm/overlay_204.o
+}
+
+Overlay OVY_205
+{
+	After OVY_191
+	Object asm/overlay_205.o
+}
+
+Overlay OVY_206
+{
+	After OVY_29
+}
+
+Overlay OVY_207
+{
+	After OVY_189
+	Object asm/overlay_207.o
+}
+
+Overlay OVY_208
+{
+	After OVY_29
+	Object asm/overlay_208.o
+}
+
+Overlay OVY_209
+{
+	After OVY_201
+	Object asm/overlay_209.o
+}
+
+Overlay OVY_210
+{
+	After OVY_84
+	Object asm/overlay_210.o
+}
+
+Overlay OVY_211
+{
+	After OVY_210
+	Object asm/overlay_211.o
+}
+
+Overlay OVY_212
+{
+	After OVY_211
+}
+
+Overlay OVY_213
+{
+	After OVY_207
+	Object asm/overlay_213.o
+}
+
+Overlay OVY_214
+{
+	After OVY_194
+	Object asm/overlay_214.o
+}
+
+Overlay OVY_215
+{
+	After OVY_185
+	Object asm/overlay_215.o
+}
+
+Overlay OVY_216
+{
+	After OVY_207
+	Object asm/overlay_216.o
+}
+
+Overlay OVY_217
+{
+	After OVY_34
+}
+
+Overlay OVY_218
+{
+	After MAINEX
+}
+
+Overlay OVY_219
+{
+	After OVY_218
+}
+
+Overlay OVY_220
+{
+	After OVY_218
+}
+
+Overlay OVY_221
+{
+	After OVY_218
+}
+
+Overlay OVY_222
+{
+	After OVY_218
+}
+
+Overlay OVY_223
+{
+	After OVY_218
+}
+
+Overlay OVY_224
+{
+	After OVY_218
+}
+
+Overlay OVY_225
+{
+	After OVY_218
+}
+
+Overlay OVY_226
+{
+	After OVY_137
+}
+
+Overlay OVY_227
+{
+	After OVY_137
+}
+
+Overlay OVY_228
+{
+	After OVY_137
+}
+
+Overlay OVY_229
+{
+	After OVY_137
+}
+
+Overlay OVY_230
+{
+	After OVY_137
+}
+
+Overlay OVY_231
+{
+	After OVY_137
+}
+
+Overlay OVY_232
+{
+	After OVY_137
+}
+
+Overlay OVY_233
+{
+	After OVY_137
+}
+
+Overlay OVY_234
+{
+	After OVY_137
+}
+
+Overlay OVY_235
+{
+	After OVY_137
+}
+
+Overlay OVY_236
+{
+	After OVY_137
+}
+
+Overlay OVY_237
+{
+	After OVY_137
+}
+
+Overlay OVY_238
+{
+	After OVY_137
+}
+
+Overlay OVY_239
+{
+	After OVY_137
+}
+
+Overlay OVY_240
+{
+	After OVY_137
+}
+
+Overlay OVY_241
+{
+	After OVY_137
+}
+
+Overlay OVY_242
+{
+	After OVY_157
+}
+
+Overlay OVY_243
+{
+	After OVY_137
+}
+
+Overlay OVY_244
+{
+	After OVY_137
+}
+
+Overlay OVY_245
+{
+	After OVY_137
+}
+
+Overlay OVY_246
+{
+	After OVY_137
+}
+
+Overlay OVY_247
+{
+	After OVY_137
+}
+
+Overlay OVY_248
+{
+	After OVY_137
+}
+
+Overlay OVY_249
+{
+	After OVY_137
+}
+
+Overlay OVY_250
+{
+	After OVY_137
+}
+
+Overlay OVY_251
+{
+	After OVY_137
+}
+
+Overlay OVY_252
+{
+	After OVY_137
+}
+
+Overlay OVY_253
+{
+	After OVY_34
+	Object asm/overlay_253.o
+}
+
+Overlay OVY_254
+{
+	After OVY_139
+}
+
+Overlay OVY_255
+{
+	After OVY_207
+	Object asm/overlay_255.o
+}
+
+Overlay OVY_256
+{
+	After OVY_207
+	Object asm/overlay_256.o
+}
+
+Overlay OVY_257
+{
+	After OVY_29
+	Object asm/overlay_257.o
+}
+
+Overlay OVY_258
+{
+	After OVY_29
+	Object asm/overlay_258.o
+}
+
+Overlay OVY_259
+{
+	After OVY_29
+	Object asm/overlay_259.o
+}
+
+Overlay OVY_260
+{
+	After OVY_189
+	Object asm/overlay_260.o
+}
+
+Overlay OVY_261
+{
+	After OVY_31
+	Object asm/overlay_261.o
+}
+
+Overlay OVY_262
+{
+	After OVY_260
+	Object asm/overlay_262.o
+}
+
+Overlay OVY_263
+{
+	After OVY_260
+	Object asm/overlay_263.o
+}
+
+Overlay OVY_264
+{
+	After OVY_29
+	Object asm/overlay_264.o
+}
+
+Overlay OVY_265
+{
+	After OVY_29
+	Object asm/overlay_265.o
+}
+
+Overlay OVY_266
+{
+	After OVY_139
+	Object asm/overlay_266.o
+}
+
+Overlay OVY_267
+{
+	After OVY_139
+	Object asm/overlay_267.o
+}
+
+Overlay OVY_268
+{
+	After OVY_201
+	Object asm/overlay_268.o
+}
+
+Overlay OVY_269
+{
+	After OVY_210
+	Object asm/overlay_269.o
+}
+
+Overlay OVY_270
+{
+	After OVY_210
+	Object asm/overlay_270.o
+}
+
+Overlay OVY_271
+{
+	After OVY_270
+	Object asm/overlay_271.o
+}
+
+Overlay OVY_272
+{
+	After OVY_271
+	Object asm/overlay_272.o
+}
+
+Overlay OVY_273
+{
+	After OVY_74
+	Object asm/overlay_273.o
+}
+
+Overlay OVY_274
+{
+	After OVY_31
+}
+
+Overlay OVY_275
+{
+	After OVY_34
+}
+
+Overlay OVY_276
+{
+	After OVY_34
+}
+
+Overlay OVY_277
+{
+	After OVY_34
+}
+
+Overlay OVY_278
+{
+	After OVY_60
+}
+
+Overlay OVY_279
+{
+	After OVY_60
+	Object asm/overlay_279.o
+}
+
+Overlay OVY_280
+{
+	After OVY_255
+	Object asm/overlay_280.o
+}
+
+Overlay OVY_281
+{
+	After OVY_137
+	Object asm/overlay_281.o
+}
+
+Overlay OVY_282
+{
+	After OVY_281
+}
+
+Overlay OVY_283
+{
+	After OVY_139
+}
+
+Overlay OVY_284
+{
+	After OVY_214
+	Object asm/overlay_284.o
+}
+
+Overlay OVY_285
+{
+	After OVY_168
+	Object asm/overlay_285.o
+}
+
+Overlay OVY_286
+{
+	After OVY_285
+	Object asm/overlay_286.o
+}
+
+Overlay OVY_287
+{
+	After OVY_285
+	Object asm/overlay_287.o
+}
+
+Overlay OVY_288
+{
+	After OVY_285
+	Object asm/overlay_288.o
+}
+
+Overlay OVY_289
+{
+	After OVY_285
+	Object asm/overlay_289.o
+}
+
+Overlay OVY_290
+{
+	After OVY_287
+	Object asm/overlay_290.o
+}
+
+Overlay OVY_291
+{
+	After OVY_280
+}
+
+Overlay OVY_292
+{
+	After OVY_34
+}
+
+Overlay OVY_293
+{
+	After OVY_162
+	Object asm/overlay_293.o
+}
+
+Overlay OVY_294
+{
+	After OVY_162
+	Object asm/overlay_294.o
+}
+
+Overlay OVY_295
+{
+	After OVY_139
+	Object asm/overlay_295.o
+}
+
+Overlay OVY_296
+{
+	After OVY_166
+	Object asm/overlay_296.o
+}
+
+Overlay OVY_297
+{
+	After OVY_168
+	Object asm/overlay_297.o
+}
+
+Overlay OVY_298
+{
+	After OVY_296
+	Object asm/overlay_298.o
+}
+
+Overlay OVY_299
+{
+	After OVY_296
+	Object asm/overlay_299.o
+}
+
+Overlay OVY_300
+{
+	After OVY_296
+	Object asm/overlay_300.o
+}
+
+Overlay OVY_301
+{
+	After OVY_296
+	Object asm/overlay_301.o
+}
+
+Overlay OVY_302
+{
+	After OVY_298
+	Object asm/overlay_302.o
+}
+
+Overlay OVY_303
+{
+	After OVY_296
+	Object asm/overlay_303.o
+}
+
+Overlay OVY_304
+{
+	After OVY_296
+	Object asm/overlay_304.o
+}
+
+Overlay OVY_305
+{
+	After OVY_139
+	Object asm/overlay_305.o
+}
+
+Overlay OVY_306
+{
+	After OVY_139
+	Object asm/overlay_306.o
+}
+
+Overlay OVY_307
+{
+	After OVY_280
+	Object asm/overlay_307.o
+}
+
+Overlay OVY_308
+{
+	After OVY_144
+	Object asm/overlay_308.o
+}
+
+Overlay OVY_309
+{
+	After OVY_139
+	Object asm/overlay_309.o
+}
+
+Overlay OVY_310
+{
+	After OVY_139
+	Object asm/overlay_310.o
+}
+
+Overlay OVY_311
+{
+	After OVY_139
+	Object asm/overlay_311.o
+}
+
+Overlay OVY_312
+{
+	After OVY_34
+	Object asm/overlay_312.o
+}
+
+Overlay OVY_313
+{
+	After OVY_139
+	Object asm/overlay_313.o
+}
+
+Overlay OVY_314
+{
+	After OVY_139
+	Object asm/overlay_314.o
+}
+
+Overlay OVY_315
+{
+	After OVY_139
+	Object asm/overlay_315.o
+}
+
+Overlay OVY_316
+{
+	After OVY_139
+	Object asm/overlay_316.o
+}
+
+Overlay OVY_317
+{
+	After OVY_139
+	Object asm/overlay_317.o
+}
+
+Overlay OVY_318
+{
+	After OVY_139
+	Object asm/overlay_318.o
+}
+
+Overlay OVY_319
+{
+	After OVY_139
+	Object asm/overlay_319.o
+}
+
+Overlay OVY_320
+{
+	After OVY_139
+	Object asm/overlay_320.o
+}
+
+Overlay OVY_321
+{
+	After OVY_139
+	Object asm/overlay_321.o
+}
+
+Overlay OVY_322
+{
+	After OVY_139
+	Object asm/overlay_322.o
+}
+
+Overlay OVY_323
+{
+	After OVY_139
+	Object asm/overlay_323.o
+}
+
+Overlay OVY_324
+{
+	After OVY_139
+	Object asm/overlay_324.o
+}
+
+Overlay OVY_325
+{
+	After OVY_139
+	Object asm/overlay_325.o
+}
+
+Overlay OVY_326
+{
+	After OVY_139
+	Object asm/overlay_326.o
+}
+
+Overlay OVY_327
+{
+	After OVY_196
+	Object asm/overlay_327.o
+}
+
+Overlay OVY_328
+{
+	After OVY_139
+	Object asm/overlay_328.o
+}
+
+Overlay OVY_329
+{
+	After OVY_297
+}
+
+Overlay OVY_330
+{
+	After OVY_139
+	Object asm/overlay_330.o
+}
+
+Overlay OVY_331
+{
+	After OVY_197
+	Object asm/overlay_331.o
+}
+
+Overlay OVY_332
+{
+	After OVY_331
+	Object asm/overlay_332.o
+}
+
+Overlay OVY_333
+{
+	After OVY_332
+}
+
+Overlay OVY_334
+{
+	After OVY_29
+}
+
+Overlay OVY_335
+{
+	After OVY_29
+}
+
+Overlay OVY_336
+{
+	After OVY_34
+}
+
+Overlay ds_protect
+{
+	After OVY_35
+	Library dsprot/dsprot.a
+}
+
+Overlay OVY_338
+{
+	After OVY_34
+	Object asm/overlay_338.o
+}
+
+Overlay OVY_339
+{
+	After OVY_287
+}
+
+Overlay OVY_340
+{
+	After OVY_287
+}
+
+Overlay OVY_341
+{
+	After OVY_287
+}
+
+Overlay OVY_342
+{
+	After OVY_287
+}
+
+Overlay OVY_343
+{
+	After OVY_287
+}
+
+Ltdautoload LTDMAIN
+{
+	Address	0x02700000
+	Object asm/ltdmain.o (.text)
+	Object asm/ltdmain.o (.rodata)
+	Object asm/ltdmain.o (.ltdmain)
+	Object asm/ltdmain.o (.data)
+	Object asm/ltdmain.o (.bss)
+}

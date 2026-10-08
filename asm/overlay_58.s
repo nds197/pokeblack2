@@ -1,0 +1,91 @@
+	.include "asm/macros/function.inc"
+
+	.extern FUN_021E591C
+	.extern FUN_021E5950
+	.extern FUN_021E5EB0
+	.extern FUN_021E79A4
+	.extern FUN_021E7AD8
+	.extern FUN_021E60A4
+	.extern FUN_021E6778
+	.extern FUN_021E67F8
+	.extern FUN_021E619C
+	.extern FUN_021E6868
+	.extern FUN_021E689C
+	.extern FUN_021E61D8
+	.extern FUN_021E6318
+	.extern FUN_021E63D4
+	.extern FUN_021E65FC
+	.extern FUN_021E6630
+	.extern FUN_021E66D8
+	.extern FUN_021E6BD4
+	.extern FUN_021E6934
+	.extern FUN_021E6B68
+	.extern FUN_021E6C10
+	.extern FUN_021E7A28
+	.extern FUN_021E77C4
+	.extern FUN_021E6C48
+	.extern FUN_021E74CC
+	.extern FUN_021E7608
+	.extern FUN_021E6D50
+	.extern FUN_021E6F14
+	.extern FUN_021E742C
+	.extern FUN_021E6FC8
+	.extern FUN_021E7C70
+	.extern FUN_021E7748
+	.extern FUN_021E778C
+	.extern OV59_FUN_021E5F38
+	.extern OV59_FUN_021E6014
+	.extern OV59_FUN_021E62A8
+	.extern OV59_FUN_021E64A0
+	.extern OV59_FUN_021E7710
+	.extern OV59_FUN_021E58C0
+	.extern OV60_FUN_021E58C0
+
+	.text
+
+	.rodata
+
+	.public OV58_021E5800
+OV58_021E5800:
+	.word OV59_FUN_021E58C0 ; 0xC1, 0x58, 0x1E, 0x02
+	.word FUN_021E591C
+	.word FUN_021E5950
+	.word FUN_021E5EB0
+	.word FUN_021E79A4
+	.word OV59_FUN_021E5F38
+	.word FUN_021E7AD8
+	.word OV59_FUN_021E6014
+	.word FUN_021E60A4
+	.word FUN_021E6778
+	.word FUN_021E67F8
+	.word OV60_FUN_021E58C0 ; 0xC1, 0x58, 0x1E, 0x02
+	.word FUN_021E619C
+	.word FUN_021E6868
+	.word FUN_021E689C
+	.word FUN_021E61D8
+	.word OV59_FUN_021E62A8
+	.word FUN_021E6318
+	.word FUN_021E63D4
+	.word OV59_FUN_021E64A0
+	.word FUN_021E65FC
+	.word FUN_021E6630
+	.word FUN_021E66D8
+	.word FUN_021E6BD4
+	.word FUN_021E6934
+	.word FUN_021E6B68
+	.word FUN_021E6C10
+	.word FUN_021E7A28
+	.word FUN_021E77C4
+	.word FUN_021E6C48
+	.word FUN_021E74CC
+	.word FUN_021E7608
+	.word FUN_021E6D50
+	.word FUN_021E6F14
+	.word FUN_021E742C
+	.word FUN_021E6FC8
+	.word FUN_021E7C70
+	.word OV59_FUN_021E7710
+	.word FUN_021E7748
+	.word FUN_021E778C
+	.byte 0xFF, 0xFF, 0xFF, 0xFF
+	; 0x021E58C0

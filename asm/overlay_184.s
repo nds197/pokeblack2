@@ -1,0 +1,198 @@
+	.include "asm/macros/function.inc"
+
+	.extern FUN_0203D0EC
+	.extern FUN_020444A4
+	.extern FUN_02044710
+	.extern FUN_0204476C
+	.extern FUN_02045738
+	.extern FUN_02046C40
+	.extern FUN_02046CFC
+	.extern FUN_02046DE0
+	.extern FUN_02046DF8
+	.extern FUN_0204AD88
+	.extern FUN_0204AF18
+	.extern FUN_0204B0B8
+	.extern FUN_0204DFD4
+	.extern FUN_0204E060
+	.extern MIi_CpuClear32
+	.extern FUN_02079BB0
+
+	.text
+
+	thumb_func_start FUN_0219F340
+FUN_0219F340: ; 0x0219F340
+	push {r4, r5, r6, r7, lr}
+	sub sp, #0xcc
+	mov r0, #1
+	bl FUN_020444A4
+	ldr r4, _0219F498 ; =_0219F4BC
+	add r3, sp, #0x1c
+	mov r2, #6
+_0219F350:
+	ldmia r4!, {r0, r1}
+	stmia r3!, {r0, r1}
+	sub r2, r2, #1
+	bne _0219F350
+	add r0, sp, #0x1c
+	bl FUN_02046C40
+	mov r5, #2
+	mov r1, #6
+	lsl r5, r5, #0x12
+	mov r0, #0
+	lsl r1, r1, #0x18
+	add r2, r5, #0
+	blx MIi_CpuClear32
+	mov r1, #0x62
+	lsr r4, r5, #2
+	mov r0, #0
+	lsl r1, r1, #0x14
+	add r2, r4, #0
+	blx MIi_CpuClear32
+	mov r1, #0x19
+	mov r0, #0
+	lsl r1, r1, #0x16
+	lsr r2, r5, #1
+	blx MIi_CpuClear32
+	mov r1, #0x66
+	mov r0, #0
+	lsl r1, r1, #0x14
+	add r2, r4, #0
+	blx MIi_CpuClear32
+	ldr r4, _0219F49C ; =_0219F4AC
+	add r3, sp, #0xc
+	add r2, r3, #0
+	ldmia r4!, {r0, r1}
+	stmia r3!, {r0, r1}
+	ldmia r4!, {r0, r1}
+	stmia r3!, {r0, r1}
+	add r0, r2, #0
+	bl FUN_02044710
+	ldr r4, _0219F4A0 ; =_0219F4EC
+	add r3, sp, #0x4c
+	mov r2, #0x10
+_0219F3AE:
+	ldmia r4!, {r0, r1}
+	stmia r3!, {r0, r1}
+	sub r2, r2, #1
+	bne _0219F3AE
+	mov r0, #2
+	add r1, sp, #0x4c
+	mov r2, #0
+	mov r6, #2
+	mov r7, #0
+	bl FUN_0204476C
+	mov r0, #2
+	bl FUN_02045738
+	mov r0, #3
+	add r1, sp, #0x6c
+	mov r2, #0
+	bl FUN_0204476C
+	mov r0, #3
+	bl FUN_02045738
+	mov r0, #6
+	add r1, sp, #0x8c
+	mov r2, #0
+	bl FUN_0204476C
+	mov r0, #6
+	bl FUN_02045738
+	mov r0, #7
+	add r1, sp, #0xac
+	mov r2, #0
+	bl FUN_0204476C
+	mov r0, #7
+	bl FUN_02045738
+	mov r0, #1
+	mov r1, #0
+	mov r4, #1
+	bl FUN_02046CFC
+	mov r0, #2
+	mov r1, #0
+	bl FUN_02046CFC
+	mov r0, #8
+	mov r1, #0
+	bl FUN_02046CFC
+	mov r5, #4
+	mov r0, #4
+	mov r1, #1
+	bl FUN_02046CFC
+	lsl r2, r5, #0x18
+	ldr r1, [r2]
+	ldr r0, _0219F4A4 ; =0xFFCFFFEF
+	mov r5, #0x10
+	and r1, r0
+	orr r1, r5
+	str r1, [r2]
+	ldr r2, _0219F4A8 ; =0x04001000
+	mov r3, #0
+	ldr r1, [r2]
+	and r0, r1
+	orr r0, r5
+	str r0, [r2]
+	str r7, [sp]
+	str r7, [sp, #4]
+	str r4, [sp, #8]
+	mov r0, #0x16
+	mov r1, #1
+	mov r2, #2
+	bl FUN_0204AD88
+	str r7, [sp]
+	str r7, [sp, #4]
+	mov r0, #0x16
+	mov r1, #2
+	mov r2, #2
+	mov r3, #0
+	str r4, [sp, #8]
+	bl FUN_0204AF18
+	mov r0, #0x16
+	add r0, #0xea
+	str r0, [sp]
+	mov r0, #0x16
+	add r1, r7, #0
+	add r2, r7, #0
+	add r3, r7, #0
+	str r4, [sp, #4]
+	bl FUN_0204B0B8
+	bl FUN_02046DE0
+	add r0, r7, #0
+	bl FUN_02046DF8
+	mov r0, #0xc
+	add r1, r5, #0
+	add r2, r7, #0
+	add r3, r6, #0
+	bl FUN_0204E060
+_0219F484:
+	bl FUN_0203D0EC
+	bl FUN_0204DFD4
+	add r0, r4, #0
+	add r1, r4, #0
+	blx FUN_02079BB0
+	b _0219F484
+	nop
+_0219F498: .word _0219F4BC
+_0219F49C: .word _0219F4AC
+_0219F4A0: .word _0219F4EC
+_0219F4A4: .word 0xFFCFFFEF
+_0219F4A8: .word 0x04001000
+	thumb_func_end FUN_0219F340
+
+	.rodata
+
+_0219F4AC:
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+_0219F4BC:
+	.byte 0x01, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
+	.byte 0x20, 0x00, 0x00, 0x00, 0x10, 0x00, 0x10, 0x00, 0x10, 0x00, 0x00, 0x00
+_0219F4EC:
+	.byte 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x00, 0x02
+	.byte 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x04, 0x00, 0x04, 0x04
+	.byte 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x01
+	.byte 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x02
+	.byte 0x00, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
+	; 0x0219F580
