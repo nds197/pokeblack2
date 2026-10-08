@@ -168,7 +168,7 @@ def main():
         
     print("Fixing rom...")
     if args.use_precalculated_hashes != "False":
-        patch_rom_hashes(rom_in,rom_out,arms.dir)
+        patch_rom_hashes(rom_in,rom_out,args.dir)
     if args.arm9_path:
         arm9 = read_bin(build_dir+"/"+args.arm9_path)
         patch_arm9(rom_out,arm9)
