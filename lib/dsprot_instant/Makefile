@@ -1,0 +1,233 @@
+# ===================================================================
+# See doc/BUILD_OVERVIEW.TXT for a clearer outline of this build process
+# ===================================================================
+
+MAKEFLAGS += --no-print-directory
+
+ifeq ($(OS),Windows_NT)
+	EXE  := .exe
+	WINE := 
+else
+	EXE  := 
+	WINE := wine
+endif
+
+# Relevant directories
+BUILD_DIR  :=  ./build
+SRC_DIR    :=  ./src
+INC_DIR    :=  ./include
+TOOL_DIR   :=  ./tools
+
+$(shell mkdir -p $(BUILD_DIR))
+
+ELFCODER_DIR  :=  $(TOOL_DIR)/elfcoder
+DEVKEY_DIR    :=  $(TOOL_DIR)/devkey
+FIXDEP_DIR    :=  $(TOOL_DIR)/fixdep
+COMPARE_DIR   :=  $(TOOL_DIR)/compare
+MWCCARM_DIR   ?=  ../../tools/mwccarm
+
+MW_VER := dsi/1.2p2
+
+# Tools
+MWCCARM   :=  $(MWCCARM_DIR)/$(MW_VER)/mwccarm.exe
+MWASMARM  :=  $(MWCCARM_DIR)/$(MW_VER)/mwasmarm.exe
+MWLDARM   :=  $(MWCCARM_DIR)/$(MW_VER)/mwldarm.exe
+ELFCODER  :=  $(ELFCODER_DIR)/build/elfcoder$(EXE)
+DEVKEY    :=  $(DEVKEY_DIR)/build/devkey$(EXE)
+FIXDEP    :=  $(FIXDEP_DIR)/build/fixdep$(EXE)
+
+# C / ASM compilation parameters
+CC_PARAM   :=  -O4,p -enum int -proc arm946E -gccext,on -fp soft -lang c99 -char signed -inline on,noauto -Cpp_exceptions off -ipa file -interworking -c -i $(INC_DIR)
+ASM_PARAM  :=  -proc arm5TE -i $(INC_DIR)
+LIB_PARAM  :=  -nostdlib -library
+DEP_PARAM  :=  -gccdep -MD
+
+CC_PARAM   +=  -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
+
+# Depedency files
+DEPS := $(wildcard $(BUILD_DIR)/*.d)
+
+# Output library file
+LIBRARY_NAME  :=  dsprot_instant.a
+LIBRARY       :=  $(BUILD_DIR)/$(LIBRARY_NAME)
+
+# Files (in this specific order) that will go into the library
+LIBRARY_FILES := \
+	$(BUILD_DIR)/crash_encrypted.o                \
+	$(BUILD_DIR)/crash_decrypter_encoded.o        \
+	$(BUILD_DIR)/dsprot_main_encrypted.o          \
+	$(BUILD_DIR)/dsprot_main_decrypter_encoded.o  \
+	$(BUILD_DIR)/dsprot_main_decrypter_decoder.o  \
+	$(BUILD_DIR)/extra.o                          \
+	$(BUILD_DIR)/integrity_encrypted.o            \
+	$(BUILD_DIR)/integrity_decrypter_encoded.o    \
+	$(BUILD_DIR)/integrity_decrypter_decoder.o    \
+	$(BUILD_DIR)/encryptor_encoded.o              \
+	$(BUILD_DIR)/encryptor_decoder.o              \
+	$(BUILD_DIR)/mac_owner_encrypted.o            \
+	$(BUILD_DIR)/rom_util_encoded.o               \
+	$(BUILD_DIR)/rom_test_encrypted.o             \
+	$(BUILD_DIR)/rom_test_decrypter_encoded.o     \
+	$(BUILD_DIR)/mac_owner_decrypter_encoded.o    \
+	$(BUILD_DIR)/coretests_decoder.o              \
+	$(BUILD_DIR)/rc4_encoded.o                    \
+	$(BUILD_DIR)/rc4_decoder.o
+
+# Encryption key file
+ENCRYPTION_KEY := $(BUILD_DIR)/key.bin
+
+
+.PHONY: all compare clean tools dsprot install
+.DELETE_ON_ERROR: 
+.NOTPARALLEL: 
+
+all:
+	$(MAKE) tools
+	$(MAKE) dsprot
+
+compare:
+	$(MAKE) all COMPARE=1
+
+clean:
+	$(MAKE) -C $(ELFCODER_DIR) clean
+	$(MAKE) -C $(DEVKEY_DIR) clean
+	$(MAKE) -C $(FIXDEP_DIR) clean
+	$(MAKE) -C $(COMPARE_DIR) clean
+	$(RM) -r $(BUILD_DIR)
+
+tools:
+	$(MAKE) -C $(ELFCODER_DIR)
+	$(MAKE) -C $(DEVKEY_DIR)
+	$(MAKE) -C $(FIXDEP_DIR)
+
+dsprot:
+	$(MAKE) $(LIBRARY)
+ifneq ($(COMPARE),)
+ifeq ($(EXE),.exe)
+	$(MAKE) -C $(COMPARE_DIR) MWCCARM_DIR=$(shell cygpath -w "$(abspath $(MWCCARM_DIR))") MW_VER=$(MW_VER) LIBRARY=$(shell cygpath -w "$(abspath $(LIBRARY)"))
+else
+	$(MAKE) -C $(COMPARE_DIR) MWCCARM_DIR=$(abspath $(MWCCARM_DIR)) MW_VER=$(MW_VER) LIBRARY=$(abspath $(LIBRARY))
+endif
+endif
+
+install:
+ifeq ($(INSTALL_DIR),)
+	$(error Nowhere to install. Specify INSTALL_DIR)
+else
+	$(MAKE) all
+	$(shell mkdir -p $(INSTALL_DIR)/)
+	cp $(LIBRARY) $(INSTALL_DIR)/
+endif
+
+
+# Assembly assembling
+$(BUILD_DIR)/%.o: $(BUILD_DIR)/%.s
+	$(WINE) $(MWASMARM) $(ASM_PARAM) $< -o $@
+
+
+# C compilation
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(WINE) $(MWCCARM) $(CC_PARAM) $(DEP_PARAM) $< -o $@
+	$(FIXDEP) $(@:.o=.d)
+
+
+# Library output
+$(LIBRARY): $(LIBRARY_FILES)
+	$(WINE) $(MWLDARM) $(LIB_PARAM) $^ -o $@
+
+
+# Encryption key derivation
+$(ENCRYPTION_KEY): $(BUILD_DIR)/encryptor.o $(DEVKEY)
+	$(DEVKEY) -i $(BUILD_DIR)/encryptor.o -f Encryptor_DecryptionWrapperFragment -o $@
+
+
+# Main module + crasher function encoding
+$(BUILD_DIR)/crash_decrypter_encoded.o       \
+$(BUILD_DIR)/dsprot_main_decrypter_encoded.o \
+$(BUILD_DIR)/dsprot_main_decrypter_decoder.s: $(BUILD_DIR)/dsprot_main_decrypter.o $(BUILD_DIR)/crash_decrypter.o $(ELFCODER)
+	cp $(BUILD_DIR)/crash_decrypter.o $(BUILD_DIR)/crash_decrypter_encoded.o
+	cp $(BUILD_DIR)/dsprot_main_decrypter.o $(BUILD_DIR)/dsprot_main_decrypter_encoded.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/dsprot_main_decrypter_encoded.o $(BUILD_DIR)/crash_decrypter_encoded.o -o $(BUILD_DIR)/dsprot_main_decrypter_decoder.s -g Garbage -f \
+		DSProt_DetectAll  \
+		DSProt_Crash
+
+$(BUILD_DIR)/crash_encrypted.o \
+$(BUILD_DIR)/crash_decrypter.s: $(BUILD_DIR)/crash.o $(ENCRYPTION_KEY) $(ELFCODER)
+	cp $(BUILD_DIR)/crash.o $(BUILD_DIR)/crash_encrypted.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/crash_encrypted.o -o $(BUILD_DIR)/crash_decrypter.s -K $(ENCRYPTION_KEY) -p DSProt_ -f \
+		Crash
+
+$(BUILD_DIR)/dsprot_main_encrypted.o \
+$(BUILD_DIR)/dsprot_main_decrypter.s: $(BUILD_DIR)/dsprot_main.o $(ELFCODER)
+	cp $(BUILD_DIR)/dsprot_main.o $(BUILD_DIR)/dsprot_main_encrypted.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/dsprot_main_encrypted.o -o $(BUILD_DIR)/dsprot_main_decrypter.s -K $(ENCRYPTION_KEY) -p DSProt_ -f \
+		DetectAll
+
+
+# Integrity module function encoding
+$(BUILD_DIR)/integrity_decrypter_encoded.o \
+$(BUILD_DIR)/integrity_decrypter_decoder.s: $(BUILD_DIR)/integrity_decrypter.o $(ELFCODER)
+	cp $(BUILD_DIR)/integrity_decrypter.o $(BUILD_DIR)/integrity_decrypter_encoded.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/integrity_decrypter_encoded.o -o $(BUILD_DIR)/integrity_decrypter_decoder.s -f \
+		RunEncrypted_Integrity_MACOwner_IsBad  \
+		RunEncrypted_Integrity_ROMTest_IsBad
+
+$(BUILD_DIR)/integrity_encrypted.o \
+$(BUILD_DIR)/integrity_decrypter.s: $(BUILD_DIR)/integrity.o $(ENCRYPTION_KEY) $(ELFCODER)
+	cp $(BUILD_DIR)/integrity.o $(BUILD_DIR)/integrity_encrypted.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/integrity_encrypted.o -o $(BUILD_DIR)/integrity_decrypter.s -K $(ENCRYPTION_KEY) -f \
+		Integrity_MACOwner_IsBad  \
+		Integrity_ROMTest_IsBad
+
+
+# Encryptor module function encoding
+$(BUILD_DIR)/encryptor_encoded.o \
+$(BUILD_DIR)/encryptor_decoder.s: $(BUILD_DIR)/encryptor.o $(ELFCODER)
+	cp $(BUILD_DIR)/encryptor.o $(BUILD_DIR)/encryptor_encoded.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/encryptor_encoded.o -o $(BUILD_DIR)/encryptor_decoder.s -f \
+		Encryptor_EncryptFunction            \
+		Encryptor_DecryptFunction            \
+		Encryptor_DecryptionWrapperFragment
+
+
+# Core tests module: MAC/Owner, ROM utilities, ROM tests function encoding
+$(BUILD_DIR)/mac_owner_decrypter_encoded.o \
+$(BUILD_DIR)/rom_test_decrypter_encoded.o  \
+$(BUILD_DIR)/rom_util_encoded.o            \
+$(BUILD_DIR)/coretests_decoder.s: $(BUILD_DIR)/mac_owner_decrypter.o $(BUILD_DIR)/rom_util.o $(BUILD_DIR)/rom_test_decrypter.o $(ELFCODER)
+	cp $(BUILD_DIR)/mac_owner_decrypter.o $(BUILD_DIR)/mac_owner_decrypter_encoded.o
+	cp $(BUILD_DIR)/rom_test_decrypter.o $(BUILD_DIR)/rom_test_decrypter_encoded.o
+	cp $(BUILD_DIR)/rom_util.o $(BUILD_DIR)/rom_util_encoded.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/mac_owner_decrypter_encoded.o $(BUILD_DIR)/rom_util_encoded.o $(BUILD_DIR)/rom_test_decrypter_encoded.o -o $(BUILD_DIR)/coretests_decoder.s -f \
+		RunEncrypted_ROMTest_IsBad   \
+		RunEncrypted_MACOwner_IsBad  \
+		ROMUtil_CRC32
+
+$(BUILD_DIR)/mac_owner_encrypted.o \
+$(BUILD_DIR)/mac_owner_decrypter.s: $(BUILD_DIR)/mac_owner.o $(ENCRYPTION_KEY) $(ELFCODER)
+	cp $(BUILD_DIR)/mac_owner.o $(BUILD_DIR)/mac_owner_encrypted.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/mac_owner_encrypted.o -o $(BUILD_DIR)/mac_owner_decrypter.s -K $(ENCRYPTION_KEY) -f \
+		MACOwner_IsBad
+
+$(BUILD_DIR)/rom_test_encrypted.o \
+$(BUILD_DIR)/rom_test_decrypter.s: $(BUILD_DIR)/rom_test.o $(ENCRYPTION_KEY) $(ELFCODER)
+	cp $(BUILD_DIR)/rom_test.o $(BUILD_DIR)/rom_test_encrypted.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/rom_test_encrypted.o -o $(BUILD_DIR)/rom_test_decrypter.s -K $(ENCRYPTION_KEY) -f \
+		ROMTest_IsBad
+
+
+# RC4 module function encoding
+$(BUILD_DIR)/rc4_encoded.o \
+$(BUILD_DIR)/rc4_decoder.s: $(BUILD_DIR)/rc4.o $(ELFCODER)
+	cp $(BUILD_DIR)/rc4.o $(BUILD_DIR)/rc4_encoded.o
+	$(ELFCODER) -e -i $(BUILD_DIR)/rc4_encoded.o -o $(BUILD_DIR)/rc4_decoder.s -f \
+		RC4_Init                        \
+		RC4_EncryptInstructions         \
+		RC4_DecryptInstructions         \
+		RC4_InitAndEncryptInstructions  \
+		RC4_InitAndDecryptInstructions  \
+		RC4_Byte                        \
+		RC4_CategorizeInstruction
+
+
+-include $(DEPS)
