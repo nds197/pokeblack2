@@ -1,0 +1,65 @@
+Arm9
+{
+	Static $(BUILD_DIR)/main.TWL.FLX.sbin_LZ$(ENC_SUFFIX)
+	OverlayDefs $(BUILD_DIR)/main_defs.TWL.FLX.sbin_LZ
+	OverlayTable $(BUILD_DIR)/main_table.TWL.FLX.sbin_LZ
+	#Elf $(BUILD_DIR)/main.elf
+}
+
+Arm7
+{
+	Static sub/build/arm7.TWL.FLX.sbin
+	OverlayDefs sub/build/arm7_defs.TWL.FLX.sbin
+	OverlayTable sub/build/arm7_table.TWL.FLX.sbin
+	#Elf sub/build/arm7.elf
+}
+
+Arm9.Ltd
+{
+	Static $(BUILD_DIR)/main.TWL.LTD.sbin_LZ
+	OverlayDefs $(BUILD_DIR)/main_defs.TWL.LTD.sbin_LZ
+	OverlayTable $(BUILD_DIR)/main_table.TWL.LTD.sbin_LZ
+}
+
+Arm7.Ltd
+{
+	Static sub/build/arm7.TWL.LTD.sbin
+	OverlayDefs sub/build/arm7_defs.TWL.LTD.sbin
+}
+
+Property
+{
+	RomHeaderTemplate "$(HEADER_TEMPLATE)"
+	TitleName "$(TITLE_NAME)"
+	MakerCode "01"
+	RemasterVersion 0
+	RomSpeedType 1TROM
+	RomSize 4G
+	RomFootPadding TRUE
+	BannerFile $(BNR)
+	RomHeaderLtd "$(HEADER_LTD)"
+	CardRegion	ALL
+	ForKorea  TRUE
+	CodecMode TWL
+	WramMapping MAP2_TS_HYB
+	ExtendSoundDMA TRUE
+}
+
+Rating
+{
+	CERO 0
+	ESRB 6
+	USK 0
+	PEGI_GEN 3
+	PEGI_PRT 4
+	PEGI_BBFC 3
+	AGCB 0
+	GRB 0
+}
+
+RomSpec
+{
+	Segment All
+	HostRoot files/
+	File $(NITROFS_FILES)
+}
