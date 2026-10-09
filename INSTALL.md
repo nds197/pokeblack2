@@ -114,9 +114,7 @@ Run `make install` to extract game's filesystem files and additional data not in
 
 Run `make` to build the ROM. The ROM will be output as `build/black2.en/pokeblack2.en.nds`
 
-To build Pokemon White 2, run `make white2`. You do not need to clean your working tree in between compiling. Pokemon White 2 will be built as `build/white2.en/pokewhite2.en.nds`.
-
-There are targets for building and testing changes to individual components without repackaging the ROM. For the ARM9 modules, run `make main`. For the ARM7 module, run `make sub`. To build these for White 2, append `GAME_VERSION=white2` to the appropriate command.
+There are targets for building and testing changes to individual components without repackaging the ROM. For the ARM9 modules, run `make main`. For the ARM7 module, run `make sub`.
 
 At the end of building each of these, there is a checksum verification step. This makes sure that the final product is byte-for-byte equivalent to the retail ROM. To disable this, append `COMPARE=0` to your command.
 
