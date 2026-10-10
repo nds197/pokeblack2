@@ -27,12 +27,7 @@ We have the following options:
 * Use an encrypted ROM in Step 4, from which the encrypted Secure Area can be extracted.
 * Provide neither of the above. In this case, the build system will use pre-calculated values included in the repository to produce the matching ROM.
 
-### 4. Provide base ROMs
-This repository does not include the game's filesystem or some additional data required to build the project. Therefore, you must place the original game ROMs in the `baserom` directory so that all required data can be extracted during the build process. The ROMs can be named anything, the procces will automatically detect them bases on hashes.
-
-Once the installation step later in the process has been completed, you can safely remove the ROMs from the `baserom` directory.
-
-### 5. Dependencies
+### 4. Dependencies
 
 #### Linux
 
@@ -107,10 +102,7 @@ $ brew install coreutils make gnu-sed llvm arm-gcc-bin libpng git pkg-config
 $ brew install wine-crossover
 ```
 
-### 6. Install
-Run `make install` to extract game's filesystem files and additional data not included within this repository.
-
-### 7. Build ROM
+### 5. Build ROM
 
 Run `make` to build the ROM. The ROM will be output as `build/black2.en/pokeblack2.en.nds`
 

@@ -154,21 +154,14 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 .PHONY: all tidy clean tools clean-tools patch_mwasmarm $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
 
-USE_PRECALCULATED_HASHES := False
-SECURE_ENCRYPTED_EXISTS = True
 ARM9_ENC_SUFFIX := _enc
 FIXROM_DECRYPTED_ARM9 := --arm9_path "$(MAIN_BIN)"
 ifneq ($(wildcard biosnds7.rom),)
 	GEN_ENCRYPTED_ARGS := --gamecode $(GAME_CODE) --bootrom "biosnds7.rom"
 else ifneq ($(wildcard biosdsi9.rom),)
 	GEN_ENCRYPTED_ARGS := --gamecode $(GAME_CODE) --bootrom "biosdsi9.rom"
-else ifneq ($(wildcard $(buildname)/secure_encrypted.bin),)
-    GEN_ENCRYPTED_ARGS := --encrypted_secure "$(BACK_REL)/secure_encrypted.bin"
 else
-    USE_PRECALCULATED_HASHES := True
-	SECURE_ENCRYPTED_EXISTS = False
-	ARM9_ENC_SUFFIX :=
-	FIXROM_DECRYPTED_ARM9 := 
+    GEN_ENCRYPTED_ARGS := --encrypted_secure "$(buildname)/secure_encrypted.bin"
 endif
 
 patch_mwasmarm:

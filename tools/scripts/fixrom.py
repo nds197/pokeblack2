@@ -148,7 +148,6 @@ def main():
     parser.add_argument('rom')
     parser.add_argument('--dir', required=True, help="directory of files")
     parser.add_argument('--builddir', required=True, help="directory of build")
-    parser.add_argument('--use_precalculated_hashes', help="if set to False pathces won't be cached", default="True")
     parser.add_argument('--arm9_path', help="arm9 path")
     parser.add_argument('-o', '--output')
     args = parser.parse_args()
@@ -167,14 +166,10 @@ def main():
         shutil.copyfile(rom_in, rom_out)
         
     print("Fixing rom...")
-    if args.use_precalculated_hashes != "False":
-        patch_rom_hashes(rom_in,rom_out,args.dir)
     if args.arm9_path:
         arm9 = read_bin(build_dir+"/"+args.arm9_path)
         patch_arm9(rom_out,arm9)
     patch_rom_region(rom_out)
-    patch_header_logo(rom_out, header_logo)
-    patch_header_crc(rom_out)
     patch_rsa(rom_out, rsa)
     
     srl_dev2retail(rom_out,build_dir + "/" + arm9i)
