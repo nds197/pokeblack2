@@ -1390,7 +1390,7 @@ _0219A2C4:
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0219A2C8: .word _0219BA00
-_0219A2CC: .word 0x0219BA04
+_0219A2CC: .word _0219BA00 + 0x4 ; 0x0219BA04
 	thumb_func_end FUN_0219A270
 
 	thumb_func_start FUN_0219A2D0

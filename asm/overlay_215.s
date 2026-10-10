@@ -6153,7 +6153,7 @@ _021AA49E:
 	pop {r3, r4, r5, pc}
 	nop
 _021AA4A4: .word _021AB61C
-_021AA4A8: .word 0x021AB620
+_021AA4A8: .word _021AB61C + 0x4 ; 0x021AB620
 	thumb_func_end FUN_021AA434
 
 	thumb_func_start FUN_021AA4AC
@@ -6213,8 +6213,8 @@ _021AA4EA:
 	ldr r0, [r0, r1]
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021AA508: .word 0x021AB630
-_021AA50C: .word 0x021AB634
+_021AA508: .word _021AB62C + 0x4 ; 0x021AB630
+_021AA50C: .word _021AB62C + 0x8 ; 0x021AB634
 	thumb_func_end FUN_021AA4D8
 
 	thumb_func_start OV215_FUN_021AA510

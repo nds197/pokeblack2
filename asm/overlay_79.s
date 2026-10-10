@@ -3923,7 +3923,7 @@ FUN_021EC47C: ; 0x021EC47C
 	bx lr
 	.balign 4, 0
 _021EC48C: .word 0x00000301
-_021EC490: .word 0x021ED9B6
+_021EC490: .word _021ED9B4 + 0x2 ; 0x021ED9B6
 	thumb_func_end FUN_021EC47C
 
 	thumb_func_start FUN_021EC494

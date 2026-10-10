@@ -4389,7 +4389,7 @@ _021957A4:
 	.balign 4, 0
 _021957AC: .word _021983A0
 _021957B0: .word _02199898
-_021957B4: .word 0x021983CC
+_021957B4: .word _021983A0 + 0x2C ; 0x021983CC
 	arm_func_end FUN_021956FC
 
 	arm_func_start FUN_021957B8
@@ -4663,8 +4663,8 @@ _02195B00:
 	ldmia sp!, {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02195B50: .word _021983A0
-_02195B54: .word 0x021983CC
-_02195B58: .word 0x021983B4
+_02195B54: .word _021983A0 + 0x2C ; 0x021983CC
+_02195B58: .word _021983A0 + 0x14 ; 0x021983B4
 _02195B5C: .word _02198390
 _02195B60: .word _02199898
 _02195B64: .word FUN_0207BB0C
@@ -4727,7 +4727,7 @@ _02195C1C: .word _02199898
 _02195C20: .word _02198390
 _02195C24: .word _02197400
 _02195C28: .word _021983A0
-_02195C2C: .word 0x021983CC
+_02195C2C: .word _021983A0 + 0x2C ; 0x021983CC
 	arm_func_end FUN_02195B88
 
 	arm_func_start FUN_02195C30
@@ -4932,7 +4932,7 @@ FUN_02195E84: ; 0x02195E84
 	add sp, sp, #0x10
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
-_02195EC8: .word 0x021983CC
+_02195EC8: .word _021983A0 + 0x2C ; 0x021983CC
 	arm_func_end FUN_02195E84
 
 	arm_func_start FUN_02195ECC
@@ -5211,7 +5211,7 @@ _02196234:
 	.balign 4, 0
 _0219623C: .word _02199898
 _02196240: .word _021983A0
-_02196244: .word 0x021983CC
+_02196244: .word _021983A0 + 0x2C ; 0x021983CC
 	arm_func_end FUN_021961C8
 
 	arm_func_start FUN_02196248
@@ -5303,7 +5303,7 @@ _0219635C:
 	moveq r0, #0
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
-_02196384: .word 0x021983B4
+_02196384: .word _021983A0 + 0x14 ; 0x021983B4
 	arm_func_end FUN_02196248
 
 	arm_func_start FUN_02196388
@@ -5408,7 +5408,7 @@ _021964E8:
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
 _021964F0: .word _021983A0
-_021964F4: .word 0x021983CC
+_021964F4: .word _021983A0 + 0x2C ; 0x021983CC
 _021964F8: .word _02198390
 	arm_func_end FUN_02196388
 
@@ -5446,7 +5446,7 @@ _02196550:
 	mov r0, #0
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
-_02196574: .word 0x021983B4
+_02196574: .word _021983A0 + 0x14 ; 0x021983B4
 	arm_func_end FUN_021964FC
 
 	arm_func_start FUN_02196578
@@ -5524,7 +5524,7 @@ _0219666C:
 	.balign 4, 0
 _02196674: .word _02199898
 _02196678: .word _021983A0
-_0219667C: .word 0x021983CC
+_0219667C: .word _021983A0 + 0x2C ; 0x021983CC
 	arm_func_end FUN_02196578
 
 	arm_func_start FUN_02196680

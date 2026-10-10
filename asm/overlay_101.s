@@ -1249,7 +1249,7 @@ _021EF61C:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF624: .word 0x0000087C
-_021EF628: .word 0x021F05C2
+_021EF628: .word _021F05C0 + 0x2 ; 0x021F05C2
 _021EF62C: .word 0x0000055A
 	thumb_func_end FUN_021EF300
 
@@ -1564,7 +1564,7 @@ _021EF860:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	nop
-_021EF868: .word 0x021F05C3
+_021EF868: .word _021F05C0 + 0x3 ; 0x021F05C3
 _021EF86C: .word _021F05C0
 	thumb_func_end FUN_021EF7BC
 
@@ -1861,7 +1861,7 @@ _021EFA88:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021EFABC: .word 0x021F05C2
+_021EFABC: .word _021F05C0 + 0x2 ; 0x021F05C2
 	thumb_func_end FUN_021EFA04
 
 	thumb_func_start FUN_021EFAC0

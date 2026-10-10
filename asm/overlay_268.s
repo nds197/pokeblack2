@@ -9493,8 +9493,8 @@ _021BE9DE:
 	pop {r4, r5, r6, pc}
 	nop
 _021BE9F4: .word _021C2628
-_021BE9F8: .word 0x021C262C
-_021BE9FC: .word 0x021C2630
+_021BE9F8: .word _021C2628 + 0x4 ; 0x021C262C
+_021BE9FC: .word _021C2628 + 0x8 ; 0x021C2630
 	thumb_func_end FUN_021BE880
 
 	thumb_func_start FUN_021BEA00

@@ -2148,7 +2148,7 @@ FUN_0219DF18: ; 0x0219DF18
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
 _0219DF44: .word _021A0D18
-_0219DF48: .word 0x021A0D1C
+_0219DF48: .word _021A0D18 + 0x4 ; 0x021A0D1C
 	thumb_func_end FUN_0219DF18
 
 	thumb_func_start OV145_FUN_0219DF4C
@@ -2163,7 +2163,7 @@ OV145_FUN_0219DF4C: ; 0x0219DF4C
 	bx lr
 	.balign 4, 0
 _0219DF5C: .word _021A0D40
-_0219DF60: .word 0x021A0D44
+_0219DF60: .word _021A0D40 + 0x4 ; 0x021A0D44
 	thumb_func_end OV145_FUN_0219DF4C
 
 	thumb_func_start FUN_0219DF64
@@ -3573,7 +3573,7 @@ _0219EA84:
 	.balign 4, 0
 _0219EA88: .word 0x000006C4
 _0219EA8C: .word _021A0D68
-_0219EA90: .word 0x021A0D6C
+_0219EA90: .word _021A0D68 + 0x4 ; 0x021A0D6C
 	thumb_func_end FUN_0219EA18
 
 	thumb_func_start FUN_0219EA94

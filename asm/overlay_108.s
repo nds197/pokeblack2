@@ -96,7 +96,7 @@ _021EED28:
 	add sp, #8
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_021EED2C: .word 0x021EEFF0
+_021EED2C: .word _021EEFEC + 0x4 ; 0x021EEFF0
 	thumb_func_end OV108_FUN_021EECE4
 
 	thumb_func_start OV108_FUN_021EED30
@@ -134,7 +134,7 @@ _021EED76:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021EED7C: .word 0x021EEFF4
+_021EED7C: .word _021EEFEC + 0x8 ; 0x021EEFF4
 	thumb_func_end OV108_FUN_021EED30
 
 	thumb_func_start OV108_FUN_021EED80
@@ -407,7 +407,7 @@ _021EEF72:
 	bx lr
 	nop
 _021EEF84: .word _021EEF9C
-_021EEF88: .word 0x021EEFA0
+_021EEF88: .word _021EEF9C + 0x4 ; 0x021EEFA0
 	thumb_func_end FUN_021EEF58
 
 	.rodata

@@ -1407,7 +1407,7 @@ FUN_021EF630: ; 0x021EF630
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF780: .word _021EF834
-_021EF784: .word 0x021EF920
+_021EF784: .word _021EF8C0 + 0x60 ; 0x021EF920
 	thumb_func_end FUN_021EF630
 
 	thumb_func_start FUN_021EF788

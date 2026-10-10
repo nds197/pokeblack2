@@ -2680,7 +2680,7 @@ _0219AB46:
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
 _0219AB48: .word _021A0458
-_0219AB4C: .word 0x021A045C
+_0219AB4C: .word _021A0458 + 0x4 ; 0x021A045C
 	thumb_func_end FUN_0219AAE4
 
 	thumb_func_start FUN_0219AB50
@@ -14321,7 +14321,7 @@ FUN_021A0348: ; 0x021A0348
 	ldr r0, [r0, r1]
 	bx lr
 	nop
-_021A0354: .word 0x021A0824
+_021A0354: .word _021A081C + 0x8 ; 0x021A0824
 	thumb_func_end FUN_021A0348
 
 	thumb_func_start FUN_021A0358
@@ -14332,7 +14332,7 @@ FUN_021A0358: ; 0x021A0358
 	ldr r0, [r0, r1]
 	bx lr
 	nop
-_021A0364: .word 0x021A0828
+_021A0364: .word _021A081C + 0xC ; 0x021A0828
 	thumb_func_end FUN_021A0358
 
 	thumb_func_start FUN_021A0368
@@ -14343,7 +14343,7 @@ FUN_021A0368: ; 0x021A0368
 	ldr r0, [r0, r1]
 	bx lr
 	nop
-_021A0374: .word 0x021A082C
+_021A0374: .word _021A081C + 0x10 ; 0x021A082C
 	thumb_func_end FUN_021A0368
 
 	thumb_func_start FUN_021A0378
@@ -14354,7 +14354,7 @@ FUN_021A0378: ; 0x021A0378
 	ldr r0, [r0, r1]
 	bx lr
 	nop
-_021A0384: .word 0x021A0830
+_021A0384: .word _021A081C + 0x14 ; 0x021A0830
 	thumb_func_end FUN_021A0378
 
 	thumb_func_start FUN_021A0388
@@ -14365,7 +14365,7 @@ FUN_021A0388: ; 0x021A0388
 	ldr r0, [r0, r1]
 	bx lr
 	nop
-_021A0394: .word 0x021A0834
+_021A0394: .word _021A081C + 0x18 ; 0x021A0834
 	thumb_func_end FUN_021A0388
 
 	thumb_func_start FUN_021A0398

@@ -1270,7 +1270,7 @@ _021EF5F0:
 _021EF600: .word _021EFE7C
 _021EF604: .word _021EFBFC
 _021EF608: .word 0xFFFFF000
-_021EF60C: .word 0x021EFC7C
+_021EF60C: .word _021EFC70 + 0xC ; 0x021EFC7C
 _021EF610: .word _021EFC70
 	thumb_func_end FUN_021EF340
 
@@ -1412,11 +1412,11 @@ _021EF716:
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021EF71C: .word 0x021EFC7C
+_021EF71C: .word _021EFC70 + 0xC ; 0x021EFC7C
 _021EF720: .word _021EFC70
 _021EF724: .word _021EFC34
-_021EF728: .word 0x021EFC38
-_021EF72C: .word 0x021EFC3C
+_021EF728: .word _021EFC34 + 0x4 ; 0x021EFC38
+_021EF72C: .word _021EFC34 + 0x8 ; 0x021EFC3C
 	thumb_func_end FUN_021EF65C
 
 	thumb_func_start FUN_021EF730
@@ -1709,7 +1709,7 @@ _021EF95A:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021EF960: .word 0x021EFC7C
+_021EF960: .word _021EFC70 + 0xC ; 0x021EFC7C
 _021EF964: .word _021EFC70
 	thumb_func_end FUN_021EF8EC
 
@@ -1800,8 +1800,8 @@ _021EFA0E:
 	pop {r4, r5, pc}
 	nop
 _021EFA14: .word _021EFC34
-_021EFA18: .word 0x021EFC38
-_021EFA1C: .word 0x021EFC3C
+_021EFA18: .word _021EFC34 + 0x4 ; 0x021EFC38
+_021EFA1C: .word _021EFC34 + 0x8 ; 0x021EFC3C
 	thumb_func_end FUN_021EF968
 
 	thumb_func_start FUN_021EFA20

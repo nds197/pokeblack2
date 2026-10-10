@@ -1306,7 +1306,7 @@ FUN_0219D7CC: ; 0x0219D7CC
 	pop {r4, pc}
 	nop
 _0219D7EC: .word _0219DE74
-_0219D7F0: .word 0x0219DE76
+_0219D7F0: .word _0219DE74 + 0x2 ; 0x0219DE76
 	thumb_func_end FUN_0219D7CC
 
 	thumb_func_start FUN_0219D7F4

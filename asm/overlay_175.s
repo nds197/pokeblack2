@@ -1807,10 +1807,10 @@ _0219A44C:
 	mov r0, #0
 	pop {r3, r4, r5, pc}
 	.balign 4, 0
-_0219A450: .word 0x0219AC80
+_0219A450: .word _0219AC78 + 0x8 ; 0x0219AC80
 _0219A454: .word _0219AC78
-_0219A458: .word 0x0219AC7C
-_0219A45C: .word 0x0219AC84
+_0219A458: .word _0219AC78 + 0x4 ; 0x0219AC7C
+_0219A45C: .word _0219AC78 + 0xC ; 0x0219AC84
 	thumb_func_end FUN_0219A3E0
 
 	thumb_func_start FUN_0219A460

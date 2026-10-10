@@ -892,7 +892,7 @@ _0217D594: .word FUN_0217D6AC
 _0217D598: .word _0217FC60
 _0217D59C: .word 0x0000044F
 _0217D5A0: .word 0x00004208
-_0217D5A4: .word 0x0217FC64
+_0217D5A4: .word _0217FC60 + 0x4 ; 0x0217FC64
 	thumb_func_end FUN_0217D454
 
 	thumb_func_start FUN_0217D5A8
@@ -4533,7 +4533,7 @@ _0217F256:
 	pop {r3, r4}
 	bx lr
 	nop
-_0217F25C: .word 0x0217FC64
+_0217F25C: .word _0217FC60 + 0x4 ; 0x0217FC64
 	thumb_func_end FUN_0217F22C
 
 	thumb_func_start FUN_0217F260

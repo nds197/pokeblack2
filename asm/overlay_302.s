@@ -2038,7 +2038,7 @@ _021ADD90:
 	bx lr
 	.balign 4, 0
 _021ADD9C: .word _021AE41C
-_021ADDA0: .word 0x021AE420
+_021ADDA0: .word _021AE41C + 0x4 ; 0x021AE420
 	thumb_func_end FUN_021ADD74
 
 	thumb_func_start FUN_021ADDA4

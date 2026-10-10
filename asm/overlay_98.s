@@ -326,7 +326,7 @@ _021EEEEC:
 	bx lr
 	.balign 4, 0
 _021EEEF0: .word _021EF120
-_021EEEF4: .word 0x021EF122
+_021EEEF4: .word _021EF120 + 0x2 ; 0x021EF122
 	thumb_func_end FUN_021EEEC8
 
 	thumb_func_start FUN_021EEEF8

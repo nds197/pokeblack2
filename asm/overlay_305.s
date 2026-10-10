@@ -427,8 +427,8 @@ FUN_0219D074: ; 0x0219D074
 	pop {r4, r5, r6, r7, pc}
 	nop
 _0219D104: .word _0219E7F4
-_0219D108: .word 0x0219E7F8
-_0219D10C: .word 0x0219E7FC
+_0219D108: .word _0219E7F4 + 0x4 ; 0x0219E7F8
+_0219D10C: .word _0219E7F4 + 0x8 ; 0x0219E7FC
 	thumb_func_end FUN_0219D074
 
 	thumb_func_start FUN_0219D110

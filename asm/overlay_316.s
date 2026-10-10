@@ -900,7 +900,7 @@ _0219D3CA:
 	str r4, [r5, #0x48]
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0219D3EC: .word 0x0219FB14
+_0219D3EC: .word _0219FB10 + 0x4 ; 0x0219FB14
 	thumb_func_end FUN_0219D398
 
 	thumb_func_start FUN_0219D3F0
@@ -930,7 +930,7 @@ FUN_0219D3F0: ; 0x0219D3F0
 _0219D422:
 	pop {r4, pc}
 	.balign 4, 0
-_0219D424: .word 0x0219FB16
+_0219D424: .word _0219FB10 + 0x6 ; 0x0219FB16
 	thumb_func_end FUN_0219D3F0
 
 	thumb_func_start FUN_0219D428
@@ -5156,7 +5156,7 @@ _0219F5D6:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0219F5EC: .word 0x000007B7
-_0219F5F0: .word 0x0219FB18
+_0219F5F0: .word _0219FB10 + 0x8 ; 0x0219FB18
 _0219F5F4: .word _0219FA94
 	thumb_func_end FUN_0219F100
 

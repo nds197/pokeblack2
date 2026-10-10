@@ -120,7 +120,7 @@ _021EF25A:
 	add r0, r4, #0
 	pop {r4, pc}
 	.balign 4, 0
-_021EF278: .word 0x021F06C0
+_021EF278: .word _021F0660 + 0x60 ; 0x021F06C0
 _021EF27C: .word _021F0660
 _021EF280: .word FUN_021EF63C
 _021EF284: .word 0x00003A0B

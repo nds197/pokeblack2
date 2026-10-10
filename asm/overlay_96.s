@@ -917,8 +917,8 @@ _021EF360:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021EF368: .word _021EFF98
-_021EF36C: .word 0x021EFF9E
-_021EF370: .word 0x021EFF9F
+_021EF36C: .word _021EFF98 + 0x6 ; 0x021EFF9E
+_021EF370: .word _021EFF98 + 0x7 ; 0x021EFF9F
 	thumb_func_end FUN_021EF1B0
 
 	thumb_func_start FUN_021EF374

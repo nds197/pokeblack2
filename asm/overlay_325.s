@@ -2114,7 +2114,7 @@ FUN_0219DDE4: ; 0x0219DDE4
 	pop {r4, pc}
 	nop
 _0219DE04: .word _0219F31E
-_0219DE08: .word 0x0219F320
+_0219DE08: .word _0219F31E + 0x2 ; 0x0219F320
 	thumb_func_end FUN_0219DDE4
 
 	thumb_func_start FUN_0219DE0C

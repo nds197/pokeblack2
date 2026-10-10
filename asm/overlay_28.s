@@ -3312,9 +3312,9 @@ _02171AB4:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _02171ABC: .word 0x00003610
-_02171AC0: .word 0x02172DB8
+_02171AC0: .word _02172DB4 + 0x4 ; 0x02172DB8
 _02171AC4: .word _02172DB4
-_02171AC8: .word 0x02172DB9
+_02171AC8: .word _02172DB4 + 0x5 ; 0x02172DB9
 	thumb_func_end FUN_02171A0C
 
 	thumb_func_start FUN_02171ACC

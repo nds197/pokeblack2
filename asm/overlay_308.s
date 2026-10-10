@@ -2704,7 +2704,7 @@ FUN_021A0CB8: ; 0x021A0CB8
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021A0D18: .word 0x021A1A2C
+_021A0D18: .word _021A1A2A + 0x2 ; 0x021A1A2C
 _021A0D1C: .word _021A1A2A
 	thumb_func_end FUN_021A0CB8
 

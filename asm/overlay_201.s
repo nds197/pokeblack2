@@ -458,7 +458,7 @@ _021B56D4:
 _021B571C: .word _021B7B08
 _021B5720: .word _021B7B18
 _021B5724: .word _021B7A5C
-_021B5728: .word 0x021B7A5E
+_021B5728: .word _021B7A5C + 0x2 ; 0x021B7A5E
 _021B572C: .word 0x000055F1
 	thumb_func_end FUN_021B56B0
 
@@ -2380,7 +2380,7 @@ _021B6508:
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
 _021B6544: .word _021B8CA0
-_021B6548: .word 0x021B8EA0
+_021B6548: .word _021B8CA0 + 0x200 ; 0x021B8EA0
 	arm_func_end FUN_021B64E8
 
 	arm_func_start FUN_021B654C
@@ -2424,8 +2424,8 @@ _021B658C:
 	ldmia sp!, {r4, r5, r6, pc}
 	.balign 4, 0
 _021B65D8: .word _021B8CA0
-_021B65DC: .word 0x021B8DE0
-_021B65E0: .word 0x021B8EA0
+_021B65DC: .word _021B8CA0 + 0x140 ; 0x021B8DE0
+_021B65E0: .word _021B8CA0 + 0x200 ; 0x021B8EA0
 	arm_func_end FUN_021B654C
 
 	arm_func_start FUN_021B65E4
@@ -2810,7 +2810,7 @@ FUN_021B6A88: ; 0x021B6A88
 	ldr ip, _021B6A98 ; =FUN_0207AE68
 	bx ip
 	.balign 4, 0
-_021B6A94: .word 0x021B8FD4
+_021B6A94: .word _021B8CA0 + 0x334 ; 0x021B8FD4
 _021B6A98: .word FUN_0207AE68
 	arm_func_end FUN_021B6A88
 
@@ -2820,7 +2820,7 @@ FUN_021B6A9C: ; 0x021B6A9C
 	ldr ip, _021B6AAC ; =FUN_0207AEA4
 	bx ip
 	.balign 4, 0
-_021B6AA8: .word 0x021B8FD4
+_021B6AA8: .word _021B8CA0 + 0x334 ; 0x021B8FD4
 _021B6AAC: .word FUN_0207AEA4
 	arm_func_end FUN_021B6A9C
 
@@ -2832,7 +2832,7 @@ FUN_021B6AB0: ; 0x021B6AB0
 	mov r0, #1
 	ldmia sp!, {r3, pc}
 	.balign 4, 0
-_021B6AC4: .word 0x021B8FD4
+_021B6AC4: .word _021B8CA0 + 0x334 ; 0x021B8FD4
 	arm_func_end FUN_021B6AB0
 
 	arm_func_start FUN_021B6AC8
@@ -2892,7 +2892,7 @@ FUN_021B6B0C: ; 0x021B6B0C
 	add sp, sp, #8
 	ldmia sp!, {r4, pc}
 	.balign 4, 0
-_021B6B54: .word 0x021B8F14
+_021B6B54: .word _021B8CA0 + 0x274 ; 0x021B8F14
 _021B6B58: .word _021B8CA0
 _021B6B5C: .word FUN_021B6B00 - 1
 _021B6B60: .word _021B7CA0 + 0x800
@@ -3033,9 +3033,9 @@ FUN_021B6C5C: ; 0x021B6C5C
 	ldmia sp!, {r4, r5, r6, r7, r8, pc}
 	.balign 4, 0
 _021B6D2C: .word _021B8CA0
-_021B6D30: .word 0x021B8DE0
+_021B6D30: .word _021B8CA0 + 0x140 ; 0x021B8DE0
 _021B6D34: .word 0x00FF00FF
-_021B6D38: .word 0x021B90B8
+_021B6D38: .word _021B8CA0 + 0x418 ; 0x021B90B8
 	arm_func_end FUN_021B6C5C
 
 	arm_func_start FUN_021B6D3C
@@ -3056,7 +3056,7 @@ FUN_021B6D3C: ; 0x021B6D3C
 	ldmia sp!, {r3, r4, r5, pc}
 	.balign 4, 0
 _021B6D74: .word _021B8CA0
-_021B6D78: .word 0x021B90B8
+_021B6D78: .word _021B8CA0 + 0x418 ; 0x021B90B8
 	arm_func_end FUN_021B6D3C
 
 	arm_func_start FUN_021B6D7C
@@ -3144,7 +3144,7 @@ _021B6EA4:
 	add sp, sp, #8
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, pc}
 	.balign 4, 0
-_021B6EB0: .word 0x021B8EA0
+_021B6EB0: .word _021B8CA0 + 0x200 ; 0x021B8EA0
 _021B6EB4: .word _021B8CA0
 _021B6EB8: .word 0x0007FD88
 	arm_func_end FUN_021B6D7C
@@ -3387,7 +3387,7 @@ _021B71EC:
 	ldmia sp!, {r4, r5, r6, r7, r8, sb, sl, fp, pc}
 	.balign 4, 0
 _021B7200: .word _021B8CA0
-_021B7204: .word 0x021B8FEC
+_021B7204: .word _021B8CA0 + 0x34C ; 0x021B8FEC
 _021B7208: .word FUN_021B6FC8 - 1
 _021B720C: .word _021B84A0 + 0x800
 _021B7210: .word 0x0007FD88
@@ -3489,7 +3489,7 @@ _021B7350:
 	.byte 0x5F, 0xDF, 0x8D, 0xE2, 0x30, 0x80, 0xBD, 0xE8
 _021B7358: .word _021B8CA0
 _021B735C: .word _021B7B94
-_021B7360: .word 0x021B8CA6
+_021B7360: .word _021B8CA0 + 0x6 ; 0x021B8CA6
 	arm_func_end FUN_021B7220
 
 	arm_func_start FUN_021B7364

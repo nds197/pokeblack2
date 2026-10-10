@@ -5419,7 +5419,7 @@ _021B5A32:
 	pop {r3, r4, r5, r6, pc}
 	nop
 _021B5A38: .word _021B7B38 + 1; 0x021B7B39
-_021B5A3C: .word 0x021B7B3A
+_021B5A3C: .word _021B7B38 + 0x2 ; 0x021B7B3A
 _021B5A40: .word _021B7B38
 	thumb_func_end FUN_021B599C
 
@@ -5441,7 +5441,7 @@ _021B5A54:
 	mov r0, #1
 	pop {r3, pc}
 	nop
-_021B5A64: .word 0x021B7B3B
+_021B5A64: .word _021B7B38 + 0x3 ; 0x021B7B3B
 	thumb_func_end FUN_021B5A44
 
 	thumb_func_start FUN_021B5A68

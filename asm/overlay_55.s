@@ -1968,7 +1968,7 @@ FUN_021E64C0: ; 0x021E64C0
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
 	nop
-_021E64D0: .word 0x021E751E
+_021E64D0: .word _021E751C + 0x2 ; 0x021E751E
 	thumb_func_end FUN_021E64C0
 
 	thumb_func_start FUN_021E64D4
@@ -1980,7 +1980,7 @@ FUN_021E64D4: ; 0x021E64D4
 	ldr r0, [r0, r1]
 	pop {r3, pc}
 	nop
-_021E64E4: .word 0x021E7520
+_021E64E4: .word _021E751C + 0x4 ; 0x021E7520
 	thumb_func_end FUN_021E64D4
 
 	thumb_func_start FUN_021E64E8
@@ -3392,7 +3392,7 @@ _021E6EC0:
 	bx lr
 	.balign 4, 0
 _021E6ED8: .word _021E7588
-_021E6EDC: .word 0x021E758A
+_021E6EDC: .word _021E7588 + 0x2 ; 0x021E758A
 	thumb_func_end FUN_021E6EB0
 
 	thumb_func_start FUN_021E6EE0

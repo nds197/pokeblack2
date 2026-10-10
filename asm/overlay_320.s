@@ -2811,7 +2811,7 @@ _0219E344:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _0219E370: .word _0219EE94
-_0219E374: .word 0x0219EE96
+_0219E374: .word _0219EE94 + 0x2 ; 0x0219EE96
 	thumb_func_end FUN_0219E2E0
 
 	thumb_func_start FUN_0219E378

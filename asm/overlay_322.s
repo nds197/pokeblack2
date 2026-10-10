@@ -2912,7 +2912,7 @@ FUN_0219E418: ; 0x0219E418
 	pop {r4, pc}
 	nop
 _0219E438: .word _021A055C
-_0219E43C: .word 0x021A055E
+_0219E43C: .word _021A055C + 0x2 ; 0x021A055E
 	thumb_func_end FUN_0219E418
 
 	thumb_func_start FUN_0219E440
@@ -5187,7 +5187,7 @@ _0219F5B4:
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _0219F5EC: .word _021A0516
-_0219F5F0: .word 0x021A0518
+_0219F5F0: .word _021A0516 + 0x2 ; 0x021A0518
 	thumb_func_end FUN_0219F59C
 
 	thumb_func_start FUN_0219F5F4

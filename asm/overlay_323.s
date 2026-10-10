@@ -2301,7 +2301,7 @@ FUN_0219DF14: ; 0x0219DF14
 	add sp, #0x18
 	pop {r4, r5, r6, pc}
 	.balign 4, 0
-_0219DFA8: .word 0x0219EAA4
+_0219DFA8: .word _0219EA6C + 0x38 ; 0x0219EAA4
 	thumb_func_end FUN_0219DF14
 
 	thumb_func_start FUN_0219DFAC
@@ -2603,7 +2603,7 @@ _0219E204:
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0219E244: .word 0x0219EAAC
+_0219E244: .word _0219EA6C + 0x40 ; 0x0219EAAC
 _0219E248: .word _0209A434
 _0219E24C: .word _0219E988
 	thumb_func_end FUN_0219DFAC

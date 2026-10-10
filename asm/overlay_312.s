@@ -2278,9 +2278,9 @@ _0217DA5E:
 	pop {r4, r5, r6, pc}
 	nop
 _0217DA64: .word 0x0000C05C
-_0217DA68: .word 0x0217EC34
+_0217DA68: .word _0217EC2C + 0x8 ; 0x0217EC34
 _0217DA6C: .word _0217EC2C
-_0217DA70: .word 0x0217EC30
+_0217DA70: .word _0217EC2C + 0x4 ; 0x0217EC30
 	thumb_func_end FUN_0217DA14
 
 	thumb_func_start FUN_0217DA74

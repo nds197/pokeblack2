@@ -2255,7 +2255,7 @@ _0219DF10:
 	.balign 4, 0
 _0219DF14: .word _0219EE54
 _0219DF18: .word 0x0000054C
-_0219DF1C: .word 0x0219EE64
+_0219DF1C: .word _0219EE54 + 0x10 ; 0x0219EE64
 _0219DF20: .word 0x00000551
 	thumb_func_end FUN_0219DD28
 
@@ -3616,7 +3616,7 @@ FUN_0219E8DC: ; 0x0219E8DC
 _0219E8FA:
 	pop {r4, pc}
 	.balign 4, 0
-_0219E8FC: .word 0x0219F00C
+_0219E8FC: .word _0219F008 + 0x4 ; 0x0219F00C
 _0219E900: .word _0219F008
 	thumb_func_end FUN_0219E8DC
 
@@ -3702,11 +3702,11 @@ _0219E996:
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	nop
-_0219E99C: .word 0x0219EE76
+_0219E99C: .word _0219EE74 + 0x2 ; 0x0219EE76
 _0219E9A0: .word _0219EE74
 _0219E9A4: .word _0219F008
-_0219E9A8: .word 0x0219EE78
-_0219E9AC: .word 0x0219F00C
+_0219E9A8: .word _0219EE74 + 0x4 ; 0x0219EE78
+_0219E9AC: .word _0219F008 + 0x4 ; 0x0219F00C
 	thumb_func_end FUN_0219E904
 
 	thumb_func_start FUN_0219E9B0
@@ -3727,7 +3727,7 @@ _0219E9C6:
 	bx lr
 	nop
 _0219E9CC: .word _0219F008
-_0219E9D0: .word 0x0219F00C
+_0219E9D0: .word _0219F008 + 0x4 ; 0x0219F00C
 	thumb_func_end FUN_0219E9B0
 
 	thumb_func_start FUN_0219E9D4

@@ -112,7 +112,7 @@ _021E5816:
 	bx lr
 	nop
 _021E5824: .word _021E6906
-_021E5828: .word 0x021E6908
+_021E5828: .word _021E6906 + 0x2 ; 0x021E6908
 	thumb_func_end FUN_021E5800
 
 	thumb_func_start FUN_021E582C
