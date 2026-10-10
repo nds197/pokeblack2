@@ -98,6 +98,11 @@ endif
 $(BANNER): $(BANNER_DIR)/banner.meta $(wildcard $(BANNER_DIR)/*.png)
 	@$(PYTHON) $(SCRIPTS)/banner.py build --dir $(BANNER_DIR) -o $@
 
+$(SBIN): build/%.sbin: build/%.elf
+ifeq ($(COMPARE),1)
+	$(SHA1SUM) --quiet -c $*.sha1
+endif
+
 sdk9: $(ALL_LIB_OBJS)
 
 # Convenience targets

@@ -24,6 +24,8 @@ all:
 	$(MAKE) patch_mwasmarm 
 	$(MAKE) target
 
+$(SBIN): build/%.sbin: build/%.elf
+
 target: $(SBIN) $(ELF)
 
 ifeq ($(COMPARE),1)

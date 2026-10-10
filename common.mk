@@ -252,15 +252,6 @@ $(RESPONSE): $(LSF) $(RESPONSE_TEMPLATE)
 
 .INTERMEDIATE: $(BUILD_DIR)/obj.list
 
-$(SBIN): build/%.sbin: build/%.elf
-ifeq ($(COMPARE),1)
-verify:
-	$(SHA1SUM) --quiet -c $*.sha1
-	ifeq ($(PROC),arm946e)
-		$(SHA1SUM) --quiet -c $(buildname)/overlays.sha1
-	endif
-endif
-
 $(ELF): $(ALL_OBJS) $(LCF) $(RESPONSE) $(LINK_DEPS)
 	cd $(BUILD_DIR) && $(MW_LINK) $(LDSEARCH) -o $(BACK_REL)/$(ELF) $(LCF:$(BUILD_DIR)/%=%) @$(RESPONSE:$(BUILD_DIR)/%=%) $(CRT0_OBJ)
 

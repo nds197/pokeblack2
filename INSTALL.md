@@ -8,7 +8,7 @@ Using a terminal or git client, clone this repository to your local device. All 
 
 ### 1. Install MWCC compiler
 
-The build system requires the use of the Metrowerks C Compiler versions dsi/1.2p2 to compile matching files. We cannot distribute the correct compiler here. At the end of this operation, you should have i.e. the file `tools/mwccarm/dsi/1.2p2/mwccarm.exe`. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
+The build system requires the use of the Metrowerks C Compiler versions dsi/1.2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokediamond and extract it to tools/. At the end of this operation, you should have i.e. the file `tools/mwccarm/dsi/1.2p2/mwccarm.exe`. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
 
 
 (Note: if running the exe's doesn't work, you can run the .bat file. A GUI window should pop up for you to select the license.dat)
@@ -22,10 +22,7 @@ The game is a DSi-enhanced title, and DSi titles use HMAC-based hashes calculate
 
 Therefore, in order to calculate these hashes correctly, we need to build the ROM with an encrypted Secure Area. To do this, we need either the NTR Blowfish key, which is included in both biosnds7 and biosdsi9, or a pre-built encrypted Secure Area extracted from an encrypted ROM.
 
-We have the following options:
-* Provide biosnds7.rom or biosdsi9.rom in the root of the project.
-* Use an encrypted ROM in Step 4, from which the encrypted Secure Area can be extracted.
-* Provide neither of the above. In this case, the build system will use pre-calculated values included in the repository to produce the matching ROM.
+An encrypted secure area is included, so if no bios is provided this will be used instead.
 
 ### 4. Dependencies
 
