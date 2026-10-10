@@ -755,7 +755,7 @@ _0216FE3A:
 	.balign 4, 0
 _0216FE60: .word _0217002C
 _0216FE64: .word _021701F0
-_0216FE68: .word 0x021701F2
+_0216FE68: .word _021701F0 + 0x2 ; 0x021701F2
 	thumb_func_end FUN_0216FE00
 
 	thumb_func_start FUN_0216FE6C

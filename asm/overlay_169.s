@@ -1959,7 +1959,7 @@ FUN_06898CE0: ; 0x06898CE0
 	ldr r0, [r1, r0]
 	bx lr
 	nop
-_06898CF0: .word 0x0689E96C
+_06898CF0: .word _0689E960 + 0xC ; 0x0689E96C
 	thumb_func_end FUN_06898CE0
 
 	thumb_func_start FUN_06898CF4
@@ -2118,7 +2118,7 @@ _06898E04:
 	mov r0, #0
 	pop {r4, pc}
 	.balign 4, 0
-_06898E08: .word 0x0689E96C
+_06898E08: .word _0689E960 + 0xC ; 0x0689E96C
 	thumb_func_end FUN_06898DE0
 
 	thumb_func_start FUN_06898E0C

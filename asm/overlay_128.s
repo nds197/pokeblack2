@@ -20,6 +20,7 @@
 	.extern FUN_021B8224
 	.extern FUN_021B8248
 	.extern FUN_021B8598
+	.extern _020946BC
 
 	.text
 
@@ -419,11 +420,11 @@ FUN_021EEEC8: ; 0x021EEEC8
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
 _021EEFD0: .word 0x01770000
-_021EEFD4: .word 0x020956BC
+_021EEFD4: .word _020946BC + 0x1000 ; 0x020956BC
 _021EEFD8: .word 0x01710000
 _021EEFDC: .word 0x01C60000
 _021EEFE0: .word 0x020B0000
-_021EEFE4: .word 0x020976BC
+_021EEFE4: .word _020946BC + 0x3000 ; 0x020976BC
 	thumb_func_end FUN_021EEEC8
 
 	.rodata

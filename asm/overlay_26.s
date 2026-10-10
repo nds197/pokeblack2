@@ -118,7 +118,7 @@ FUN_0216F9C0: ; 0x0216F9C0
 	ldrb r0, [r0, r1]
 	pop {r3, pc}
 	nop
-_0216F9D8: .word 0x0216FA52
+_0216F9D8: .word _0216FA50 + 0x2 ; 0x0216FA52
 	thumb_func_end FUN_0216F9C0
 
 	thumb_func_start FUN_0216F9DC

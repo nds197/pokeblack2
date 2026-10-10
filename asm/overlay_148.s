@@ -23,6 +23,7 @@
 	.extern OV36_FUN_02181298
 	.extern FUN_021812A8
 	.extern OV36_FUN_021C5E80
+	.extern _020946BC
 
 	.text
 
@@ -148,7 +149,7 @@ OV148_FUN_021F5A58: ; 0x021F5A58
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021F5AD4: .word 0x02094A3C
+_021F5AD4: .word _020946BC + 0x380 ; 0x02094A3C
 _021F5AD8: .word 0x00001555
 _021F5ADC: .word _021F5D78
 _021F5AE0: .word 0x1FFFFFFF

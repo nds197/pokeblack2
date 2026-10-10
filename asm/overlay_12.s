@@ -1595,6 +1595,7 @@
 	.extern _0219D470
 	.extern _0219DF2C
 	.extern _021CE568
+	.extern _02143A0C
 
 	.text
 
@@ -43133,10 +43134,10 @@ _02163774:
 	.balign 4, 0
 _02163778: .word _0216DA94
 _0216377C: .word _0216DAA0
-_02163780: .word 0x02143AC8
-_02163784: .word 0x02143A8C
+_02163780: .word _02143A0C + 0xBC ; 0x02143AC8
+_02163784: .word _02143A0C + 0x80 ; 0x02143A8C
 _02163788: .word _0216DA88
-_0216378C: .word 0x02143A58
+_0216378C: .word _02143A0C + 0x4C ; 0x02143A58
 	thumb_func_end FUN_0216370C
 
 	thumb_func_start FUN_02163790
@@ -43238,7 +43239,7 @@ _02163854:
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
 _02163858: .word _020946BC
-_0216385C: .word 0x02143A58
+_0216385C: .word _02143A0C + 0x4C ; 0x02143A58
 	thumb_func_end FUN_02163790
 
 	thumb_func_start FUN_02163860

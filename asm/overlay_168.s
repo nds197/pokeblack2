@@ -406,6 +406,7 @@
 	.extern _0689E238
 	.extern _0689E6E0
 	.extern _0689E884
+	.extern _02143A0C
 
 	.text
 
@@ -17540,8 +17541,8 @@ _021E5DD0:
 	add sp, #0x44
 	pop {r3, r4, r5, r6, pc}
 	nop
-_021E5E2C: .word 0x02143A58
-_021E5E30: .word 0x02143A14
+_021E5E2C: .word _02143A0C + 0x4C ; 0x02143A58
+_021E5E30: .word _02143A0C + 0x8 ; 0x02143A14
 	thumb_func_end FUN_021E5D98
 
 	thumb_func_start OV168_FUN_021E5E34

@@ -4234,7 +4234,7 @@ FUN_021F0A38: ; 0x021F0A38
 	bl FUN_02072588
 	pop {r3, r4, r5, r6, r7, pc}
 	.balign 4, 0
-_021F0A7C: .word 0x02097DFC
+_021F0A7C: .word _020946BC + 0x3740 ; 0x02097DFC
 	thumb_func_end FUN_021F0A38
 
 	thumb_func_start FUN_021F0A80
