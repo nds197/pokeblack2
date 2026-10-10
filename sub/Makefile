@@ -29,7 +29,7 @@ $(SBIN): build/%.sbin: build/%.elf
 target: $(SBIN) $(ELF)
 
 ifeq ($(COMPARE),1)
-	$(SHA1SUM) -c arm7.sha1
+	$(SHA1SUM) -c --quiet arm7.sha1
 endif
 
 compare: COMPARE := 1

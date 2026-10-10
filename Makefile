@@ -100,7 +100,8 @@ $(BANNER): $(BANNER_DIR)/banner.meta $(wildcard $(BANNER_DIR)/*.png)
 
 $(SBIN): build/%.sbin: build/%.elf
 ifeq ($(COMPARE),1)
-	$(SHA1SUM) --quiet -c $*.sha1
+	$(SHA1SUM) --quiet -c $(buildname)/main.sha1
+	$(SHA1SUM) --quiet -c $(buildname)/overlays.sha1
 endif
 
 sdk9: $(ALL_LIB_OBJS)
