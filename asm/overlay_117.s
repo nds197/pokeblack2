@@ -41,7 +41,6 @@
 	.extern FUN_021C08CC
 	.extern FUN_021C09E4
 	.extern OV36_FUN_021C0A4C
-	.extern FUN_02012908
 
 	.text
 

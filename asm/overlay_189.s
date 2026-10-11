@@ -128,7 +128,6 @@
 	.extern FUN_021716AC
 	.extern _02098D60
 	.extern _0214C22C
-	.extern FUN_02020100
 	.extern _021866C0
 
 	.text

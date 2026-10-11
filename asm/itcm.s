@@ -28,6 +28,8 @@
 	.extern _020946BC
 	.extern _0214193C
 	.extern _0214C22C
+	.extern _02FE0020
+	.extern dtcm_bss
 
 	.text
 	
@@ -1572,7 +1574,7 @@ _01FF8CB0:
 	ldr lr, _01FF8CDC ; =FUN_01FF8CE0
 	bx r0
 	.balign 4, 0
-_01FF8CD8: .word 0x02FE0020
+_01FF8CD8: .word _02FE0020 ; 0x02FE0020
 _01FF8CDC: .word FUN_01FF8CE0 - 1
 	arm_func_end FUN_01FF8C88
 
@@ -1670,7 +1672,7 @@ _01FF8DA8:
 	stmda sp!, {r0, r1, r2, r3, ip, lr}
 	ldmia sp!, {pc}
 	.balign 4, 0
-_01FF8E30: .word 0x02FE00A0
+_01FF8E30: .word dtcm_bss ; 0x02FE00A0
 _01FF8E34: .word _0214C22C
 _01FF8E38: .word FUN_0207002C
 _01FF8E3C: .word FUN_0207006C
