@@ -195,7 +195,6 @@
 	.extern _02093F08
 	.extern _021B93EC
 	.extern _021DD940
-	.extern _021AE1F8
 
 	.text
 
@@ -1719,8 +1718,8 @@ _021AA6DA:
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021AA784: .word _021AE1E0
-_021AA788: .word 0x021AE1F0
-_021AA78C: .word _021AE1F8 ; 0x021AE1F8
+_021AA788: .word _021AE1E0 + 0x10 ; 0x021AE1F0
+_021AA78C: .word _021AE1E0 + 0x18 ; 0x021AE1F8
 	thumb_func_end FUN_021AA694
 
 	thumb_func_start FUN_021AA790

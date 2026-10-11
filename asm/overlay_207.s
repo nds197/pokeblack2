@@ -7306,7 +7306,7 @@ FUN_021B67CC: ; 0x021B67CC
 	pop {r4, r5, r6, r7, pc}
 	nop
 _021B6838: .word _021BB050
-_021B683C: .word 0x02097BFC
+_021B683C: .word _020946BC + 0x3540 ; 0x02097BFC
 	thumb_func_end FUN_021B67CC
 
 	thumb_func_start FUN_021B6840
