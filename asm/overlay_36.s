@@ -105259,10 +105259,18 @@ FUN_021AFA2C: ; 0x021AFA2C
 	bl FUN_02155174
 	add r6, r0, #0
 	bl FUN_0201735C
+#if defined(white2)
+	mov r1, #0xa1
+#endif
 	add r2, sp, #0x18
 	str r0, [sp, #0x10]
+#if defined(black2)
 	ldr r1, _021AFB68 ; =0x00000283
+#endif
 	add r0, r6, #0
+#if defined(white2)
+	lsl r1, r1, #2
+#endif
 	add r2, #2
 	add r3, sp, #0x18
 	bl FUN_021AFB74
@@ -105381,8 +105389,12 @@ _021AFB26:
 _021AFB62:
 	add sp, #0x1c
 	pop {r4, r5, r6, r7, pc}
+#if defined(white2)
+	.balign 4, 0
+#else
 	nop
 _021AFB68: .word 0x00000283
+#endif
 _021AFB6C: .word 0x0000049B
 _021AFB70: .word _021D5218
 	thumb_func_end FUN_021AFA2C
@@ -105533,7 +105545,12 @@ _021AFC84:
 	mov r1, #5
 	add r2, r6, #0
 	bl FUN_0201CCF8
+#if defined(white2)
+	mov r1, #0xa1
+	lsl r1, r1, #2
+#else
 	ldr r1, _021AFCD0 ; =0x00000283
+#endif
 	cmp r0, r1
 	bne _021AFCC0
 	add r0, r4, #0
@@ -105554,8 +105571,10 @@ _021AFCC6:
 	mvn r0, r0
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
+#if defined(black2)
 	nop
 _021AFCD0: .word 0x00000283
+#endif
 	thumb_func_end FUN_021AFC58
 
 	thumb_func_start FUN_021AFCD4
@@ -159515,11 +159534,15 @@ _021C92F8:
 	thumb_func_start FUN_021C9300
 FUN_021C9300: ; 0x021C9300
 	mov r2, #0x1a
+#if defined(black2)
 	add r0, #0x4e
+#endif
 	mul r2, r1
 	add r0, r0, r2
 	bx lr
+#if defined(black2)
 	.balign 4, 0
+#endif
 	thumb_func_end FUN_021C9300
 
 	thumb_func_start FUN_021C930C

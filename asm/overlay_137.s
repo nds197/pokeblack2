@@ -12550,6 +12550,9 @@ FUN_021F49F0: ; 0x021F49F0
 	ldr r2, [sp, #0x28]
 	add r0, r5, #0
 	mov r1, #0x16
+#if defined(white2)
+	mov r4, #0x16
+#endif
 	bl FUN_02037C70
 	ldr r2, [sp, #0x2c]
 	add r0, r5, #0
@@ -12563,7 +12566,11 @@ FUN_021F49F0: ; 0x021F49F0
 	bl FUN_02037C70
 	add r0, r5, #0
 	mov r1, #0xf
+#if defined(white2)
+	add r2, r4, #0
+#else
 	mov r2, #0x17
+#endif
 	bl FUN_02037C70
 	add r0, r5, #0
 	mov r1, #0x10
@@ -12571,7 +12578,11 @@ FUN_021F49F0: ; 0x021F49F0
 	bl FUN_02037C70
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
+#if defined(white2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _021F4B8C: .word 0x00007FFF
 _021F4B90: .word 0x00000261
 	thumb_func_end FUN_021F49F0

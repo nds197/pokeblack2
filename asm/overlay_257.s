@@ -12365,15 +12365,21 @@ _0219F22E:
 
 	thumb_func_start FUN_0219F234
 FUN_0219F234: ; 0x0219F234
+#if defined(white2)
+	push {r3, lr}
+#else
 	push {r3, r4, lr}
 	sub sp, #4
+#endif
 	mov r0, #0xdb
 	str r0, [sp]
 	add r0, r1, #0
 	ldr r3, _0219F268 ; =_021B264C
 	mov r1, #0x9c
 	mov r2, #1
+#if defined(black2)
 	mov r4, #1
+#endif
 	bl FUN_0203A1FC
 	add r1, r0, #0
 	mov r3, #0
@@ -12384,13 +12390,24 @@ FUN_0219F234: ; 0x0219F234
 	add r1, #0x37
 	strb r2, [r1]
 	str r3, [r0, #0x28]
+#if defined(white2)
+	ldr r1, _0219F2A4 ; =0x0000FFFF
+	str r3, [r0, #0x24]
+	strh r1, [r0, #0x34]
+	pop {r3, pc}
+	.balign 4, 0
+#else
 	str r3, [r0, #0x24]
 	lsl r1, r4, #0xf
 	strh r1, [r0, #0x34]
 	add sp, #4
 	pop {r3, r4, pc}
 	nop
+#endif
 _0219F268: .word _021B264C
+#if defined(white2)
+_0219F2A4: .word 0x0000FFFF
+#endif
 	thumb_func_end FUN_0219F234
 
 	thumb_func_start FUN_0219F26C

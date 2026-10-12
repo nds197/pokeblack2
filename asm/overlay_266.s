@@ -190,6 +190,13 @@ FUN_0219CF04: ; 0x0219CF04
 	bl FUN_02046DF8
 	add r4, #0x1c
 	add r0, r4, #0
+#if defined(white2)
+	mov r1, #0x10
+	bl FUN_02074970
+	add r6, #0x1c
+	add r0, r6, #0
+	mov r1, #0x10
+#else
 	mov r4, #1
 	sub r4, #0x11
 	add r1, r4, #0
@@ -197,6 +204,7 @@ FUN_0219CF04: ; 0x0219CF04
 	add r6, #0x1c
 	add r0, r6, #0
 	add r1, r4, #0
+#endif
 	bl FUN_02074970
 	mov r0, #0xd7
 	mov r1, #0x8e
@@ -250,7 +258,11 @@ _0219CFB0:
 
 	thumb_func_start FUN_0219CFB4
 FUN_0219CFB4: ; 0x0219CFB4
+#if defined(white2)
+	push {r3, r4, r5, lr}
+#else
 	push {r4, r5, r6, lr}
+#endif
 	add r4, r0, #0
 	mov r0, #0
 	mov r5, #0
@@ -278,6 +290,13 @@ _0219CFD8:
 	bl FUN_0219D668
 	bl FUN_0219D4FC
 	ldr r5, _0219D034 ; =0x0400006C
+#if defined(white2)
+	mov r1, #0x10
+	add r0, r5, #0
+	bl FUN_02074970
+	ldr r4, _0219D038 ; =0x0400106C
+	mov r1, #0x10
+#else
 	mov r6, #0xf
 	mvn r6, r6
 	add r0, r5, #0
@@ -285,6 +304,7 @@ _0219CFD8:
 	bl FUN_02074970
 	ldr r4, _0219D038 ; =0x0400106C
 	add r1, r6, #0
+#endif
 	add r0, r4, #0
 	bl FUN_02074970
 	mov r0, #0
@@ -299,7 +319,11 @@ _0219CFD8:
 	ldr r0, _0219D03C ; =0x0000008B
 	bl FUN_0203CDC8
 	mov r0, #6
+#if defined(white2)
+	pop {r3, r4, r5, pc}
+#else
 	pop {r4, r5, r6, pc}
+#endif
 	nop
 _0219D034: .word 0x0400006C
 _0219D038: .word 0x0400106C
@@ -639,14 +663,24 @@ _0219D252:
 	bl FUN_0204AB0C
 	mov r0, #0x18
 	str r0, [sp]
+#if defined(white2)
+	mov r0, #2
+	str r0, [sp, #4]
+#endif
 	mov r0, #1
 	mov r1, #0
 	mov r2, #0
 	mov r3, #0x20
+#if defined(white2)
+	bl FUN_0204566C
+	ldr r1, _0219D408 ; =0x0000FFFF
+	mov r0, #1
+#else
 	str r6, [sp, #4]
 	bl FUN_0204566C
 	mov r0, #1
 	mov r1, #0
+#endif
 	bl FUN_02045350
 	mov r0, #1
 	bl FUN_02044F90
@@ -709,7 +743,9 @@ _0219D308:
 	mov r1, #1
 	mov r2, #1
 	mov r3, #0
+#if defined(black2)
 	mov r6, #1
+#endif
 	bl FUN_0204ADA8
 	mov r0, #0
 	str r0, [sp]
@@ -720,6 +756,9 @@ _0219D308:
 	mov r1, #2
 	mov r2, #1
 	mov r3, #0
+#if defined(white2)
+	mov r6, #2
+#endif
 	bl FUN_0204AF50
 	add r0, r7, #0
 	bl FUN_0204AB0C
@@ -731,8 +770,13 @@ _0219D308:
 	mov r3, #0x20
 	str r6, [sp, #4]
 	bl FUN_0204566C
+#if defined(white2)
+	ldr r1, _0219D408 ; =0x0000FFFF
+	mov r0, #1
+#else
 	mov r0, #1
 	mov r1, #0
+#endif
 	bl FUN_02045350
 	mov r0, #1
 	bl FUN_02044F90
@@ -777,8 +821,15 @@ _0219D3C2:
 	mov r0, #5
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
+#if defined(white2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _0219D3C8: .word 0x0000808E
+#if defined(white2)
+_0219D408: .word 0x0000FFFF
+#endif
 	thumb_func_end FUN_0219D22C
 
 	thumb_func_start OV266_FUN_0219D3CC
@@ -1000,16 +1051,32 @@ FUN_0219D534: ; 0x0219D534
 	add r3, r7, #0
 	str r4, [sp, #4]
 	bl FUN_0204B0D4
+#if defined(white2)
+	ldr r4, _0219D608 ; =0x0000FFFF
+	mov r0, #1
+	add r1, r4, #0
+	bl FUN_02045350
+	mov r0, #5
+	add r1, r4, #0
+#else
 	mov r0, #1
 	mov r1, #0
 	bl FUN_02045350
 	mov r0, #5
 	mov r1, #0
+#endif
 	bl FUN_02045350
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
+#if defined(white2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _0219D5C0: .word 0x0000808E
+#if defined(white2)
+_0219D608: .word 0x0000FFFF
+#endif
 	thumb_func_end FUN_0219D534
 
 	thumb_func_start FUN_0219D5C4
@@ -1573,10 +1640,15 @@ FUN_0219D9E8: ; 0x0219D9E8
 	mov r0, #0x8e
 	add r4, r1, #0
 	str r0, [sp, #8]
+#if defined(white2)
+	ldr r3, _0219DA5C ; =0x00007FFF
+#endif
 	mov r0, #0
 	mov r1, #1
 	mov r2, #1
+#if defined(black2)
 	mov r3, #0
+#endif
 	bl FUN_020279B4
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -1584,6 +1656,10 @@ FUN_0219D9E8: ; 0x0219D9E8
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
+#if defined(white2)
+	.balign 4, 0
+_0219DA5C: .word 0x00007FFF
+#endif
 	thumb_func_end FUN_0219D9E8
 
 	thumb_func_start FUN_0219DA14
@@ -1598,10 +1674,15 @@ FUN_0219DA14: ; 0x0219DA14
 	mov r0, #0x8e
 	add r4, r1, #0
 	str r0, [sp, #8]
+#if defined(white2)
+	ldr r3, _0219DA8C ; =0x00007FFF
+#endif
 	mov r0, #0
 	mov r1, #0
 	mov r2, #0
+#if defined(black2)
 	mov r3, #0
+#endif
 	bl FUN_020279B4
 	mov r0, #0x96
 	lsl r0, r0, #2
@@ -1609,6 +1690,10 @@ FUN_0219DA14: ; 0x0219DA14
 	mov r0, #1
 	add sp, #0xc
 	pop {r4, r5, pc}
+#if defined(white2)
+	.balign 4, 0
+_0219DA8C: .word 0x00007FFF
+#endif
 	thumb_func_end FUN_0219DA14
 
 	thumb_func_start FUN_0219DA40
@@ -2510,10 +2595,16 @@ _0219E0E0:
 	strb r0, [r4]
 	pop {r3, r4, r5, r6, r7, pc}
 _0219E0E8:
+#if defined(white2)
+	ldr r0, _0219E2A8 ; =0x04000050
+	mov r1, #0x11
+	mov r2, #0x10
+#else
 	mov r2, #0x11
 	ldr r0, _0219E2A8 ; =0x04000050
 	mov r1, #0x11
 	sub r2, #0x21
+#endif
 	bl FUN_02074A88
 	mov r6, #0xa2
 	lsl r6, r6, #2
@@ -2822,9 +2913,14 @@ FUN_0219E350: ; 0x0219E350
 	ldrb r7, [r0, #3]
 	mov r6, #0xc
 	mov r3, #0x15
+#if defined(white2)
+	mul r6, r7
+#endif
 	mov r4, #0x16
 	mov r5, #0x17
+#if defined(black2)
 	mul r6, r7
+#endif
 	cmp r2, #1
 	bne _0219E364
 	add r6, r6, #3
@@ -2835,9 +2931,15 @@ _0219E364:
 	add r5, r5, r6
 	cmp r0, #1
 	bne _0219E376
+#if defined(white2)
+	mov r3, #0x11
+	mov r4, #0x12
+	mov r5, #0x13
+#else
 	mov r3, #0xa
 	mov r4, #0xb
 	mov r5, #0xc
+#endif
 _0219E376:
 	cmp r1, #0
 	beq _0219E384
@@ -2862,6 +2964,9 @@ _0219E396:
 	mov r0, #0
 	pop {r4, r5, r6, r7}
 	bx lr
+#if defined(white2)
+	.balign 4, 0
+#endif
 	thumb_func_end FUN_0219E350
 
 	thumb_func_start OV266_FUN_0219E39C
@@ -2996,6 +3101,9 @@ FUN_0219E45C: ; 0x0219E45C
 	add r4, r1, #0
 	ldrb r1, [r4, #7]
 	add r5, r0, #0
+#if defined(white2)
+	add r1, r1, #1
+#endif
 	lsl r1, r1, #4
 	add r4, r4, r1
 	add r1, r4, #0
@@ -3007,7 +3115,11 @@ FUN_0219E45C: ; 0x0219E45C
 	add r1, #0x12
 	str r0, [r5, r1]
 	pop {r3, r4, r5, pc}
+#if defined(white2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _0219E47C: .word 0x00000242
 	thumb_func_end FUN_0219E45C
 

@@ -887,9 +887,11 @@ FUN_0219D4CC: ; 0x0219D4CC
 	push {r3, lr}
 	bl FUN_0200FA4C
 	cmp r0, #4
+#if defined(black2)
 	bne _0219D4D8
 	add r0, r0, #1
 _0219D4D8:
+#endif
 	pop {r3, pc}
 	.balign 4, 0
 	thumb_func_end FUN_0219D4CC

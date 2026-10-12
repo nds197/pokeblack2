@@ -166,6 +166,14 @@ _021EED7E:
 	lsr r1, r1, #0x10
 	mov r2, #2
 	bl FUN_021EEE18
+#if defined(white2)
+	lsl r2, r4, #0x10
+	ldr r0, [r5]
+	mov r1, #0
+	lsr r2, r2, #0x10
+	mov r3, #1
+	bl FUN_021B8258
+#endif
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021EED7E
@@ -209,7 +217,11 @@ _021EEDB6:
 	blt _021EEDB6
 	add sp, #0x68
 	pop {r3, r4, r5, r6, r7, pc}
+#if defined(white2)
+	.balign 4, 0
+#else
 	nop
+#endif
 _021EEDF4: .word _021EF068
 _021EEDF8: .word _021EF078
 _021EEDFC: .word _021EF0A8

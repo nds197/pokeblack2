@@ -3222,6 +3222,105 @@ FUN_0219E644: ; 0x0219E644
 	mov r1, #0xc0
 	str r1, [sp]
 	mov r4, #0xb
+#if defined(white2)
+	mov r1, #4
+	mov r2, #0
+	mov r3, #0
+	add r5, r0, #0
+	str r4, [sp, #4]
+	mov r7, #4
+	bl FUN_0204B0D4
+	mov r0, #0
+	str r0, [sp]
+	mov r6, #1
+	str r6, [sp, #4]
+	add r0, r5, #0
+	mov r1, #3
+	mov r2, #2
+	mov r3, #0
+	str r4, [sp, #8]
+	bl FUN_0204ADA8
+	mov r0, #0
+	str r0, [sp]
+	str r6, [sp, #4]
+	add r0, r5, #0
+	mov r1, #2
+	mov r2, #3
+	mov r3, #0
+	str r4, [sp, #8]
+	bl FUN_0204AF50
+	mov r0, #0xc0
+	str r0, [sp]
+	add r0, r5, #0
+	mov r1, #4
+	mov r2, #4
+	mov r3, #0
+	str r4, [sp, #4]
+	bl FUN_0204B0D4
+	mov r0, #0
+	str r0, [sp]
+	str r6, [sp, #4]
+	add r0, r5, #0
+	mov r1, #1
+	mov r2, #5
+	mov r3, #0
+	str r4, [sp, #8]
+	bl FUN_0204ADA8
+	mov r0, #0
+	str r0, [sp]
+	str r6, [sp, #4]
+	add r0, r5, #0
+	mov r1, #0
+	mov r2, #6
+	mov r3, #0
+	str r4, [sp, #8]
+	mov r6, #6
+	bl FUN_0204AF50
+	add r0, r5, #0
+	bl FUN_0204AB0C
+	mov r0, #0
+	mov r1, #1
+	mov r2, #0xe
+	mov r3, #0
+	str r4, [sp]
+	bl FUN_02024D00
+	mov r5, #0x20
+	mov r3, #0x1e
+	str r5, [sp]
+	mov r0, #0x17
+	mov r1, #5
+	mov r2, #0
+	lsl r3, r3, #4
+	str r4, [sp, #4]
+	bl FUN_0204B0B8
+	mov r3, #0x1e
+	str r5, [sp]
+	mov r0, #0x17
+	mov r1, #5
+	add r2, r7, #0
+	lsl r3, r3, #4
+	str r4, [sp, #4]
+	bl FUN_0204B0B8
+	mov r4, #0x18
+	str r4, [sp]
+	str r7, [sp, #4]
+	mov r0, #3
+	mov r1, #0
+	mov r2, #0
+	mov r3, #0x20
+	bl FUN_0204566C
+	str r4, [sp]
+	add r0, r6, #0
+	mov r1, #0
+	mov r2, #0
+	mov r3, #0x20
+	str r7, [sp, #4]
+	bl FUN_0204566C
+	mov r0, #3
+	bl FUN_02045B7C
+	add r0, r6, #0
+	bl FUN_02045B7C
+#else
 	str r4, [sp, #4]
 	mov r1, #4
 	mov r6, #0
@@ -3295,6 +3394,7 @@ FUN_0219E644: ; 0x0219E644
 	add r3, r6, #0
 	str r4, [sp, #4]
 	bl FUN_0204B0B8
+#endif
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
