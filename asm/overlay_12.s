@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_02005430
@@ -1489,7 +1491,6 @@
 	.extern _021E5ACC
 	.extern _021E6684
 	.extern _021E5BA0
-	.extern FUN_02030000
 	.extern _021AE3DC
 	.extern _0219EECC
 	.extern _021BB6A0
@@ -8310,7 +8311,7 @@ _02153636:
 
 	thumb_func_start FUN_0215363C
 FUN_0215363C: ; 0x0215363C
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	bx lr
 	thumb_func_end FUN_0215363C
 
@@ -13061,7 +13062,7 @@ FUN_021555F4: ; 0x021555F4
 FUN_021555F8: ; 0x021555F8
 	push {r3, lr}
 	bl FUN_021548E8
-	mov r1, #0x17
+	mov r1, #GAME_VERSION
 	strh r1, [r0]
 	mov r0, #0
 	pop {r3, pc}
@@ -23033,13 +23034,19 @@ FUN_0215A488: ; 0x0215A488
 	str r7, [r4, #0x3c]
 	mov r0, #0
 	str r0, [r4, #0x38]
+#if defined(black2)
 	mov r0, #1
+#endif
 	str r0, [r4, #0x40]
 	add r0, r4, #0
 	bl FUN_0215A53C
 	ldr r0, [sp]
 	pop {r3, r4, r5, r6, r7, pc}
+#if defined(white2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _0215A4E8: .word FUN_0215A19C
 	thumb_func_end FUN_0215A488
 
@@ -37745,11 +37752,20 @@ _02160F4A:
 	bl FUN_02010564
 	cmp r0, #0
 	bne _02160F60
-	mov r0, #0
-	pop {r4, r5, r6, pc}
-_02160F60:
+#if defined(white2)
 	mov r0, #0x6a
 	lsl r0, r0, #2
+#else
+	mov r0, #0
+#endif
+	pop {r4, r5, r6, pc}
+_02160F60:
+#if defined(white2)
+	mov r0, #0
+#else
+	mov r0, #0x6a
+	lsl r0, r0, #2
+#endif
 	pop {r4, r5, r6, pc}
 _02160F66:
 	add r0, r5, #0
@@ -54623,12 +54639,12 @@ FUN_02168AC0: ; 0x02168AC0
 	mov r1, #0
 	ldr r0, [r0, #0x28]
 	bl FUN_0201FF08
-	mov r2, #0x17
+	mov r2, #GAME_VERSION
 	add r6, r0, #0
 	str r2, [sp, #0x1c]
 	add r0, r4, #0
 	add r1, r5, #0
-	mov r2, #0x17
+	mov r2, #GAME_VERSION
 	bl FUN_0200F01C
 	add r7, r0, #0
 	add r0, r4, #0
@@ -54644,7 +54660,7 @@ FUN_02168AC0: ; 0x02168AC0
 	bl FUN_0200F058
 	ldr r1, [sp, #0x1c]
 	ldr r3, [sp, #0x24]
-	sub r1, #0x18
+	sub r1, #GAME_VERSION + 1
 	str r1, [sp, #4]
 	str r0, [sp, #8]
 	mov r0, #0
@@ -56311,7 +56327,7 @@ _021697F2:
 	bl FUN_0200C9BC
 	str r0, [r5, #0x20]
 	mov r6, #0
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	add r7, r5, #0
 	strh r6, [r5, #8]
 	strb r0, [r5]
@@ -60340,7 +60356,7 @@ _0216CDB8:
 	.byte 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00
 _0216CDC8:
 	.byte 0x00, 0x01, 0x02, 0x03, 0x03, 0x02, 0x00, 0x01
-	.word FUN_02030000
+	.byte 0x01, 0x00, 0x03, 0x02
 	.byte 0x02, 0x03, 0x01, 0x00
 _0216CDD8:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x90, 0xFF, 0xFF

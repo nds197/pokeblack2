@@ -184,7 +184,11 @@ FUN_021EED60: ; 0x021EED60
 	bl FUN_0204AA30
 	str r6, [sp]
 	str r5, [sp, #4]
+#if defined(white2)
+	mov r1, #5
+#else
 	mov r1, #4
+#endif
 	mov r2, #0
 	mov r3, #0
 	add r4, r0, #0
