@@ -43341,10 +43341,18 @@ FUN_02017310: ; 0x02017310
 	bl FUN_02010564
 	cmp r0, #0
 	bne _02017342
+#if defined(white2)
+	mov r0, #0x10
+#else
 	mov r0, #0xf
+#endif
 	pop {r4, pc}
 _02017342:
+#if defined(white2)
+	mov r0, #0xf
+#else
 	mov r0, #0x10
+#endif
 _02017344:
 	pop {r4, pc}
 	nop
@@ -47296,7 +47304,11 @@ FUN_02018C80: ; 0x02018C80
 	lsr r1, r1, #0x10
 	cmp r1, #1
 	bhi _02018C9A
+#if defined(white2)
+	mov r0, #0x71
+#else
 	mov r0, #0x70
+#endif
 _02018C9A:
 	pop {r3, pc}
 	.balign 4, 0
@@ -91322,7 +91334,11 @@ FUN_0202C6C4: ; 0x0202C6C4
 	mov r0, #0
 	str r0, [sp, #4]
 	str r0, [sp]
+#if defined(white2)
+	mov r0, #4
+#else
 	mov r0, #8
+#endif
 	tst r0, r1
 	bne _0202C6E6
 	ldr r0, [sp, #8]
