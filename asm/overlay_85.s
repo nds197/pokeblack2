@@ -1,3 +1,5 @@
+	#include "config.h"
+
 	.include "asm/macros/function.inc"
 
 	.extern FUN_020056FC
@@ -3915,7 +3917,7 @@ _021EC9FE:
 	add r1, #0x3d
 	strb r0, [r1]
 	add r0, r4, #0
-	mov r1, #0x17
+	mov r1, #GAME_VERSION
 	add r0, #0x3e
 	strb r1, [r0]
 	add r0, r4, #0

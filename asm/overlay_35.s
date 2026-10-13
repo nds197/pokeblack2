@@ -4778,11 +4778,20 @@ FUN_0217ED20: ; 0x0217ED20
 	strh r1, [r4]
 	cmp r0, #0
 	bne _0217ED3C
+#if defined(BLACK2)
 	mov r0, #0
 	strh r0, [r4, #2]
+#else
+	strh r1, [r4, #2]
+#endif
 	pop {r4, pc}
 _0217ED3C:
+#if defined(WHITE2)
+	mov r0, #0
+	strh r0, [r4, #2]
+#else
 	strh r1, [r4, #2]
+#endif
 	pop {r4, pc}
 	thumb_func_end FUN_0217ED20
 

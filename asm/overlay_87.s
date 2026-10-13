@@ -553,7 +553,11 @@ FUN_021EABC8: ; 0x021EABC8
 	bl FUN_0204AA30
 	mov r1, #0x60
 	str r1, [sp]
+#if defined(WHITE2)
+	mov r1, #2
+#else
 	mov r1, #3
+#endif
 	mov r2, #4
 	mov r3, #0
 	add r4, r0, #0

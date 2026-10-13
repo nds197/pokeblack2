@@ -858,7 +858,11 @@ _021EAE30:
 	b _021EAE44
 	.balign 4, 0
 _021EAE34: .word 0x0000FFFF
+#if defined(WHITE2)
+_021EAE38: .word 0x00000146
+#else
 _021EAE38: .word 0x00000227
+#endif
 _021EAE3C: .word 0x0000075F
 _021EAE40: .word _021EB6C4
 _021EAE44:

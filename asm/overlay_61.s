@@ -1,3 +1,5 @@
+	#include "config.h"
+
 	.include "asm/macros/function.inc"
 
 	.extern FUN_0200C838
@@ -974,7 +976,7 @@ FUN_021E5F94: ; 0x021E5F94
 _021E5FC8:
 	cmp r5, #9
 	bne _021E5FD6
-	cmp r0, #0x17
+	cmp r0, #GAME_VERSION
 	beq _021E5FD6
 	add r0, r5, #1
 	lsl r0, r0, #0x18

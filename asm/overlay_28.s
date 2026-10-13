@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_02005748
@@ -1096,7 +1098,7 @@ _02170A1E:
 	and r0, r7
 	orr r0, r1
 	strb r0, [r5, #6]
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	strb r0, [r5, #8]
 	mov r0, #2
 	strb r0, [r5, #9]

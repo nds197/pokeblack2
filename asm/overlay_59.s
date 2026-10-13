@@ -3675,7 +3675,11 @@ _021E75FE:
 	add sp, #0x14
 	pop {r4, r5, r6, r7, pc}
 	.balign 4, 0
+#if defined(WHITE2)
+_021E7604: .word _021E7DC4
+#else
 _021E7604: .word _021E7DB4
+#endif
 	thumb_func_end FUN_021E74CC
 
 	thumb_func_start FUN_021E7608

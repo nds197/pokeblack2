@@ -9202,7 +9202,11 @@ FUN_0217AEE8: ; 0x0217AEE8
 	ldr r0, _0217AF54 ; =0x0208FF80
 	ldrb r0, [r0]
 	str r0, [r4, #0x10]
+#if defined(WHITE2)
+	mov r0, #1
+#else
 	mov r0, #2
+#endif
 	lsl r0, r0, #0x16
 	str r0, [r4, #0x14]
 	mov r0, #1
