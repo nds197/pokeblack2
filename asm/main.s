@@ -1,3 +1,5 @@
+	#include "config.h"
+
 	.include "asm/macros/function.inc"
 
 	.extern SVC_CpuSet
@@ -8505,7 +8507,7 @@ FUN_02008B40: ; 0x02008B40
 	mov r0, #2
 	strb r0, [r4, #0x1a]
 	add r0, r4, #0
-	mov r1, #0x17
+	mov r1, #GAME_VERSION
 	bl FUN_02008C00
 	pop {r4, pc}
 	.balign 4, 0
@@ -21564,7 +21566,7 @@ _0200DF26:
 	add r0, r6, #0
 	bl FUN_02008BF4
 	strb r0, [r5, #0x16]
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	strb r0, [r5, #0x19]
 	mov r0, #2
 	strb r0, [r5, #0x1a]
@@ -39630,7 +39632,7 @@ _02015874: .word 0x00000D9C
 
 	thumb_func_start FUN_02015878
 FUN_02015878: ; 0x02015878
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	bx lr
 	thumb_func_end FUN_02015878
 
@@ -92026,7 +92028,7 @@ _0202CC08:
 	ldr r1, [r5, #0xc]
 	mov r0, #0x3f
 	bic r1, r0
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	orr r0, r1
 	str r0, [r5, #0xc]
 	ldr r1, [r5, #4]
@@ -112829,7 +112831,7 @@ FUN_02035CD4: ; 0x02035CD4
 FUN_02035CEC: ; 0x02035CEC
 	ldr r3, _02035CF4 ; =FUN_0201CD40
 	mov r1, #0x77
-	mov r2, #0x17
+	mov r2, #GAME_VERSION
 	bx r3
 	.balign 4, 0
 _02035CF4: .word FUN_0201CD40
@@ -279120,9 +279122,11 @@ _0208FF4C:
 	.byte 0x06, 0x06, 0x06, 0x06, 0x00, 0x00, 0x00, 0x01, 0x01, 0x03, 0x00, 0x05, 0x00, 0x00, 0x00, 0x06
 	.byte 0x06, 0x06, 0x06, 0x01, 0x00, 0x01, 0x01, 0x06, 0x06, 0x06, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00
 	.byte 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x06, 0x06, 0x06, 0x04, 0x00, 0x00
+
 	.public _0208FF7C
-_0208FF7C: ; version?
-	.byte 0x17, 0x00, 0x00, 0x00
+_0208FF7C: ; version
+	.word GAME_VERSION
+
 	.public _0208FF80
 _0208FF80:
 	.byte 0x02, 0x00, 0x00, 0x00
