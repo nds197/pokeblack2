@@ -38404,7 +38404,7 @@ _021F0080: .word 0xFF7FFFFF
 
 	thumb_func_start FUN_021F0084
 FUN_021F0084: ; 0x021F0084
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0x1b
 	lsl r0, r0, #4
 #else
@@ -38412,7 +38412,7 @@ FUN_021F0084: ; 0x021F0084
 #endif
 	bx lr
 	.balign 4, 0
-#if defined(black2)
+#if defined(BLACK2)
 _021F0088: .word 0x000001B1
 #endif
 	thumb_func_end FUN_021F0084

@@ -442,7 +442,7 @@ _021EEF72:
 
 	thumb_func_start OV117_FUN_021EEF94
 OV117_FUN_021EEF94: ; 0x021EEF94
-#if defined(white2)
+#if defined(WHITE2)
 	push {r3, r4, r5, r6, r7, lr}
 	sub sp, #0x118
 #else
@@ -455,7 +455,7 @@ OV117_FUN_021EEF94: ; 0x021EEF94
 	mov r2, #0
 	bl FUN_021B8598
 	ldr r4, _021EF218 ; =_021EFDBC
-#if defined(white2)
+#if defined(WHITE2)
 	add r3, sp, #0xe8
 #else
 	add r3, sp, #0xec
@@ -469,7 +469,7 @@ _021EEFAA:
 	mov r6, sp
 	mov r4, #0
 	sub r6, r6, #4
-#if defined(white2)
+#if defined(WHITE2)
 	add r7, sp, #0xe8
 #else
 	add r7, sp, #0xec
@@ -493,7 +493,7 @@ _021EEFBA:
 	cmp r4, #4
 	blt _021EEFBA
 	ldr r4, _021EF21C ; =_021EFDEC
-#if defined(white2)
+#if defined(WHITE2)
 	add r3, sp, #0xb8
 #else
 	add r3, sp, #0xbc
@@ -511,7 +511,7 @@ _021EEFF2:
 	mov r0, #0xc
 	add r1, r4, #0
 	mul r1, r0
-#if defined(white2)
+#if defined(WHITE2)
 	add r0, sp, #0xb8
 #else
 	add r0, sp, #0xbc
@@ -539,7 +539,7 @@ _021EEFF2:
 	cmp r4, #4
 	blt _021EEFF2
 	ldr r4, _021EF220 ; =_021EFD8C
-#if defined(white2)
+#if defined(WHITE2)
 	add r3, sp, #0x88
 #else
 	add r3, sp, #0x8c
@@ -550,7 +550,7 @@ _021EF030:
 	stmia r3!, {r0, r1}
 	sub r2, r2, #1
 	bne _021EF030
-#if defined(white2)
+#if defined(WHITE2)
 	mov r6, sp
 	mov r4, #0
 	sub r6, r6, #4
@@ -628,7 +628,7 @@ _021EF086:
 	mov r0, #0
 	str r0, [sp, #8]
 	mov r0, sp
-#if defined(white2)
+#if defined(WHITE2)
 	str r0, [sp, #0xc]
 	sub r0, r0, #4
 	str r0, [sp, #0xc]
@@ -772,7 +772,7 @@ _021EF118:
 	lsr r1, r1, #0x10
 	mov r2, #3
 	bl FUN_021EF24C
-#if defined(white2)
+#if defined(WHITE2)
 	add r3, sp, #0x34
 	add r2, sp, #0x58
 #else
@@ -791,7 +791,7 @@ _021EF148:
 	mov r0, #6
 	lsl r2, r4, #0x10
 	mul r0, r1
-#if defined(white2)
+#if defined(WHITE2)
 	add r1, sp, #0x58
 	add r6, r1, r0
 	str r0, [sp, #0x14]
@@ -806,7 +806,7 @@ _021EF148:
 	mov r7, #0
 	bl FUN_021B8224
 	add r3, r0, #0
-#if defined(white2)
+#if defined(WHITE2)
 	ldr r0, [sp, #0x14]
 	add r1, sp, #0x58
 #else
@@ -827,7 +827,7 @@ _021EF148:
 	str r0, [sp, #8]
 	cmp r0, #0x12
 	blt _021EF118
-#if defined(white2)
+#if defined(WHITE2)
 	add r0, sp, #0x4c
 #else
 	add r0, sp, #0x50
@@ -836,7 +836,7 @@ _021EF148:
 	str r7, [r0, #4]
 	str r7, [r0, #8]
 	mov r0, sp
-#if defined(white2)
+#if defined(WHITE2)
 	str r0, [sp, #0x18]
 	sub r0, r0, #4
 	str r0, [sp, #0x18]
@@ -858,7 +858,7 @@ _021EF1A6:
 	ldr r0, [r3]
 	add r6, r7, #0
 	str r0, [r2]
-#if defined(white2)
+#if defined(WHITE2)
 	ldr r0, [sp, #0x18]
 #else
 	ldr r0, [sp, #0x1c]
@@ -882,7 +882,7 @@ _021EF1A6:
 	mov r7, sp
 	sub r7, r7, #4
 _021EF1DE:
-#if defined(white2)
+#if defined(WHITE2)
 	add r3, sp, #0x4c
 #else
 	add r3, sp, #0x50
@@ -909,7 +909,7 @@ _021EF1DE:
 	add r4, r4, #1
 	cmp r4, #4
 	blt _021EF1DE
-#if defined(white2)
+#if defined(WHITE2)
 	add sp, #0x118
 	pop {r3, r4, r5, r6, r7, pc}
 	nop

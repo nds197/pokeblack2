@@ -1183,7 +1183,7 @@ OV27_FUN_02170B98: ; 0x02170B98
 	add r1, sp, #4
 	and r3, r0
 	ldrh r0, [r1, #0xa]
-#if defined(white2)
+#if defined(WHITE2)
 	ldr r6, [r4, #4]
 #endif
 	lsl r0, r0, #0x16
@@ -1197,7 +1197,7 @@ OV27_FUN_02170B98: ; 0x02170B98
 	lsr r0, r0, #2
 	orr r3, r0
 	ldr r0, _02170CE0 ; =0xBFFFFFFF
-#if defined(white2)
+#if defined(WHITE2)
 	and r0, r3
 	ldr r3, _02170CE4 ; =0x7FFFFFFF
 	and r0, r3
@@ -1317,7 +1317,7 @@ OV27_FUN_02170B98: ; 0x02170B98
 	strh r0, [r4, #0x16]
 	add sp, #0x2c
 	pop {r4, r5, r6, r7, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	.balign 4, 0
 #else
 	nop

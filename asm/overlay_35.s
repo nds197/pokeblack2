@@ -4183,7 +4183,7 @@ _0217E862:
 	bl FUN_0217E62C
 	mov r0, #0
 	mov r1, #0
-#if defined(black2)
+#if defined(BLACK2)
 	mov r5, #0
 #endif
 	bl FUN_020187C4
@@ -4193,7 +4193,7 @@ _0217E862:
 	bl FUN_020187C4
 	mov r0, #2
 	mov r1, #0
-#if defined(white2)
+#if defined(WHITE2)
 	mov r5, #2
 #else
 	mov r7, #2
@@ -4204,7 +4204,7 @@ _0217E862:
 	bl OV12_FUN_02154E70
 	cmp r0, #0
 	beq _0217E8E0
-#if defined(white2)
+#if defined(WHITE2)
 	add r0, r5, #0
 	add r1, r6, #0
 	bl FUN_020187C4

@@ -23034,7 +23034,7 @@ FUN_0215A488: ; 0x0215A488
 	str r7, [r4, #0x3c]
 	mov r0, #0
 	str r0, [r4, #0x38]
-#if defined(black2)
+#if defined(BLACK2)
 	mov r0, #1
 #endif
 	str r0, [r4, #0x40]
@@ -23042,7 +23042,7 @@ FUN_0215A488: ; 0x0215A488
 	bl FUN_0215A53C
 	ldr r0, [sp]
 	pop {r3, r4, r5, r6, r7, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	nop
 #else
 	.balign 4, 0
@@ -37752,7 +37752,7 @@ _02160F4A:
 	bl FUN_02010564
 	cmp r0, #0
 	bne _02160F60
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0x6a
 	lsl r0, r0, #2
 #else
@@ -37760,7 +37760,7 @@ _02160F4A:
 #endif
 	pop {r4, r5, r6, pc}
 _02160F60:
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0
 #else
 	mov r0, #0x6a

@@ -1,14 +1,14 @@
-GAME_VERSION       ?= black2
+GAME_VERSION       ?= BLACK2
 GAME_REMASTER      ?= 0
 GAME_LANGUAGE      ?= ENGLISH
 
-ifeq ($(GAME_VERSION),black2)
+ifeq ($(GAME_VERSION),BLACK2)
 buildname     := black2
 shortname     := black
 TITLE_NAME    := POKEMON B2
 GAME_CODE     := IRE
 else
-ifeq ($(GAME_VERSION),white2)
+ifeq ($(GAME_VERSION),WHITE2)
 buildname     := white2
 shortname     := white
 TITLE_NAME    := POKEMON W2

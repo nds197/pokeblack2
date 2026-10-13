@@ -9781,7 +9781,7 @@ _021C35E0:
 	lsl r0, r0, #8
 	ldr r0, [r5, r0]
 	bl FUN_02010564
-#if defined(white2)
+#if defined(WHITE2)
 	mov r2, #1
 	cmp r0, #0
 	beq _021C3632
@@ -9872,7 +9872,7 @@ _021C3692:
 	bl FUN_021C1270
 _021C3696:
 	pop {r4, r5, r6, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	nop
 #else
 	.balign 4, 0
@@ -11725,7 +11725,7 @@ _021C448A:
 	cmp r1, #0
 	beq _021C44A4
 	lsl r1, r3, #1
-#if defined(black2)
+#if defined(BLACK2)
 	add r1, r2, r1
 #endif
 	mov r6, #0xc
@@ -11759,7 +11759,7 @@ _021C44C8:
 	bl FUN_021BF5BC
 	add sp, #0x10
 	pop {r3, r4, r5, r6, r7, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	.balign 4, 0
 #else
 	nop
@@ -12816,7 +12816,7 @@ FUN_021C4C94: ; 0x021C4C94
 FUN_021C4CA4: ; 0x021C4CA4
 	push {r3, lr}
 	bl FUN_02010564
-#if defined(white2)
+#if defined(WHITE2)
 	mov r1, #0x1a
 	sub r0, r1, r0
 #else
@@ -12825,7 +12825,7 @@ FUN_021C4CA4: ; 0x021C4CA4
 	lsl r0, r0, #0x10
 	lsr r0, r0, #0x10
 	pop {r3, pc}
-#if defined(black2)
+#if defined(BLACK2)
 	.balign 4, 0
 #endif
 	thumb_func_end FUN_021C4CA4

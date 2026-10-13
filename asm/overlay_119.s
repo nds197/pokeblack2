@@ -166,7 +166,7 @@ _021EED7E:
 	lsr r1, r1, #0x10
 	mov r2, #2
 	bl FUN_021EEE18
-#if defined(white2)
+#if defined(WHITE2)
 	lsl r2, r4, #0x10
 	ldr r0, [r5]
 	mov r1, #0
@@ -217,7 +217,7 @@ _021EEDB6:
 	blt _021EEDB6
 	add sp, #0x68
 	pop {r3, r4, r5, r6, r7, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	.balign 4, 0
 #else
 	nop

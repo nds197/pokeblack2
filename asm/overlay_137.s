@@ -12550,7 +12550,7 @@ FUN_021F49F0: ; 0x021F49F0
 	ldr r2, [sp, #0x28]
 	add r0, r5, #0
 	mov r1, #0x16
-#if defined(white2)
+#if defined(WHITE2)
 	mov r4, #0x16
 #endif
 	bl FUN_02037C70
@@ -12566,7 +12566,7 @@ FUN_021F49F0: ; 0x021F49F0
 	bl FUN_02037C70
 	add r0, r5, #0
 	mov r1, #0xf
-#if defined(white2)
+#if defined(WHITE2)
 	add r2, r4, #0
 #else
 	mov r2, #0x17
@@ -12578,7 +12578,7 @@ FUN_021F49F0: ; 0x021F49F0
 	bl FUN_02037C70
 	add sp, #0x34
 	pop {r4, r5, r6, r7, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	nop
 #else
 	.balign 4, 0

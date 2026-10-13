@@ -20,7 +20,7 @@
 #define LANGUAGE_SPANISH  7
 #define LANGUAGE_KOREAN   8
 
-#if defined(black2)
+#if defined(BLACK2)
 #define GAME_VERSION VERSION_BLACK2
 #else
 #define GAME_VERSION VERSION_WHITE2

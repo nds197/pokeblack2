@@ -3222,7 +3222,7 @@ FUN_0219E644: ; 0x0219E644
 	mov r1, #0xc0
 	str r1, [sp]
 	mov r4, #0xb
-#if defined(white2)
+#if defined(WHITE2)
 	mov r1, #4
 	mov r2, #0
 	mov r3, #0

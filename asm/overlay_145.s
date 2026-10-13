@@ -887,7 +887,7 @@ FUN_0219D4CC: ; 0x0219D4CC
 	push {r3, lr}
 	bl FUN_0200FA4C
 	cmp r0, #4
-#if defined(black2)
+#if defined(BLACK2)
 	bne _0219D4D8
 	add r0, r0, #1
 _0219D4D8:

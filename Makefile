@@ -107,12 +107,12 @@ endif
 sdk9: $(ALL_LIB_OBJS)
 
 # Convenience targets
-black2:          ; @$(MAKE) GAME_VERSION=black2
-white2:         ; @$(MAKE) GAME_VERSION=white2
-compare_black2:  ; @$(MAKE) GAME_VERSION=black2 COMPARE=1
-compare_white2: ; @$(MAKE) GAME_VERSION=white2 COMPARE=1
-clean_black2:    ; @$(MAKE) GAME_VERSION=black2 clean
-clean_white2:   ; @$(MAKE) GAME_VERSION=white2 clean
+black2:          ; @$(MAKE) GAME_VERSION=BLACK2
+white2:         ; @$(MAKE) GAME_VERSION=WHITE2
+compare_black2:  ; @$(MAKE) GAME_VERSION=BLACK2 COMPARE=1
+compare_white2: ; @$(MAKE) GAME_VERSION=WHITE2 COMPARE=1
+clean_black2:    ; @$(MAKE) GAME_VERSION=BLACK2 clean
+clean_white2:   ; @$(MAKE) GAME_VERSION=WHITE2 clean
 
 compare:             compare_black2
 

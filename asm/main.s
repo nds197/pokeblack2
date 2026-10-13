@@ -43341,14 +43341,14 @@ FUN_02017310: ; 0x02017310
 	bl FUN_02010564
 	cmp r0, #0
 	bne _02017342
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0x10
 #else
 	mov r0, #0xf
 #endif
 	pop {r4, pc}
 _02017342:
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0xf
 #else
 	mov r0, #0x10
@@ -46413,7 +46413,7 @@ FUN_020186E0: ; 0x020186E0
 	ldr r1, _02018774 ; =0x00000267
 	ldr r0, [r4]
 	strh r1, [r0, #0x34]
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0
 	mov r1, #1
 	bl FUN_020187B0
@@ -46607,7 +46607,7 @@ _0201888E:
 
 	thumb_func_start FUN_02018894
 FUN_02018894: ; 0x02018894
-#if defined(white2)
+#if defined(WHITE2)
 	push {r4, r5, r6, lr}
 	add r4, r0, #0
 	bl FUN_02018860
@@ -46806,7 +46806,7 @@ _02018992:
 _02018996:
 	ldrh r4, [r0, #0x12]
 _02018998:
-#if defined(white2)
+#if defined(WHITE2)
 	ldr r0, _020189C4 ; =0x00000409
 	cmp r4, r0
 	bne _020189C0
@@ -46815,7 +46815,7 @@ _020189C0:
 #endif
 	add r0, r4, #0
 	pop {r3, r4, r5, pc}
-#if defined(white2)
+#if defined(WHITE2)
 	.balign 4, 0
 _020189C4: .word 0x00000409
 #endif
@@ -47304,7 +47304,7 @@ FUN_02018C80: ; 0x02018C80
 	lsr r1, r1, #0x10
 	cmp r1, #1
 	bhi _02018C9A
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #0x71
 #else
 	mov r0, #0x70
@@ -91334,7 +91334,7 @@ FUN_0202C6C4: ; 0x0202C6C4
 	mov r0, #0
 	str r0, [sp, #4]
 	str r0, [sp]
-#if defined(white2)
+#if defined(WHITE2)
 	mov r0, #4
 #else
 	mov r0, #8
