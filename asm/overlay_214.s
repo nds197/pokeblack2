@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_020056FC
@@ -8453,7 +8455,7 @@ _021D73DC:
 	add r1, #0xf6
 	strb r0, [r1]
 	add r0, r6, #0
-	mov r1, #0x17
+	mov r1, #GAME_VERSION
 	add r0, #0x14
 	strb r1, [r5, r0]
 	add r0, r6, #0
@@ -26226,7 +26228,11 @@ _021E01B6:
 	mov r5, #0
 	bl FUN_0204875C
 	add r7, r0, #0
+#if defined(WHITE2)
+	mov r1, #0x18
+#else
 	mov r1, #0x19
+#endif
 	bl FUN_0204898C
 	add r6, r0, #0
 	add r0, r7, #0
@@ -27409,9 +27415,17 @@ _021E0A32:
 	ldr r0, _021E0AFC ; =0x00000126
 	sub r0, r0, #2
 	ldrb r0, [r4, r0]
+#if defined(WHITE2)
+	cmp r0, #0x15
+#else
 	cmp r0, #0x14
+#endif
 	beq _021E0ADC
+#if defined(WHITE2)
+	cmp r0, #0x17
+#else
 	cmp r0, #0x16
+#endif
 	bne _021E0ADE
 _021E0ADC:
 	mov r6, #1
@@ -28709,7 +28723,11 @@ FUN_021E1448: ; 0x021E1448
 	lsr r3, r3, #0x10
 	bl FUN_0204875C
 	add r7, r0, #0
+#if defined(WHITE2)
+	mov r1, #0x18
+#else
 	mov r1, #0x19
+#endif
 	bl FUN_0204898C
 	add r6, r0, #0
 	add r0, r7, #0

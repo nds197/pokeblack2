@@ -468,7 +468,6 @@
 	.extern _020946BC
 	.extern FUN_021B38CC
 	.extern FUN_021B46F8
-	.extern FUN_021E0000
 	.extern OV193_FUN_021B5C78
 	.extern OV193_FUN_021B37F8
 
@@ -13145,7 +13144,11 @@ _021BDD1E:
 	mov r2, #0x65
 	bl FUN_0204875C
 	add r7, r0, #0
+#if defined(WHITE2)
+	mov r1, #0x18
+#else
 	mov r1, #0x19
+#endif
 	bl FUN_0204898C
 	add r6, r0, #0
 	add r0, r7, #0
@@ -16046,9 +16049,17 @@ _021BF4AA:
 	ldr r0, [r4, r6]
 	mov r5, #0
 	bl FUN_02008BFC
+#if defined(WHITE2)
+	cmp r0, #0x15
+#else
 	cmp r0, #0x14
+#endif
 	beq _021BF4CE
+#if defined(WHITE2)
+	cmp r0, #0x17
+#else
 	cmp r0, #0x16
+#endif
 	bne _021BF4D0
 _021BF4CE:
 	mov r5, #1
@@ -30309,7 +30320,7 @@ _021C6C68:
 _021C6C88:
 	.byte 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 	.byte 0x00, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
-	.word FUN_021E0000
+	.byte 0x01, 0x00, 0x1E, 0x02
 	.byte 0x00, 0x80, 0x00, 0x00
 	.byte 0x00, 0x03, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00
 _021C6CA8:

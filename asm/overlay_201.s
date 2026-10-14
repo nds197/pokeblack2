@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_020074EC
@@ -173,7 +175,7 @@ OV201_FUN_021B5420: ; 0x021B5420
 	ldr r0, [r4]
 	ldr r1, _021B5524 ; =_021B7AEC
 	str r0, [r5, #4]
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	strb r0, [r5, #8]
 	mov r0, #2
 	strb r0, [r5, #9]

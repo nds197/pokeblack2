@@ -1005,7 +1005,11 @@ _021B5A3C:
 	add r3, r6, #0
 	bl FUN_0204875C
 	add r6, r0, #0
+#if defined(WHITE2)
+	mov r1, #0x18
+#else
 	mov r1, #0x19
+#endif
 	bl FUN_0204898C
 	add r4, r0, #0
 	add r0, r6, #0

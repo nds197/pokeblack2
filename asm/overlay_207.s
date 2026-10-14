@@ -1123,7 +1123,11 @@ FUN_021B36A4: ; 0x021B36A4
 	mov r2, #0
 	mov r3, #0
 	str r1, [sp, #4]
+#if defined(WHITE2)
+	mov r1, #0
+#else
 	mov r1, #1
+#endif
 	add r7, r0, #0
 	bl FUN_0204B0D4
 	str r4, [sp]
@@ -1146,7 +1150,11 @@ FUN_021B36A4: ; 0x021B36A4
 	bl FUN_0204AF50
 	str r4, [sp]
 	ldrh r0, [r5]
+#if defined(WHITE2)
+	mov r1, #2
+#else
 	mov r1, #3
+#endif
 	mov r2, #4
 	str r0, [sp, #4]
 	add r0, r7, #0

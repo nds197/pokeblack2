@@ -1,3 +1,5 @@
+	#include "config.h"
+
 	.include "asm/macros/function.inc"
 
 	.extern FUN_020056FC
@@ -6252,7 +6254,11 @@ FUN_021B831C: ; 0x021B831C
 	ldr r1, [r5]
 	cmp r1, #0
 	beq _021B833E
+#if defined(WHITE2)
+	mov r0, #1
+#else
 	mov r0, #2
+#endif
 	lsl r0, r0, #0x16
 	tst r0, r1
 	beq _021B8342
@@ -16802,7 +16808,11 @@ _021BD4EE:
 	add r1, sp, #0
 	ldrb r0, [r0]
 	str r0, [sp, #0x10]
+#if defined(WHITE2)
+	mov r0, #1
+#else
 	mov r0, #2
+#endif
 	lsl r0, r0, #0x16
 	str r0, [sp, #0x14]
 	mov r0, #1
@@ -16956,7 +16966,7 @@ _021BD612:
 	str r0, [sp, #0x10]
 	mov r0, #1
 	str r0, [sp, #0x78]
-	lsl r0, r0, #0x17
+	lsl r0, r0, #GAME_VERSION
 	str r0, [sp, #0x14]
 	add r0, sp, #0
 	bl FUN_0215309C
@@ -17231,7 +17241,11 @@ _021BD842:
 	add r0, r4, r7
 	add r0, #0x93
 	bl FUN_021BDCC0
+#if defined(WHITE2)
+	mov r1, #1
+#else
 	mov r1, #2
+#endif
 	lsl r1, r1, #0x16
 	tst r0, r1
 	beq _021BD86C

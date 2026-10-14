@@ -36,7 +36,6 @@
 	.extern FUN_02078920
 	.extern FUN_0208D65C
 	.extern FUN_0208D868
-	.extern FUN_02030000
 
 	.text
 
@@ -4773,7 +4772,7 @@ _021A99C4:
 _021A99EC:
 	.byte 0xFF, 0xFF, 0xFF, 0xFF
 _021A99F0:
-	.word FUN_02030000
+	.byte 0x01, 0x00, 0x03, 0x02
 _021A99F4:
 	.byte 0x00, 0xF0, 0x00, 0x10, 0xF0, 0x00, 0x10, 0x00
 _021A99FC:
