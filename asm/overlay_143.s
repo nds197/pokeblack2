@@ -11823,8 +11823,13 @@ _0219F274:
 	add pc, r1
 _0219F292: ; jump table
 	.short _0219F2A2 - _0219F292 - 2 ; case 0
+#if defined(WHITE2)
+	.short _0219F2A6 - _0219F292 - 2 ; case 1
+	.short _0219F2C8 - _0219F292 - 2 ; case 2
+#else
 	.short _0219F2C8 - _0219F292 - 2 ; case 1
 	.short _0219F2A6 - _0219F292 - 2 ; case 2
+#endif
 	.short _0219F2C8 - _0219F292 - 2 ; case 3
 	.short _0219F2A8 - _0219F292 - 2 ; case 4
 	.short _0219F2A8 - _0219F292 - 2 ; case 5

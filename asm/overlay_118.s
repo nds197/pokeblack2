@@ -81,26 +81,46 @@ FUN_021EECDC: ; 0x021EECDC
 	str r4, [r7, #0x10]
 	strh r4, [r0]
 	strh r4, [r0, #2]
+#if defined(WHITE2)
+	mov r0, #0xa6
+#else
 	mov r0, #0x4e
+#endif
 	str r4, [r7, #8]
 	lsl r0, r0, #0xe
 	str r0, [sp, #0xc]
+#if defined(WHITE2)
+	mov r0, #0x4e
+#else
 	mov r0, #0xa6
+#endif
 	str r4, [r7]
 	lsl r1, r1, #0xe
 	str r4, [r7, #0xc]
 	str r4, [r7, #0x14]
 	lsl r0, r0, #0xe
 	str r0, [sp, #0x18]
+#if defined(BLACK2)
 	add r0, sp, #0
+#endif
 	str r1, [sp, #4]
 	str r1, [sp, #0x10]
 	mov r1, #2
+#if defined(BLACK2)
 	strh r4, [r0]
+#endif
 	lsl r1, r1, #0xe
+#if defined(WHITE2)
+	add r0, sp, #0
+	strh r1, [r0]
+#endif
 	str r4, [sp, #8]
 	str r4, [sp, #0x14]
+#if defined(WHITE2)
+	strh r4, [r0, #2]
+#else
 	strh r1, [r0, #2]
+#endif
 	add r6, r4, #0
 _021EED26:
 	lsl r2, r4, #0x10

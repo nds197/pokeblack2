@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_02008B94
@@ -308,7 +310,7 @@ FUN_0219CFAC: ; 0x0219CFAC
 	add sp, #0x10
 	pop {r4, r5, r6, pc}
 _0219CFDE:
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	str r0, [sp]
 	mov r0, #2
 	str r0, [sp, #4]
@@ -405,7 +407,7 @@ _0219D08E:
 	mov r1, #0
 	mov r2, #4
 	blx FUN_020787A8
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	str r0, [sp]
 	mov r0, #2
 	str r0, [sp, #4]
@@ -1029,7 +1031,7 @@ OV189_FUN_0219D504: ; 0x0219D504
 	add r5, r0, #0
 	mov r6, #0
 	blx FUN_020787A8
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	strb r0, [r5]
 	mov r0, #2
 	strb r0, [r5, #1]
@@ -29804,8 +29806,12 @@ _021AE654:
 _021AE680:
 	.byte 0x00, 0x00, 0x00, 0x00
 _021AE684:
-	.byte 0x27, 0xCF, 0x1A, 0x02, 0x26, 0xCF, 0x1A, 0x02, 0x24, 0xCF, 0x1A, 0x02
-	.byte 0x20, 0xCF, 0x1A, 0x02, 0x18, 0xCF, 0x1A, 0x02, 0x08, 0xCF, 0x1A, 0x02
+	.word _021ACEE8 + 0x3F
+	.word _021ACEE8 + 0x3E
+	.word _021ACEE8 + 0x3C
+	.word _021ACEE8 + 0x38
+	.word _021ACEE8 + 0x30
+	.word _021ACEE8 + 0x20
 	.word _021ACEE8
 	; 0x021AE6A0
 

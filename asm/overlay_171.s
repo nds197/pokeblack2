@@ -608,7 +608,11 @@ FUN_021DDDFC: ; 0x021DDDFC
 	bl FUN_0204AF50
 	str r6, [sp]
 	add r0, r4, #0
+#if defined(WHITE2)
+	mov r1, #0x13
+#else
 	mov r1, #0x14
+#endif
 	mov r2, #0
 	mov r3, #0
 	str r5, [sp, #4]

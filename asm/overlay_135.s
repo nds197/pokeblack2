@@ -44,7 +44,6 @@
 	.extern FUN_021E64F0
 	.extern FUN_021E67CC
 	.extern FUN_021E67E4
-	.extern FUN_02030000
 
 	.text
 
@@ -2153,7 +2152,7 @@ _021EFBFC:
 	.byte 0x04, 0x04, 0x04, 0x04
 	.byte 0x00, 0x00, 0x00, 0x00
 _021EFC04:
-	.word FUN_02030000
+	.byte 0x01, 0x00, 0x03, 0x02
 	.byte 0x05, 0x04, 0x07, 0x06
 
 	.data
