@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_02006254
@@ -12823,7 +12825,7 @@ _021B90BC:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
-_021B90CC: .word 0x00020017
+_021B90CC: .word 0x00020000 + GAME_VERSION
 _021B90D0: .word _021BFF8C
 _021B90D4: .word FUN_021B946C
 _021B90D8: .word 0x0000121C
@@ -15316,7 +15318,11 @@ FUN_021BA328: ; 0x021BA328
 	mov r2, #0x65
 	bl FUN_0204875C
 	add r7, r0, #0
+#if defined(WHITE2)
+	mov r1, #0x18
+#else
 	mov r1, #0x19
+#endif
 	bl FUN_0204898C
 	add r6, r0, #0
 	add r0, r7, #0
@@ -18458,7 +18464,11 @@ _021BBB3A:
 	mov r2, #0x65
 	bl FUN_0204875C
 	add r7, r0, #0
+#if defined(WHITE2)
+	mov r1, #0x18
+#else
 	mov r1, #0x19
+#endif
 	bl FUN_0204898C
 	add r6, r0, #0
 	add r0, r7, #0

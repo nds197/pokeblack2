@@ -11986,12 +11986,25 @@ _021A2996:
 	beq _021A29BC
 	b _021A29BE
 _021A29B6:
-	b _021A29BE
-_021A29B8:
+#if defined(WHITE2)
 	mov r0, #1
 	b _021A29C0
+#else
+	b _021A29BE
+#endif
+_021A29B8:
+#if defined(WHITE2)
+	b _021A29BE
+#else
+	mov r0, #1
+	b _021A29C0
+#endif
 _021A29BC:
+#if defined(WHITE2)
+	b _021A29B6
+#else
 	b _021A29B8
+#endif
 _021A29BE:
 	mov r0, #0
 _021A29C0:

@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_02005DF4
@@ -2761,7 +2763,7 @@ _02177E6A:
 	mov r6, #1
 	mov r1, #1
 	bl FUN_0200B798
-	lsl r1, r6, #0x17
+	lsl r1, r6, #GAME_VERSION
 	tst r0, r1
 	beq _02177EC8
 	ldr r0, [r5, #0x38]
@@ -7829,7 +7831,11 @@ FUN_0217A58C: ; 0x0217A58C
 	ldr r0, _0217A5E8 ; =0x0208FF80
 	ldrb r0, [r0]
 	str r0, [sp, #0x10]
+#if defined(WHITE2)
+	mov r0, #1
+#else
 	mov r0, #2
+#endif
 	lsl r0, r0, #0x16
 	str r0, [sp, #0x14]
 	mov r0, #1

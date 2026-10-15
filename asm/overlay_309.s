@@ -6638,7 +6638,11 @@ _021A00EA:
 	mov r1, #0xe6
 	bl FUN_0200F98C
 _021A0110:
+#if defined(WHITE2)
+	mov r7, #2
+#else
 	mov r7, #1
+#endif
 	mov r4, #1
 _021A0114:
 	ldr r1, [r5, #0x20]

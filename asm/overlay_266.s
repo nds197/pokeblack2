@@ -1099,21 +1099,34 @@ FUN_0219D5C4: ; 0x0219D5C4
 	bl FUN_0204C028
 	str r7, [sp]
 	add r0, r5, #0
+#if defined(WHITE2)
+	mov r1, #0xe
+#else
 	mov r1, #7
+#endif
 	mov r2, #0
 	mov r3, #0
 	bl FUN_0204B81C
 	str r0, [r4, #0xc]
 	str r7, [sp]
 	add r0, r5, #0
+#if defined(WHITE2)
+	mov r1, #0xd
+#else
 	mov r1, #6
+#endif
 	mov r2, #0
 	mov r3, #0
 	bl FUN_0204BBA0
 	str r0, [r4, #8]
 	add r0, r5, #0
+#if defined(WHITE2)
+	mov r1, #0xf
+	mov r2, #0x10
+#else
 	mov r1, #8
 	mov r2, #9
+#endif
 	add r3, r7, #0
 	bl FUN_0204BDE0
 	str r0, [r4, #0x10]
@@ -2812,7 +2825,11 @@ _0219E286:
 _0219E2A2:
 	add sp, #8
 	pop {r3, r4, r5, r6, r7, pc}
+#if defined(WHITE2)
+	.balign 4, 0
+#else
 	nop
+#endif
 _0219E2A8: .word 0x04000050
 _0219E2AC: .word 0x04001050
 _0219E2B0: .word 0x00000239
@@ -2868,7 +2885,9 @@ _0219E300:
 	cmp r2, #1
 	bne _0219E310
 	ldr r0, _0219E344 ; =0x04000050
+#if defined(BLACK2)
 	neg r1, r1
+#endif
 	bl FUN_02074AD8
 	b _0219E330
 _0219E310:
@@ -2901,7 +2920,11 @@ _0219E330:
 _0219E340:
 	mov r0, #0
 	pop {r4, pc}
+#if defined(WHITE2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _0219E344: .word 0x04000050
 _0219E348: .word 0x04000052
 _0219E34C: .word 0x04001052
@@ -2918,7 +2941,9 @@ FUN_0219E350: ; 0x0219E350
 #endif
 	mov r4, #0x16
 	mov r5, #0x17
-#if defined(BLACK2)
+#if defined(WHITE2)
+	add r6, r6, #6
+#else
 	mul r6, r7
 #endif
 	cmp r2, #1
@@ -3218,7 +3243,13 @@ _0219E518:
 	.word FUN_0219CEB4
 	.word FUN_0219CEC8
 _0219E524:
-	.byte 0x40, 0x04, 0x80, 0x0C, 0xC0, 0x14, 0x00, 0x1D, 0x40, 0x25, 0x80, 0x2D
+#if defined(WHITE2)
+	.byte 0xC0, 0x14, 0x00, 0x1D
+#else
+	.byte 0x40, 0x04, 0x80, 0x0C
+#endif
+	.byte 0xC0, 0x14, 0x00, 0x1D
+	.byte 0x40, 0x25, 0x80, 0x2D
 	.byte 0xC0, 0x35, 0x00, 0x00
 _0219E534:
 	.word FUN_0219CF04

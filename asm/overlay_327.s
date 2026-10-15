@@ -2079,12 +2079,25 @@ _021B6C2C:
 	beq _021B6C4E
 	b _021B6C50
 _021B6C48:
-	b _021B6C50
-_021B6C4A:
+#if defined(WHITE2)
 	mov r1, #1
 	b _021B6C52
+#else
+	b _021B6C50
+#endif
+_021B6C4A:
+#if defined(WHITE2)
+	b _021B6C50
+#else
+	mov r1, #1
+	b _021B6C52
+#endif
 _021B6C4E:
+#if defined(WHITE2)
+	b _021B6C48
+#else
 	b _021B6C4A
+#endif
 _021B6C50:
 	mov r1, #0
 _021B6C52:

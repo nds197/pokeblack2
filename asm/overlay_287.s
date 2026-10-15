@@ -10761,7 +10761,11 @@ FUN_021F9940: ; 0x021F9940
 	ldrh r3, [r3, #0x10]
 	ldr r0, [r5, r0]
 	mov r1, #0x63
+#if defined(WHITE2)
+	mov r2, #0x13
+#else
 	mov r2, #0x14
+#endif
 	bl FUN_02026EE8
 	add r0, r6, #0
 	bl FUN_0204AB0C

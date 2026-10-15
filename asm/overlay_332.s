@@ -1,3 +1,5 @@
+	#include "config.h"
+	
 	.include "asm/macros/function.inc"
 
 	.extern FUN_020056FC
@@ -8643,8 +8645,13 @@ _021C2CB4:
 	.balign 4, 0
 _021C2CB8: .word FUN_021C3D78
 _021C2CBC: .word FUN_021BF13C
+#if defined(WHITE2)
+_021C2CC0: .word _021C8F1E
+_021C2CC4: .word _021C8EEC
+#else
 _021C2CC0: .word _021C8F28
 _021C2CC4: .word _021C8EF6
+#endif
 _021C2CC8: .word _021C8F14
 _021C2CCC: .word FUN_021BF17C
 _021C2CD0: .word FUN_021BF23C
@@ -9839,7 +9846,11 @@ _021C3646:
 	bne _021C365E
 	ldr r0, [r5, #0x10]
 	ldr r1, [r5, #0x34]
+#if defined(WHITE2)
+	mov r2, #0x40
+#else
 	mov r2, #0x3f
+#endif
 _021C3658:
 	mov r3, #0
 	bl FUN_021C073C
@@ -10266,7 +10277,11 @@ _021C3992:
 	pop {r3, r4, r5, r6, r7, pc}
 	nop
 _021C3998: .word FUN_021C3D78
+#if defined(WHITE2)
+_021C399C: .word _021C8F00
+#else
 _021C399C: .word _021C8F0A
+#endif
 _021C39A0: .word FUN_021BF23C
 	thumb_func_end FUN_021C382C
 
@@ -11605,10 +11620,16 @@ _021C43A0:
 	cmp r0, #0
 	beq _021C43BA
 	lsl r0, r2, #1
+#if defined(BLACK2)
 	add r0, r1, r0
+#endif
 	mov r5, #0xc
 	mul r5, r3
+#if defined(WHITE2)
+	ldrh r0, [r1, r0]
+#else
 	ldrh r0, [r0, #0xa]
+#endif
 	add r5, r6, r5
 	add r3, r3, #1
 	str r0, [r5, #0x14]
@@ -11646,7 +11667,11 @@ _021C43C8:
 	bl FUN_021C073C
 	add sp, #0xc
 	pop {r4, r5, r6, r7, pc}
+#if defined(WHITE2)
+	nop
+#else
 	.balign 4, 0
+#endif
 _021C4400: .word _021C8F32
 _021C4404: .word _021C93B0
 	thumb_func_end FUN_021C438C
@@ -11730,7 +11755,11 @@ _021C448A:
 #endif
 	mov r6, #0xc
 	mul r6, r4
+#if defined(WHITE2)
+	ldrh r1, [r2, r1]
+#else
 	ldrh r1, [r1, #0xa]
+#endif
 	add r6, r0, r6
 	add r4, r4, #1
 	str r1, [r6, #0x14]
@@ -11891,7 +11920,7 @@ FUN_021C45BC: ; 0x021C45BC
 	add r5, r0, #0
 	mov r4, #0
 	blx FUN_020787A8
-	mov r0, #0x17
+	mov r0, #GAME_VERSION
 	str r0, [r5, #0x28]
 _021C45D0:
 	lsl r0, r4, #2
@@ -12500,9 +12529,17 @@ FUN_021C4A14: ; 0x021C4A14
 	add r4, r1, #0
 	mov r0, #3
 	str r0, [r4, #0x18]
-	mov r0, #0xb
-	str r0, [r4, #0x20]
+#if defined(WHITE2)
 	mov r0, #0xc
+#else
+	mov r0, #0xb
+#endif
+	str r0, [r4, #0x20]
+#if defined(WHITE2)
+	mov r0, #0xb
+#else
+	mov r0, #0xc
+#endif
 	str r0, [r4, #0x28]
 	mov r0, #7
 	str r0, [r4, #0x30]
@@ -12944,10 +12981,18 @@ _021C4D6A:
 	lsr r3, r0, #0x10
 	cmp r1, #2
 	bne _021C4D7C
+#if defined(WHITE2)
+	mov r1, #3
+#else
 	mov r1, #2
+#endif
 	cmp r2, #0
 	bne _021C4D80
+#if defined(WHITE2)
+	mov r1, #2
+#else
 	mov r1, #3
+#endif
 	b _021C4D80
 _021C4D7C:
 	ble _021C4D80
@@ -13120,10 +13165,18 @@ FUN_021C4EB8: ; 0x021C4EB8
 	ldrb r1, [r0, r4]
 	bne _021C4EEC
 	ldr r0, [sp, #0x14]
+#if defined(WHITE2)
+	mov r1, #2
+#else
 	add r1, r6, #0
+#endif
 	cmp r0, #0
 	bne _021C4EEC
+#if defined(WHITE2)
+	add r1, r6, #0
+#else
 	mov r1, #2
+#endif
 _021C4EEC:
 	ldr r0, [r5, #8]
 	mov r2, #1
@@ -14110,7 +14163,11 @@ _021C56AE:
 	lsl r1, r1, #2
 	str r0, [r4, r1]
 	ldr r0, [r4, #0x34]
+#if defined(WHITE2)
+	mov r1, #0x7b
+#else
 	mov r1, #0x7a
+#endif
 	bl FUN_0204898C
 	mov r1, #0xa5
 	lsl r1, r1, #2
