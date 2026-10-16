@@ -24,7 +24,6 @@ HEADER_LTD		:= $(buildname)/rom_header_ltd.sbin
 BANNER_DIR      := $(buildname)/banner
 SYM_GLOBS       := 'asm/unk_*.s' 'asm/overlay_*.s' 'asm/battle_*.s' 'asm/arm9/*.s'
 BASEROM_DIR		:= baserom
-FILES := $(shell cat $(buildname)/files.txt)
 
 # Locate crt0.o
 CRT0_OBJ := lib/asm/crt0.o
@@ -87,9 +86,9 @@ $(BUILD_DIR)/component.files: main ;
 
 $(HEADER_TEMPLATE): ;
 
-$(ROM): $(ROMSPEC) main_lz sub $(BANNER)
+$(ROM): $(ROMSPEC) main_lz sub filesystem $(BANNER)
 	$(PYTHON) $(SCRIPTS)/gen_encrypted_arm9.py "$(BUILD_DIR)/$(MAIN_BIN)" $(GEN_ENCRYPTED_ARGS)
-	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DENC_SUFFIX=$(ARM9_ENC_SUFFIX) -DTARGET_PLATFORM='TWL-HYB' -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$(FILES)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" -DHEADER_LTD="$(HEADER_LTD)" $< $@
+	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DENC_SUFFIX=$(ARM9_ENC_SUFFIX) -DTARGET_PLATFORM='TWL-HYB' -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$$(cat $(BUILD_DIR)/files.txt)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" -DHEADER_LTD="$(HEADER_LTD)" $< $@
 	$(PYTHON) $(SCRIPTS)/fixrom.py "$(ROM)" --dir "$(buildname)" --builddir "$(BUILD_DIR)" $(FIXROM_DECRYPTED_ARM9)
 ifeq ($(COMPARE),1)
 	$(SHA1SUM) -c $(buildname)/rom.sha1
@@ -97,6 +96,9 @@ endif
 
 $(BANNER): $(BANNER_DIR)/banner.meta $(wildcard $(BANNER_DIR)/*.png)
 	@$(PYTHON) $(SCRIPTS)/banner.py build --dir $(BANNER_DIR) -o $@
+
+filesystem:
+	$(PYTHON) $(SCRIPTS)/filesystem.py --builddir $(BUILD_DIR) --buildname $(buildname)
 
 $(SBIN): build/%.sbin: build/%.elf
 ifeq ($(COMPARE),1)

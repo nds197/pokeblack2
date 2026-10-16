@@ -154,7 +154,6 @@ def main():
 
     
     rsa = read_bin(args.dir+"/"+rsa_file)
-    header_logo = read_bin(header_logo_file)
     build_dir = args.builddir
     rom_in = args.rom
     rom_out = args.output

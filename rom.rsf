@@ -60,6 +60,6 @@ Rating
 RomSpec
 {
 	Segment All
-	HostRoot files/
+	HostRoot $(BUILD_DIR)/files/
 	File $(NITROFS_FILES)
 }
