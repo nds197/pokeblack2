@@ -2,7 +2,6 @@ BUILD_DIR    := build
 # Because mwldarm expects absolute paths to be WIN32 paths,
 # all paths referring up from BUILD_DIR must be relative.
 BACK_REL     := ..
-TOOLSDIR     := ../tools
 ELFNAME      := arm7
 MWCCVER      := dsi/1.2p2
 PROC         := arm7tdmi
@@ -21,6 +20,7 @@ tidy:
 clean: tidy
 
 all:
+	$(MAKE) tools
 	$(MAKE) patch_mwasmarm 
 	$(MAKE) target
 
