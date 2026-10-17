@@ -20,7 +20,7 @@ ROM             := $(BUILD_DIR)/poke$(buildname).nds
 BANNER          := $(ROM:%.nds=%.bnr)
 ICON_PNG        := $(buildname)/icon.png
 HEADER_TEMPLATE := $(buildname)/rom_header_template.sbin
-HEADER_LTD		:= $(buildname)/rom_header_ltd.sbin
+HEADER_LTD		:= $(BUILD_DIR)/rom_header_ltd.sbin
 BANNER_DIR      := $(buildname)/banner
 SYM_GLOBS       := 'asm/unk_*.s' 'asm/overlay_*.s' 'asm/battle_*.s' 'asm/arm9/*.s'
 BASEROM_DIR		:= baserom
@@ -88,6 +88,7 @@ $(HEADER_TEMPLATE): ;
 
 $(ROM): $(ROMSPEC) main_lz sub filesystem $(BANNER)
 	$(PYTHON) $(SCRIPTS)/gen_encrypted_arm9.py "$(BUILD_DIR)/$(MAIN_BIN)" $(GEN_ENCRYPTED_ARGS)
+	$(PYTHON) $(SCRIPTS)/gen_rom_header_ltd.py --arm9_path "$(BUILD_DIR)/$(MAIN_BIN)" --header_ltd_path $(HEADER_LTD)
 	$(WINE) $(MAKEROM) $(MAKEROM_FLAGS) -DENC_SUFFIX=$(ARM9_ENC_SUFFIX) -DTARGET_PLATFORM='TWL-HYB' -DBUILD_DIR=$(BUILD_DIR) -DNITROFS_FILES="$$(cat $(BUILD_DIR)/files.txt)" -DTITLE_NAME="$(TITLE_NAME)" -DBNR="$(BANNER)" -DHEADER_TEMPLATE="$(HEADER_TEMPLATE)" -DHEADER_LTD="$(HEADER_LTD)" $< $@
 	$(PYTHON) $(SCRIPTS)/fixrom.py "$(ROM)" --dir "$(buildname)" --builddir "$(BUILD_DIR)" $(FIXROM_DECRYPTED_ARM9)
 ifeq ($(COMPARE),1)
