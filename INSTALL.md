@@ -36,6 +36,7 @@ Building the ROM requires the following packages. If you cannot find one or more
 * binutils-arm-none-eabi
 * wine (to run the mwcc executables)
 * python3
+* pycryptodome
 * libpng-devel (libpng-dev on Ubuntu)
 * pkg-config
 * pugixml (libpugixml-dev on Ubuntu)
@@ -59,6 +60,7 @@ The following packages are required:
 * pugixml
 * pkg-config
 * python3
+* pycryptodome
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
 
