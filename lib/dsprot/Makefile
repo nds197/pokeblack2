@@ -4,34 +4,22 @@
 
 MAKEFLAGS += --no-print-directory
 
-ifeq ($(OS),Windows_NT)
-	EXE  := .exe
-	WINE := 
-else
-	EXE  := 
-	WINE := wine
-endif
-
 # Relevant directories
 BUILD_DIR  :=  ./build
 SRC_DIR    :=  ./src
 INC_DIR    :=  ./include
 TOOL_DIR   :=  ./tools
 
-$(shell mkdir -p $(BUILD_DIR))
-
 ELFCODER_DIR  :=  $(TOOL_DIR)/elfcoder
 DEVKEY_DIR    :=  $(TOOL_DIR)/devkey
 FIXDEP_DIR    :=  $(TOOL_DIR)/fixdep
 COMPARE_DIR   :=  $(TOOL_DIR)/compare
-MWCCARM_DIR   ?=  ../../tools/mwccarm
 
-MW_VER := dsi/1.2p2
+MWCCVER := dsi/1.2p2
+
+include ../../common.mk
 
 # Tools
-MWCCARM   :=  $(MWCCARM_DIR)/$(MW_VER)/mwccarm.exe
-MWASMARM  :=  $(MWCCARM_DIR)/$(MW_VER)/mwasmarm.exe
-MWLDARM   :=  $(MWCCARM_DIR)/$(MW_VER)/mwldarm.exe
 ELFCODER  :=  $(ELFCODER_DIR)/build/elfcoder$(EXE)
 DEVKEY    :=  $(DEVKEY_DIR)/build/devkey$(EXE)
 FIXDEP    :=  $(FIXDEP_DIR)/build/fixdep$(EXE)
@@ -43,9 +31,6 @@ LIB_PARAM  :=  -nostdlib -library
 DEP_PARAM  :=  -gccdep -MD
 
 CC_PARAM   +=  -W all -W pedantic -W noimpl_signedunsigned -W noimplicitconv -W nounusedarg -W nomissingreturn -W error
-
-# Depedency files
-DEPS := $(wildcard $(BUILD_DIR)/*.d)
 
 # Output library file
 LIBRARY_NAME  :=  dsprot.a
@@ -84,9 +69,6 @@ all:
 	$(MAKE) tools
 	$(MAKE) dsprot
 
-compare:
-	$(MAKE) all COMPARE=1
-
 clean:
 	$(MAKE) -C $(ELFCODER_DIR) clean
 	$(MAKE) -C $(DEVKEY_DIR) clean
@@ -101,19 +83,11 @@ tools:
 
 dsprot:
 	$(MAKE) $(LIBRARY)
-ifneq ($(COMPARE),)
-ifeq ($(EXE),.exe)
-	$(MAKE) -C $(COMPARE_DIR) MWCCARM_DIR=$(shell cygpath -w "$(abspath $(MWCCARM_DIR))") MW_VER=$(MW_VER) LIBRARY=$(shell cygpath -w "$(abspath $(LIBRARY)"))
-else
-	$(MAKE) -C $(COMPARE_DIR) MWCCARM_DIR=$(abspath $(MWCCARM_DIR)) MW_VER=$(MW_VER) LIBRARY=$(abspath $(LIBRARY))
-endif
-endif
 
 install:
 ifeq ($(INSTALL_DIR),)
 	$(error Nowhere to install. Specify INSTALL_DIR)
 else
-	$(MAKE) all
 	$(shell mkdir -p $(INSTALL_DIR)/)
 	cp $(LIBRARY) $(INSTALL_DIR)/
 endif
@@ -121,18 +95,18 @@ endif
 
 # Assembly assembling
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.s
-	$(WINE) $(MWASMARM) $(ASM_PARAM) $< -o $@
+	$(WINE) $(MWAS) $(ASM_PARAM) $< -o $@
 
 
 # C compilation
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	$(WINE) $(MWCCARM) $(CC_PARAM) $(DEP_PARAM) $< -o $@
+	$(WINE) $(MWCC) $(CC_PARAM) $(DEP_PARAM) $< -o $@
 	$(FIXDEP) $(@:.o=.d)
 
 
 # Library output
 $(LIBRARY): $(LIBRARY_FILES)
-	$(WINE) $(MWLDARM) $(LIB_PARAM) $^ -o $@
+	$(WINE) $(MWLD) $(LIB_PARAM) $^ -o $@
 
 
 # Encryption key derivation
@@ -237,6 +211,3 @@ $(BUILD_DIR)/rom_test_decrypter.s: $(BUILD_DIR)/rom_test.o $(ENCRYPTION_KEY) $(E
 	$(ELFCODER) -e -i $(BUILD_DIR)/rom_test_encrypted.o -o $(BUILD_DIR)/rom_test_decrypter.s -K $(ENCRYPTION_KEY) -f \
 		ROMTest_IsBad   \
 		ROMTest_IsGood
-
-
--include $(DEPS)

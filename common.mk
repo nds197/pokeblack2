@@ -62,12 +62,12 @@ ELFCODER     := $(TOOLSDIR)/elfcoder/elfcoder$(EXE)
 # Native libraries
 LIBNARC      := $(TOOLSDIR)/nitroarc/libnitroarc.a
 
-COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.TWL$(EXE)
+COMPSTATIC   := $(TOOLSDIR)/bin/compstatic.TWL.exe
 
 NTRMERGE      := $(TOOLSDIR)/ntr_merge_elf/ntr_merge_elf.sh
 ASM_PROCESSOR := $(TOOLSDIR)/asm_processor/compile.sh
 
-PYTHON        := python
+PYTHON        := python3
 
 NATIVE_TOOLS := \
 	$(ASPATCH)

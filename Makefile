@@ -80,7 +80,7 @@ libsyscall: files_for_compile
 	$(MAKE) -C lib/syscall all install INSTALL_PREFIX=$(abspath $(WORK_DIR)/$(BUILD_DIR)) GAME_CODE=$(GAME_CODE)
 
 $(SBIN_LZ): $(BUILD_DIR)/component.files
-	$(COMPSTATIC) -9 -c -C -S0 -f -a -loverlays_spec.txt $<
+	$(WINE) $(COMPSTATIC) -9 -c -C -S0 -f -a -loverlays_spec.txt $<
 
 $(BUILD_DIR)/component.files: main ;
 
