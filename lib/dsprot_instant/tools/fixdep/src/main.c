@@ -36,6 +36,9 @@ int main(int argc, char* argv[]) {
 			if (!(next == '\r' || next == '\n')) {
 				fseek(target, -2, SEEK_CUR);
 				fputc('/', target);
+
+				if (fflush(target) == EOF)
+					break;
 			}
 		}
 	}

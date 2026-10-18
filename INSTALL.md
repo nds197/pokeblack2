@@ -1,6 +1,6 @@
 This doc details the steps necessary to build a copy of Pokemon Black 2 (English) from the sources contained in this repository.
 
-The steps have only been verified on Windows using Cygwin.
+Verified on Windows using Cygwin, MSYS2 and WSL1/2 with Ubuntu.
 
 ### 0. Clone the repository
 
