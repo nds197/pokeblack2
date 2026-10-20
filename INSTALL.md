@@ -6,25 +6,18 @@ Verified on Windows using Cygwin, MSYS2 and WSL1/2 with Ubuntu.
 
 Using a terminal or git client, clone this repository to your local device. All the steps that followed should be performed in the directory to which you cloned this repository.
 
-### 1. Install MWCC compiler
-
-The build system requires the use of the Metrowerks C Compiler versions dsi/1.2p2 to compile matching files. We cannot distribute the correct compiler here so join the PRET discord and download the pinned mwccarm.zip zip in #pokediamond and extract it to tools/. At the end of this operation, you should have i.e. the file `tools/mwccarm/dsi/1.2p2/mwccarm.exe`. Run each of the executables so they ask for a license.dat and provide the one in the rar (it may also ask for it when compiling). This only needs to be done once.
-
-
-(Note: if running the exe's doesn't work, you can run the .bat file. A GUI window should pop up for you to select the license.dat)
-
-### 2. Install TWL SDK
+### 1. Install TWL SDK
 
 As with the compiler, the TWL SDK is proprietary and cannot be distributed here. Download the "TwlSDK-5_3-1-20090824.zip". Extract and copy the folder `tools/bin` from the TWL SDK into the folder `tools` in your pokeblack2 clone. At the end of this operation, you should have i.e. the file `tools/bin/makelcf.TWL.exe` inside your pokeblack2 clone. Finally, copy include/twl/specfiles/ARM7-TS.lcf.template into the subdirectory `sub`, and include/twl/specfiles/ARM9-TS.lcf.template and include/twl/specfiles/mwldarm.response.template into the project root.
 
-### 3. (Optional) Provide biosnds7.rom or biosdsi9.rom
+### 2. (Optional) Provide biosnds7.rom or biosdsi9.rom
 The game is a DSi-enhanced title, and DSi titles use HMAC-based hashes calculated over the entire code and filesystem. This also includes the main ARM9 binary, which is hashed together with its encrypted Secure Area.
 
 Therefore, in order to calculate these hashes correctly, we need to build the ROM with an encrypted Secure Area. To do this, we need either the NTR Blowfish key, which is included in both biosnds7 and biosdsi9, or a pre-built encrypted Secure Area extracted from an encrypted ROM.
 
 An encrypted secure area is included, so if no bios is provided this will be used instead.
 
-### 4. Dependencies
+### 3. Dependencies
 
 #### Linux
 
@@ -40,6 +33,7 @@ Building the ROM requires the following packages. If you cannot find one or more
 * libpng-devel (libpng-dev on Ubuntu)
 * pkg-config
 * pugixml (libpugixml-dev on Ubuntu)
+* bsdtar
 
 NOTE: If you are using Arch/Manjaro or Void you will only need base-devel instead of build-essentials or make or git. You will still need wine.
 
@@ -61,6 +55,8 @@ The following packages are required:
 * pkg-config
 * python3
 * python3-pycryptodome
+* wget
+* p7zip
 
 Install them using either the Cygwin package manager or using pacman on Msys2.
 
@@ -101,7 +97,7 @@ $ brew install coreutils make gnu-sed llvm arm-gcc-bin libpng git pkg-config
 $ brew install wine-crossover
 ```
 
-### 5. Build ROM
+### 4. Build ROM
 
 Run `make` to build the ROM. The ROM will be output as `build/black2.en/pokeblack2.en.nds`
 

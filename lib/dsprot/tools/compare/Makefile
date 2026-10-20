@@ -33,12 +33,3 @@ all:
 
 clean:
 	$(RM) -r $(BUILD_DIR)
-
-$(COMPARE_SBIN): $(LIBRARY) $(ENV_OBJ)
-ifeq ($(LIBRARY),)
-	$(error No dsprot.a provided. Specify LIBRARY)
-endif
-	$(WINE) $(MWLDARM) $(LD_PARAM) $(COMPARE_LCF) $^ -o $(LINKED_ELF)
-
-$(ENV_OBJ): $(ENV_SRC)
-	$(WINE) $(MWCCARM) $(CC_PARAM) $< -o $@

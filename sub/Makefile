@@ -21,7 +21,6 @@ clean: tidy
 
 all:
 	$(MAKE) tools
-	$(MAKE) patch_mwasmarm 
 	$(MAKE) target
 
 $(SBIN): build/%.sbin: build/%.elf

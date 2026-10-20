@@ -99,18 +99,18 @@ endif
 
 # Assembly assembling
 $(BUILD_DIR)/%.o: $(BUILD_DIR)/%.s
-	$(WINE) $(MWAS) $(ASM_PARAM) $< -o $@
+	$(MWAS) $(ASM_PARAM) $< -o $@
 
 
 # C compilation
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	$(WINE) $(MWCC) $(CC_PARAM) $(DEP_PARAM) $< -o $@
+	$(MWCC) $(CC_PARAM) $(DEP_PARAM) $< -o $@
 	$(FIXDEP) $(@:.o=.d)
 
 
 # Library output
 $(LIBRARY): $(LIBRARY_FILES)
-	$(WINE) $(MWLD) $(LIB_PARAM) $^ -o $@
+	$(MWLD) $(LIB_PARAM) $^ -o $@
 
 
 # Encryption key derivation

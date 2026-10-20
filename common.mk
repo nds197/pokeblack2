@@ -34,16 +34,80 @@ SCRIPTS      := $(TOOLSREL)/scripts
 
 include $(WORK_DIR)/platform.mk
 
+# Metroskrew
+SKREW_GET := tools/devtools/get_metroskrew.sh
+SKREW_VER := 0.1.3
+SKREW_DIR := $(TOOLSDIR)/metroskrew
+SKREW_FLAGS = -wrap:sdk $(MWCCVER)
+
+UNAME_R := $(shell uname -r)
+CWD := $(shell pwd)
+
+ifneq (,$(findstring Microsoft,$(UNAME_R)))
+  ifneq (,$(filter /mnt/%,$(realpath $(CWD))))
+    WSL_ACCESSING_WINDOWS := 0
+  else
+    WSL_ACCESSING_WINDOWS := 1
+  endif
+else
+  WSL_ACCESSING_WINDOWS := 1
+endif
+
+ifneq (,$(findstring Linux,$(UNAME_S)))
+  ifeq (0,$(WSL_ACCESSING_WINDOWS))
+    NATIVE := native.ini
+    CROSS := cross.ini
+    SKREW_SYS := windows
+    SKREW_EXE := $(SKREW_DIR)/bin/skrewrap.exe
+	EXE_S := .exe
+  else
+    NATIVE := native.ini
+    CROSS := cross_unix.ini
+    SKREW_SYS := linux
+    SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
+  endif
+else
+  ifneq (,$(findstring Darwin,$(UNAME_S)))
+    NATIVE := native_macos.ini
+    CROSS := cross_unix.ini
+    SKREW_SYS := wine
+    SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
+  else
+    ifneq (,$(findstring BSD, $(UNAME_S)))
+      NATIVE := native.ini
+      CROSS := cross_unix.ini
+      SKREW_SYS := linux
+      SKREW_EXE := $(SKREW_DIR)/bin/skrewrap
+    else
+      NATIVE := native.ini
+      CROSS := cross.ini
+      SKREW_SYS := windows
+      SKREW_EXE := $(SKREW_DIR)/bin/skrewrap.exe
+	  EXE_S := .exe
+    endif
+  endif
+endif
+
+skrew: $(SKREW_EXE)
+
+skrewrm:
+	rm -rf $(SKREW_DIR)
+
+skrewup: skrewrm skrew
+
+$(SKREW_EXE):
+	SKREW_SYS=$(SKREW_SYS) SKREW_VER=$(SKREW_VER) SKREW_DIR=$(SKREW_DIR) $(SKREW_GET)
+
 # NitroSDK tools
-MWCC          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwccarm.exe
-MWAS          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwasmarm.exe
-MWLD          = $(TOOLSDIR)/mwccarm/$(MWCCVER)/mwldarm.exe
+MWCC          = $(SKREW_DIR)/bin/mwccarm$(EXE_S) $(SKREW_FLAGS)
+MWAS          = $(SKREW_DIR)/bin/mwasmarm$(EXE_S) $(SKREW_FLAGS)
+MWLD          = $(SKREW_DIR)/bin/mwldarm$(EXE_S) $(SKREW_FLAGS)
 MAKEROM      := $(TOOLSDIR)/bin/makerom.TWL.exe
 MAKELCF      := $(TOOLSDIR)/bin/makelcf.TWL.exe
 MAKEBNR      := $(TOOLSDIR)/bin/makebanner.exe
 NTRCOMP      := $(WINE) $(TOOLSDIR)/bin/ntrcomp.exe
 
-MW_LINK     = $(WINE) $(MWLD) $(MWLDFLAGS) $(LIBS)
+MW_LINK     = $(MWLD) $(MWLDFLAGS) $(LIBS)
 
 export LM_LICENSE_FILE := $(TOOLSDIR)/mwccarm/license.dat
 
@@ -54,7 +118,6 @@ FIXROM       := $(TOOLSDIR)/fixrom/fixrom$(EXE)
 NARC         := $(TOOLSDIR)/nitroarc/nitroarc$(EXE)
 O2NARC       := $(TOOLSDIR)/o2narc/o2narc$(EXE)
 MSGENC       := $(TOOLSDIR)/msgenc/msgenc$(EXE)
-ASPATCH      := $(TOOLSDIR)/mwasmarm_patcher/mwasmarm_patcher$(EXE)
 CSV2BIN      := $(TOOLSDIR)/csv2bin/csv2bin$(EXE)
 MKFXCONST    := $(TOOLSDIR)/gen_fx_consts/gen_fx_consts$(EXE)
 ELFCODER     := $(TOOLSDIR)/elfcoder/elfcoder$(EXE)
@@ -133,8 +196,8 @@ MWASFLAGS          = $(DEFINES) -proc $(PROC_S) -g -gccinc -i . -i ./include -i 
 MWLDFLAGS         := -proc $(PROC) -sym on -nopic -nopid -interworking -map closure,unused -symtab sort -m _start -msgstyle gcc
 ARFLAGS           := rcS
 
-MW_COMPILE = $(WINE) $(MWCC) $(MWCFLAGS)
-MW_ASSEMBLE = $(WINE) $(MWAS) $(MWASFLAGS)
+MW_COMPILE = $(MWCC) $(MWCFLAGS)
+MW_ASSEMBLE = $(MWAS) $(MWASFLAGS)
 
 export MWCIncludes := lib/include
 
@@ -151,7 +214,7 @@ DUMMY := $(shell mkdir -p $(ALL_BUILDDIRS))
 .SECONDARY:
 .SECONDEXPANSION:
 .DELETE_ON_ERROR:
-.PHONY: all tidy clean tools clean-tools patch_mwasmarm $(TOOLDIRS)
+.PHONY: all tidy clean tools clean-tools skrew skrewrm skrewup $(TOOLDIRS)
 .PRECIOUS: $(SBIN)
 
 ARM9_ENC_SUFFIX := _enc
@@ -163,9 +226,6 @@ else ifneq ($(wildcard biosdsi9.rom),)
 else
     GEN_ENCRYPTED_ARGS := --encrypted_secure "$(buildname)/secure_encrypted.bin"
 endif
-
-patch_mwasmarm:
-	$(ASPATCH) -q $(MWAS)
 
 ifeq ($(NODEP),)
 ifneq ($(WINPATH),)
@@ -208,8 +268,8 @@ $(BUILD_DIR)/%.o: %.c $(BUILD_DIR)/%.d
 
 $(BUILD_DIR)/%.o: %.s
 $(BUILD_DIR)/%.o: %.s $(BUILD_DIR)/%.d
-	@echo $(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
-	@$(WINE) $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
+	@echo $(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $<
+	@$(MWAS) $(MWASFLAGS) $(DEPFLAGS) -o $@ $< || { rm -f $(BUILD_DIR)/%.d; exit 1; }
 	@$(call fixdep,$(BUILD_DIR)/$*.d)
 
 include $(wildcard $(DEPFILES))
@@ -222,18 +282,20 @@ $(BUILD_DIR)/%.o: %.c
 	$(BUILD_C) $@ $<
 
 $(BUILD_DIR)/%.o: %.s
-	$(WINE) $(MWAS) $(MWASFLAGS) -o $@ $<
+	$(MWAS) $(MWASFLAGS) -o $@ $<
 endif
 
 $(NATIVE_TOOLS): tools
 
-tools: $(TOOLDIRS) $(MWAS)
+tools: $(TOOLDIRS) $(SKREW_EXE)
 
 $(TOOLDIRS):
 	@$(MAKE) -C $@
 
 clean-tools:
 	$(foreach tool,$(TOOLDIRS),$(MAKE) -C $(tool) clean;)
+
+update: skrewup
 
 $(LCF): $(LSF) $(LCF_TEMPLATE)
 	$(WINE) $(MAKELCF) $(MAKELCF_FLAGS) $< $(LCF_TEMPLATE) $@
