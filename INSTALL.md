@@ -8,7 +8,7 @@ Using a terminal or git client, clone this repository to your local device. All 
 
 ### 1. Install TWL SDK
 
-As with the compiler, the TWL SDK is proprietary and cannot be distributed here. Download the "TwlSDK-5_3-1-20090824.zip". Extract and copy the folder `tools/bin` from the TWL SDK into the folder `tools` in your pokeblack2 clone. At the end of this operation, you should have i.e. the file `tools/bin/makelcf.TWL.exe` inside your pokeblack2 clone. Finally, copy include/twl/specfiles/ARM7-TS.lcf.template into the subdirectory `sub`, and include/twl/specfiles/ARM9-TS.lcf.template and include/twl/specfiles/mwldarm.response.template into the project root.
+The TWL SDK is proprietary and cannot be distributed here. Download the "TwlSDK-5_3-1-20090824.zip". Extract and copy the folder `tools/bin` from the TWL SDK into the folder `tools` in your pokeblack2 clone. At the end of this operation, you should have i.e. the file `tools/bin/makelcf.TWL.exe` inside your pokeblack2 clone. Finally, copy include/twl/specfiles/ARM7-TS.lcf.template into the subdirectory `sub`, and include/twl/specfiles/ARM9-TS.lcf.template and include/twl/specfiles/mwldarm.response.template into the project root.
 
 ### 2. (Optional) Provide biosnds7.rom or biosdsi9.rom
 The game is a DSi-enhanced title, and DSi titles use HMAC-based hashes calculated over the entire code and filesystem. This also includes the main ARM9 binary, which is hashed together with its encrypted Secure Area.
